@@ -33,18 +33,58 @@ import AdminDeviceDatabase from '../components/admin/AdminDeviceDatabase';
 
 export default function AdminDashboardPage({ initialSection = 'dashboard', embedded = false }) {
   const {
-    products,
-    orders,
-    customers,
-    auditLogs,
-    mysteryTiers,
-    spinWheel,
     storeSettings,
     setStoreSettings,
-    productActions,
-    orderActions,
-    mysteryActions
   } = useAdminData();
+
+  const getToken = () => localStorage.getItem('admin_portal_token') || localStorage.getItem('token');
+  
+  const productActions = {
+    add: async (data) => {
+      await fetch('/api/products', { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${getToken()}` }, body: JSON.stringify(data) });
+      fetchProducts();
+    },
+    edit: async (id, data) => {
+      await fetch(`/api/products/${id}`, { method: 'PUT', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${getToken()}` }, body: JSON.stringify(data) });
+      fetchProducts();
+    },
+    delete: async (id) => {
+      await fetch(`/api/products/${id}`, { method: 'DELETE', headers: { Authorization: `Bearer ${getToken()}` } });
+      fetchProducts();
+    },
+    bulkPublish: async (ids, status) => {
+      for (const id of ids) {
+        await fetch(`/api/products/${id}`, { method: 'PUT', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${getToken()}` }, body: JSON.stringify({ status }) });
+      }
+      fetchProducts();
+    }
+  };
+
+  const orderActions = {
+    edit: async (id, data) => {
+      await fetch(`/api/orders/${id}`, { method: 'PUT', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${getToken()}` }, body: JSON.stringify(data) });
+      fetchOrders(ordersPage);
+    },
+    updateCustomDesignStatus: async (id, status) => {
+      await fetch(`/api/orders/${id}`, { method: 'PUT', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${getToken()}` }, body: JSON.stringify({ fulfillmentStatus: status }) });
+      fetchOrders(ordersPage);
+    }
+  };
+
+  const mysteryActions = {
+    updateProbability: async (tierId, prob) => {
+       await fetch(`/api/mystery/${tierId}/probability`, { method: 'PUT', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${getToken()}` }, body: JSON.stringify({ probability: prob }) });
+    }
+  };
+
+  const customerActions = {
+    grantPoints: async (id, points) => {
+       await fetch(`/api/users/${id}/points`, { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${getToken()}` }, body: JSON.stringify({ points }) });
+    },
+    suspend: async (id) => {
+       await fetch(`/api/users/${id}/suspend`, { method: 'POST', headers: { Authorization: `Bearer ${getToken()}` } });
+    }
+  };
 
   const [activeSection, setActiveSection] = useState(initialSection);
 
@@ -96,11 +136,43 @@ export default function AdminDashboardPage({ initialSection = 'dashboard', embed
     }
   }, [ordersPage, activeSection]);
 
-  // 1. Dashboard calculations
-  const totalRevenue = orders.filter(o => o.status !== 'Cancelled').reduce((acc, curr) => acc + curr.total, 0);
-  const totalOrdersCount = orders.length;
-  const lowStockCount = products.filter(p => p.stock <= 10).length;
-  const pendingOrdersCount = orders.filter(o => o.status === 'Pending').length;
+  const [dashboardStats, setDashboardStats] = useState({ totalRevenue: 0, totalOrdersCount: 0, activeCustomers: 0, lowStockCount: 0, pendingOrdersCount: 0 });
+  const [apiProducts, setApiProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const res = await fetch('/api/enterprise/analytics-dashboard', {
+          headers: { Authorization: `Bearer ${getToken()}` }
+        });
+        if (res.ok) {
+          const data = await res.json();
+          setDashboardStats({
+             totalRevenue: data.totalRevenue || 0,
+             totalOrdersCount: data.totalOrders || 0,
+             activeCustomers: data.activeCustomers || 0,
+             lowStockCount: data.lowStockProducts || 0,
+             pendingOrdersCount: data.pendingOrders || 0
+          });
+        }
+      } catch (e) { console.error(e); }
+    };
+    if (activeSection === 'dashboard') fetchStats();
+  }, [activeSection]);
+
+  const fetchProducts = async () => {
+    try {
+      const res = await fetch('/api/products');
+      const data = await res.json();
+      setApiProducts(data);
+    } catch(e) {}
+  };
+
+  useEffect(() => {
+    if (activeSection === 'products' || activeSection === 'dashboard') {
+      fetchProducts();
+    }
+  }, [activeSection]);
 
   // Form helpers
   const openNewProduct = () => {
@@ -151,10 +223,10 @@ export default function AdminDashboardPage({ initialSection = 'dashboard', embed
           {/* Executive Row 1 */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             {[
-              { label: 'Revenue Today', val: `₹${(totalRevenue * 0.15).toFixed(0)}`, desc: '+12% from yesterday', color: 'text-emerald-600' },
-              { label: 'Revenue This Month', val: `₹${totalRevenue.toLocaleString()}`, desc: 'Target: ₹50,000', color: 'text-indigo-600' },
-              { label: 'Revenue This Year', val: `₹${(totalRevenue * 8.2).toFixed(0)}`, desc: 'Projected: ₹5,00,000', color: 'text-purple-600' },
-              { label: 'Average Order Value (AOV)', val: `₹${(totalRevenue / totalOrdersCount || 0).toFixed(0)}`, desc: 'Based on recent cart checkouts', color: 'text-amber-600' }
+              { label: 'Revenue Today', val: `₹${(dashboardStats.totalRevenue * 0.15).toFixed(0)}`, desc: '+12% from yesterday', color: 'text-emerald-600' },
+              { label: 'Revenue This Month', val: `₹${dashboardStats.totalRevenue.toLocaleString()}`, desc: 'Target: ₹50,000', color: 'text-indigo-600' },
+              { label: 'Revenue This Year', val: `₹${(dashboardStats.totalRevenue * 8.2).toFixed(0)}`, desc: 'Projected: ₹5,00,000', color: 'text-purple-600' },
+              { label: 'Average Order Value (AOV)', val: `₹${(dashboardStats.totalRevenue / (dashboardStats.totalOrdersCount || 1)).toFixed(0)}`, desc: 'Based on recent cart checkouts', color: 'text-amber-600' }
             ].map((card, i) => (
               <div key={i} className="bg-white p-5 rounded-2xl border border-zinc-150 shadow-xs">
                 <div className="text-[10px] uppercase font-bold text-zinc-400 tracking-wider mb-1">{card.label}</div>
@@ -171,9 +243,9 @@ export default function AdminDashboardPage({ initialSection = 'dashboard', embed
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             {[
               { label: 'Orders Today', val: '6', desc: '4 completed, 2 processing' },
-              { label: 'Pending Orders Queue', val: pendingOrdersCount, desc: 'Awaiting design approval/payment' },
-              { label: 'Completed Deliveries', val: orders.filter(o => o.status === 'Shipped').length, desc: 'In-transit status matches API' },
-              { label: 'Cancelled / Returned', val: orders.filter(o => o.status === 'Cancelled').length, desc: 'Processed within SLA rules' }
+              { label: 'Pending Orders Queue', val: dashboardStats.pendingOrdersCount, desc: 'Awaiting design approval/payment' },
+              { label: 'Completed Deliveries', val: apiOrders.filter(o => o.status === 'Shipped').length, desc: 'In-transit status matches API' },
+              { label: 'Cancelled / Returned', val: apiOrders.filter(o => o.status === 'Cancelled').length, desc: 'Processed within SLA rules' }
             ].map((card, i) => (
               <div key={i} className="bg-white p-5 rounded-2xl border border-zinc-150 shadow-xs">
                 <div className="text-[10px] uppercase font-bold text-zinc-400 tracking-wider mb-1">{card.label}</div>
@@ -286,10 +358,10 @@ export default function AdminDashboardPage({ initialSection = 'dashboard', embed
             <div className="bg-white p-5 rounded-2xl border border-zinc-150 shadow-xs">
               <div className="flex justify-between items-center mb-3">
                 <h3 className="font-display font-bold text-xs uppercase tracking-wider text-zinc-500">Low Stock Alerts</h3>
-                <span className="text-[10px] bg-red-100 text-red-700 px-2 py-0.5 rounded font-bold">{lowStockCount} critical</span>
+                <span className="text-[10px] bg-red-100 text-red-700 px-2 py-0.5 rounded font-bold">{dashboardStats.lowStockCount} critical</span>
               </div>
               <div className="space-y-2.5">
-                {products.filter(p => p.stock <= 15).map((p, i) => (
+                {apiProducts.filter(p => p.stock <= 15).map((p, i) => (
                   <div key={i} className="flex justify-between items-center text-xs border-b border-zinc-100 pb-2">
                     <span className="font-semibold text-black truncate max-w-[150px]">{p.name}</span>
                     <span className="bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-bold">{p.stock} left</span>
@@ -416,10 +488,10 @@ export default function AdminDashboardPage({ initialSection = 'dashboard', embed
                   <th className="p-4 w-10">
                     <input 
                       type="checkbox"
-                      checked={selectedProducts.length === products.length}
+                      checked={selectedProducts.length > 0 && selectedProducts.length === apiProducts.length}
                       onChange={(e) => {
                         if (e.target.checked) {
-                          setSelectedProducts(products.map(p => p.id));
+                          setSelectedProducts(apiProducts.map(p => p.id));
                         } else {
                           setSelectedProducts([]);
                         }
@@ -438,7 +510,7 @@ export default function AdminDashboardPage({ initialSection = 'dashboard', embed
                 </tr>
               </thead>
               <tbody>
-                {products
+                {apiProducts
                   .filter(p => p.name.toLowerCase().includes(productSearch.toLowerCase()) || p.sku.toLowerCase().includes(productSearch.toLowerCase()))
                   .map((p, idx) => (
                     <tr key={idx} className="border-b border-zinc-100 hover:bg-zinc-50/50">
@@ -925,30 +997,7 @@ export default function AdminDashboardPage({ initialSection = 'dashboard', embed
               </div>
             </div>
 
-            {/* Wheel preview & simulation */}
-            <div className="bg-white p-5 rounded-2xl border border-zinc-150 shadow-xs text-center space-y-4">
-              <h3 className="font-display font-extrabold text-sm text-black text-left">Live Spin Mock</h3>
-              
-              {/* Spinning wheel visualization mock */}
-              <div className="w-40 h-40 rounded-full border-4 border-black mx-auto relative flex items-center justify-center overflow-hidden bg-zinc-100">
-                <div className="absolute inset-0 border-t-2 border-indigo-600 rounded-full animate-spin duration-3000"></div>
-                <div className="w-4 h-4 rounded-full bg-black z-10"></div>
-                <div className="absolute top-0 w-2 h-4 bg-red-600 z-20"></div>
-              </div>
 
-              <div className="text-xs text-zinc-500 mt-2">
-                Clicking spin tests the simulated probabilities dynamically without editing the counts ledger.
-              </div>
-
-              <button 
-                onClick={() => {
-                  toast.success('Mock spin landed on "Free Metal Sticker"! 🎁');
-                }}
-                className="w-full bg-black text-white font-bold py-2.5 rounded-xl cursor-pointer text-xs active:scale-95 transition-all"
-              >
-                Test Spin Probability
-              </button>
-            </div>
 
           </div>
         </div>
@@ -1105,25 +1154,6 @@ export default function AdminDashboardPage({ initialSection = 'dashboard', embed
               ))}
             </div>
           </div>
-        </div>
-      )}
-
-      {/* ──────────────────────────────────────────────────────── */}
-      {/* GENERAL FALLBACK / PLACEHOLDER FOR REMAINING SUB-VIEWS  */}
-      {/* ──────────────────────────────────────────────────────── */}
-      {!['dashboard', 'products', 'orders', 'custom-cases', 'mystery-dashboard', 'spin-the-case', 'audit-logs', 'settings', 'categories', 'collections', 'limited-editions', 'daily-drops', 'draft-orders', 'returns', 'refunds', 'mystery-pouches', 'customers', 'loyalty-program', 'subscriptions', 'community', 'inventory-overview', 'shipping-zones', 'payments', 'marketing-center', 'analytics-center', 'homepage-builder', 'roles', 'search-merch', 'seo-manager', 'media-lib', 'support-center', 'notif-templates', 'referrals', 'warehouse-workflows', 'apps', 'devices-db'].includes(activeSection) && (
-        <div className="bg-white p-8 rounded-2xl border border-zinc-150 text-center space-y-4 animate-fade-in">
-          <div className="text-4xl">🛠️</div>
-          <h2 className="font-display font-extrabold text-lg text-black capitalize">{activeSection.replace('-', ' ')} view</h2>
-          <p className="text-xs text-zinc-500 max-w-md mx-auto leading-relaxed">
-            This module has been fully initialized with access to the simulated local storage database and is ready for customized database queries.
-          </p>
-          <button 
-            onClick={() => setActiveSection('dashboard')} 
-            className="px-4 py-2 bg-black text-white text-xs font-bold rounded-xl active:scale-95 transition-all cursor-pointer"
-          >
-            Back to Dashboard
-          </button>
         </div>
       )}
 

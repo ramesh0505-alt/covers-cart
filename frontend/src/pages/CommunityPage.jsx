@@ -52,7 +52,7 @@ export default function CommunityPage() {
   };
 
   const handleShareStory = () => {
-    toast.success('Feature coming soon! Share your setup in the next update.', { icon: '📸' });
+    // To be implemented in next phase
   };
 
   return (
@@ -111,7 +111,7 @@ export default function CommunityPage() {
         <section className="mb-section-gap">
           <div className="px-container-margin flex items-center justify-between mb-4">
             <h3 className="text-base font-bold text-black font-display">Unboxing Videos</h3>
-            <button onClick={() => toast('Reels filters coming soon')} className="text-xs font-semibold text-[#4648d4] uppercase tracking-wider cursor-pointer">View All</button>
+            <button className="text-xs font-semibold text-[#4648d4] uppercase tracking-wider cursor-pointer">View All</button>
           </div>
           <div className="flex overflow-x-auto hide-scrollbar gap-4 px-container-margin">
             {/* Video Reel Card 1 */}
@@ -168,7 +168,7 @@ export default function CommunityPage() {
         <section className="mb-section-gap px-container-margin">
           <h3 className="text-base font-bold text-black font-display mb-4">Mystery Pouch Reactions</h3>
           <div className="grid grid-cols-2 gap-4">
-            <div className="col-span-2 relative aspect-[16/9] rounded-xl overflow-hidden bg-[#f6f2f7] border border-[#cfc4c5]/10 shadow-sm group cursor-pointer" onClick={() => toast('Full post view coming soon!')}>
+            <div className="col-span-2 relative aspect-[16/9] rounded-xl overflow-hidden bg-[#f6f2f7] border border-[#cfc4c5]/10 shadow-sm group cursor-pointer">
               <img className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLcuhwZXfgAvjz8ke2_edzriKCshMorbE5LY1SgvFpMCoA4_eWBCXjHfSzHz5Vucnc7bSLtOG8mpdtbfU-JdBfN6_mOOdMRPFhwcK0dm8G5w5C4w12hFlIrYdZESgNgBUyxX4TDavMg_lIqC2rWJNkTUw5_RVg2YMJd7yxTkN4p29uOSVD8_3aFLWACGm2fxxO1A61-EctQQ0KNgk9qaXDbtF3ioZAPAf52vR2U4Fm03TR-eWYOMnQAj3AYljJG1cyZO6AEBA0zOUh" alt="Reaction 1" />
               <div className="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/60 to-transparent">
                 <p className="text-white text-sm font-semibold">"Best blind buy ever!"</p>
@@ -179,14 +179,14 @@ export default function CommunityPage() {
               </div>
             </div>
 
-            <div className="relative aspect-square rounded-xl overflow-hidden bg-[#f6f2f7] border border-[#cfc4c5]/10 shadow-sm group cursor-pointer" onClick={() => toast('Full post view coming soon!')}>
+            <div className="relative aspect-square rounded-xl overflow-hidden bg-[#f6f2f7] border border-[#cfc4c5]/10 shadow-sm group cursor-pointer">
               <img className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1wXdtlrcDHhxRqdHbHQ3RYQrIrQJseFNAJdN55CwvqzuFVkfi6DgJCtUXlrPg9gilyDpJ5ronB6sWZNR4WiUNFA1gozZenq5TWGMNrzXbdahziaj7XpWAnYkd5jPIXWsRTGU23U6v2uRYGgOIvsBVuVyTnmTt0UID9ooEkKzhLlzwGNtrPnqAGJ2jR0yqrSLIkjGS-a4Mp529RY_U4D7y9kCJd6V1ZWysSUZeGx6jfdMVqhm1UAAi68aJ1rEHTYiFiLFtzEa0-UxF" alt="Reaction 2" />
               <div className="absolute inset-0 p-3 flex flex-col justify-end bg-gradient-to-t from-black/40 to-transparent">
                 <span className="text-white text-[10px] font-bold">@aura_sky</span>
               </div>
             </div>
 
-            <div className="relative aspect-square rounded-xl overflow-hidden bg-[#f6f2f7] border border-[#cfc4c5]/10 shadow-sm group cursor-pointer" onClick={() => toast('Full post view coming soon!')}>
+            <div className="relative aspect-square rounded-xl overflow-hidden bg-[#f6f2f7] border border-[#cfc4c5]/10 shadow-sm group cursor-pointer">
               <img className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAy9WSGaTwWsjvXgjAaB86WFTUVbxezwFTNK0qUjkqHlpaBQzBAoiAI5TrWqKPl7AR_Rkgr7fYHYQra1SyFQz2SyEysPVF-7q9v9VjBedij2HtwcYrghsOxz7FFIqA38X5Cf0qeFonabSMSdNb4MBJYKveepmfd8xLsLAx-ULYz2cRS1UmBfGldnUn6ZK63P4H0deT2Ka65wmLqKoQuR32icpuluf7Zm19usniyH8xeX3MBaKKHihV_hYUuO4tNm1AX4_PgGTq2TwtI" alt="Reaction 3" />
               <div className="absolute inset-0 p-3 flex flex-col justify-end bg-gradient-to-t from-black/40 to-transparent">
                 <span className="text-white text-[10px] font-bold">@urban_grid</span>

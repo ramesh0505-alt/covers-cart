@@ -11,8 +11,8 @@ export default function AdminOrdersPage() {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const res = await API.get('/orders'); // Admin fetches all orders
-        setOrders(res.data || []);
+        const res = await API.get('/orders/all'); // Admin fetches all orders
+        setOrders(res.data?.data || res.data || []);
       } catch (err) {
         console.error(err);
         toast.error('Failed to load system orders');
@@ -70,26 +70,31 @@ export default function AdminOrdersPage() {
                     <tr key={o.id} className="hover:bg-[var(--color-surface-container-low)]">
                       <td className="p-4 font-mono text-xs">{o.id}</td>
                       <td className="p-4 text-xs font-mono">{o.userId}</td>
-                      <td className="p-4 font-bold">₹{o.total?.toFixed(2) || '0.00'}</td>
+                      <td className="p-4 font-bold">₹{o.totalAmount?.toFixed(2) || '0.00'}</td>
                       <td className="p-4 text-xs">{new Date(o.createdAt).toLocaleDateString()}</td>
                       <td className="p-4">
-                        <span className={`px-2.5 py-1 rounded-full text-xs font-bold ${
-                          o.status === 'delivered' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'
+                        <span className={`px-2.5 py-1 rounded-full text-[10px] uppercase font-bold tracking-widest ${
+                          o.status === 'DELIVERED' || o.status === 'delivered' ? 'bg-green-100 text-green-800' 
+                          : o.status === 'CONFIRMED' || o.status === 'confirmed' ? 'bg-blue-100 text-blue-800'
+                          : o.status === 'PROCESSING' || o.status === 'processing' ? 'bg-purple-100 text-purple-800'
+                          : o.status === 'SHIPPED' || o.status === 'shipped' ? 'bg-orange-100 text-orange-800'
+                          : 'bg-amber-100 text-amber-800'
                         }`}>
                           {o.status?.toUpperCase() || 'PENDING'}
                         </span>
                       </td>
                       <td className="p-4">
                         <select 
-                          value={o.status || 'pending'} 
+                          value={o.status?.toUpperCase() || 'PENDING'} 
                           onChange={(e) => handleStatusChange(o.id, e.target.value)}
                           className="border border-[#cfc4c5] rounded p-1 text-xs"
                         >
-                          <option value="pending">Pending</option>
-                          <option value="processing">Processing</option>
-                          <option value="shipped">Shipped</option>
-                          <option value="delivered">Delivered</option>
-                          <option value="cancelled">Cancelled</option>
+                          <option value="PENDING">Payment Pending</option>
+                          <option value="CONFIRMED">Confirmed</option>
+                          <option value="PROCESSING">Processing</option>
+                          <option value="SHIPPED">Shipped</option>
+                          <option value="DELIVERED">Delivered</option>
+                          <option value="CANCELLED">Cancelled</option>
                         </select>
                       </td>
                     </tr>

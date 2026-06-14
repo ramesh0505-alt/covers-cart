@@ -40,7 +40,6 @@ export default function AccountPage() {
       <header className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-[1.25rem] h-16 bg-[#fbf8fc]/90 border-b border-[#cfc4c5]/30 backdrop-blur-md">
         <div className="flex items-center gap-4">
           <button 
-            onClick={() => toast.success('Drawer menu under development')}
             className="material-symbols-outlined text-black text-2xl hover:opacity-70 transition-opacity active:scale-95 duration-150 cursor-pointer"
           >
             menu
@@ -72,30 +71,16 @@ export default function AccountPage() {
                 {user?.name?.[0] || user?.email?.[0]}
               </div>
             )}
-            <button 
-              onClick={() => toast('Edit avatar feature coming soon!')}
-              className="absolute bottom-0 right-0 bg-black text-white p-1.5 rounded-full shadow-lg border-2 border-white hover:scale-105 transition-transform cursor-pointer"
-            >
-              <span className="material-symbols-outlined text-[18px] text-white flex items-center justify-center">edit</span>
-            </button>
           </div>
           <h2 className="text-lg font-bold text-black font-display">{user?.name || 'Alexandria Sterling'}</h2>
           <p className="text-xs text-[#4c4546] font-semibold mt-1">{user?.email || 'alexandria.s@premiummail.com'}</p>
         </section>
 
-        {/* Stats Grid (Subtle Bento Style) */}
-        <div className="grid grid-cols-3 gap-[1rem] mb-[2.5rem]">
+        {/* Stats Grid */}
+        <div className="grid grid-cols-1 gap-[1rem] mb-[2.5rem]">
           <div className="bg-[#f6f2f7] p-[1rem] rounded-xl text-center flex flex-col items-center justify-center border border-[#cfc4c5]/20">
             <span className="text-lg font-bold text-black font-headline">{orderCount}</span>
-            <span className="text-[9px] font-bold text-[#4c4546] uppercase tracking-widest mt-1">Orders</span>
-          </div>
-          <div className="bg-[#f6f2f7] p-[1rem] rounded-xl text-center flex flex-col items-center justify-center border border-[#cfc4c5]/20">
-            <span className="text-lg font-bold text-black font-headline">24</span>
-            <span className="text-[9px] font-bold text-[#4c4546] uppercase tracking-widest mt-1">Saved</span>
-          </div>
-          <div className="bg-[#f6f2f7] p-[1rem] rounded-xl text-center flex flex-col items-center justify-center border border-[#cfc4c5]/20">
-            <span className="text-lg font-bold text-black font-headline">02</span>
-            <span className="text-[9px] font-bold text-[#4c4546] uppercase tracking-widest mt-1">Addresses</span>
+            <span className="text-[9px] font-bold text-[#4c4546] uppercase tracking-widest mt-1">Orders Completed</span>
           </div>
         </div>
 
@@ -127,32 +112,6 @@ export default function AccountPage() {
             <span className="material-symbols-outlined text-[#4c4546] group-hover:translate-x-1 transition-transform">chevron_right</span>
           </Link>
 
-          <button 
-            onClick={() => toast('Address management features coming in next phase!')}
-            className="w-full text-left group flex items-center justify-between p-[1rem] bg-white border border-[#cfc4c5]/30 rounded-xl hover:bg-[#f6f2f7] transition-all duration-200 active:scale-[0.98] cursor-pointer"
-          >
-            <div className="flex items-center gap-4">
-              <div className="w-10 h-10 flex items-center justify-center bg-[#eae7eb] rounded-lg text-black">
-                <span className="material-symbols-outlined text-xl">location_on</span>
-              </div>
-              <span className="font-semibold text-sm text-[#1b1b1e]">Saved Addresses</span>
-            </div>
-            <span className="material-symbols-outlined text-[#4c4546] group-hover:translate-x-1 transition-transform">chevron_right</span>
-          </button>
-
-          <button 
-            onClick={() => toast('Support portal coming in next phase!')}
-            className="w-full text-left group flex items-center justify-between p-[1rem] bg-white border border-[#cfc4c5]/30 rounded-xl hover:bg-[#f6f2f7] transition-all duration-200 active:scale-[0.98] cursor-pointer"
-          >
-            <div className="flex items-center gap-4">
-              <div className="w-10 h-10 flex items-center justify-center bg-[#eae7eb] rounded-lg text-black">
-                <span className="material-symbols-outlined text-xl">help_outline</span>
-              </div>
-              <span className="font-semibold text-sm text-[#1b1b1e]">Support</span>
-            </div>
-            <span className="material-symbols-outlined text-[#4c4546] group-hover:translate-x-1 transition-transform">chevron_right</span>
-          </button>
-
           {/* Divider */}
           <div className="h-px bg-[#cfc4c5]/20 my-[1rem]"></div>
 
@@ -169,23 +128,7 @@ export default function AccountPage() {
           </button>
         </nav>
 
-        {/* Subscription Promo (Extra Value) */}
-        <div className="mt-[2.5rem] p-[1.5rem] bg-black rounded-2xl text-white relative overflow-hidden shadow-md">
-          <div className="relative z-10">
-            <p className="text-xs font-bold text-gray-300 uppercase tracking-[0.2em] mb-2">Member Benefit</p>
-            <h3 className="text-lg font-bold mb-2 leading-tight font-display">Join CoverPlus+</h3>
-            <p className="text-xs text-white/80 mb-4">Get 20% off all iPhone 15 &amp; Samsung S24 cases.</p>
-            <button 
-              onClick={() => toast.success('CoverPlus+ Subscription setup is coming soon!')}
-              className="bg-white text-black font-semibold text-xs px-6 py-2 rounded-lg hover:bg-gray-100 transition-colors"
-            >
-              Join Now
-            </button>
-          </div>
-          {/* Decorative elements */}
-          <div className="absolute -top-4 -right-4 w-24 h-24 bg-white/10 rounded-full blur-2xl"></div>
-          <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-[#4648d4]/30 rounded-full blur-3xl"></div>
-        </div>
+
       </main>
 
       {/* Bottom Navigation Bar */}

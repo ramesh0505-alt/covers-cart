@@ -22,9 +22,10 @@ const accessLog = (req, res, next) => {
 // All enterprise routes require authentication
 router.use(verifyToken, accessLog);
 
-// 1. Abandoned Carts
+// 1. Abandoned Carts & Analytics
 router.post('/abandoned-carts/track', controller.trackAbandonedCart);
 router.get('/abandoned-carts/analytics', isAdmin, controller.getAbandonedCartAnalytics);
+router.get('/analytics-dashboard', isAdmin, controller.getAnalyticsDashboard);
 
 // 2. Returns
 router.post('/returns', controller.requestReturn);

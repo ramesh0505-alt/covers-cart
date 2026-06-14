@@ -1,10 +1,70 @@
-import { useState } from 'react';
-import { useAdminData } from '../../context/AdminDataContext';
+import { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
 
 export default function AdminCommunity() {
-  const { ugcPosts, communityActions } = useAdminData();
-  const [activeTab, setActiveTab] = useState('Photos');
+  const [reviews, setReviews] = useState([]);
+  const [activeTab, setActiveTab] = useState('Pending'); // Changed to Approved/Pending
+
+  const getToken = () => localStorage.getItem('admin_portal_token') || localStorage.getItem('token');
+
+  const fetchReviews = async () => {
+    try {
+      // Use ?all=true to fetch unapproved reviews as well
+      const res = await fetch('/api/reviews?all=true', {
+        headers: { Authorization: `Bearer ${getToken()}` }
+      });
+      const data = await res.json();
+      if (Array.isArray(data)) setReviews(data);
+    } catch (e) {
+      console.error(e);
+      toast.error('Failed to fetch reviews');
+    }
+  };
+
+  useEffect(() => {
+    fetchReviews();
+  }, []);
+
+  const toggleFeatured = async (id) => {
+    try {
+      await fetch(`/api/reviews/${id}/feature`, { 
+        method: 'PUT',
+        headers: { Authorization: `Bearer ${getToken()}` }
+      });
+      toast.success('Homepage display status changed!');
+      fetchReviews();
+    } catch (e) {
+      toast.error('Failed to toggle feature');
+    }
+  };
+
+  const approveReview = async (id) => {
+    try {
+      await fetch(`/api/reviews/${id}/approve`, { 
+        method: 'PUT',
+        headers: { Authorization: `Bearer ${getToken()}` }
+      });
+      toast.success('Review approved!');
+      fetchReviews();
+    } catch (e) {
+      toast.error('Failed to approve review');
+    }
+  };
+
+  const deleteReview = async (id) => {
+    try {
+      await fetch(`/api/reviews/${id}`, { 
+        method: 'DELETE',
+        headers: { Authorization: `Bearer ${getToken()}` }
+      });
+      toast.success('Review deleted!');
+      fetchReviews();
+    } catch (e) {
+      toast.error('Failed to delete review');
+    }
+  };
+
+  const filteredReviews = reviews.filter(r => activeTab === 'Approved' ? r.isApproved : !r.isApproved);
 
   return (
     <div className="space-y-6 animate-fade-in text-xs">
@@ -14,7 +74,7 @@ export default function AdminCommunity() {
       </div>
 
       <div className="flex gap-2 border-b border-zinc-150 pb-2">
-        {['Photos', 'Videos', 'Reviews', 'Comments'].map(tab => (
+        {['Pending', 'Approved'].map(tab => (
           <button 
             key={tab}
             onClick={() => setActiveTab(tab)}
@@ -30,67 +90,61 @@ export default function AdminCommunity() {
           <thead>
             <tr className="bg-zinc-50 border-b border-zinc-150 text-[10px] font-bold uppercase tracking-wider text-zinc-500">
               <th className="p-4">Customer</th>
-              <th className="p-4">Type</th>
-              <th className="p-4">Content / Comment</th>
-              <th className="p-4 text-center">Likes</th>
+              <th className="p-4">Rating</th>
+              <th className="p-4">Comment</th>
               <th className="p-4 text-center">Featured Status</th>
               <th className="p-4 text-center">Moderation State</th>
               <th className="p-4 text-right">Actions</th>
             </tr>
           </thead>
           <tbody>
-            {ugcPosts
-              .filter(p => p.type === activeTab || (activeTab === 'Reviews' && p.type === 'Review'))
-              .map((post) => (
+            {filteredReviews.map((post) => (
                 <tr key={post.id} className="border-b border-zinc-100 hover:bg-zinc-50/50">
-                  <td className="p-4 font-bold text-black">@{post.username}</td>
-                  <td className="p-4">{post.type}</td>
+                  <td className="p-4 font-bold text-black">{post.reviewerName || 'Anonymous'}</td>
+                  <td className="p-4">{post.rating} / 5</td>
                   <td className="p-4 text-zinc-500 max-w-sm truncate leading-relaxed">
-                    {post.mediaUrl && <img src={post.mediaUrl} className="w-10 h-10 object-cover rounded mb-1.5 border" alt="" />}
+                    {post.image && <img src={post.image} className="w-10 h-10 object-cover rounded mb-1.5 border" alt="" />}
                     "{post.comment}"
                   </td>
-                  <td className="p-4 text-center font-bold text-zinc-700">{post.likes}</td>
                   <td className="p-4 text-center">
                     <span className={`text-[10px] font-bold px-2 py-0.5 rounded ${post.featured ? 'bg-purple-100 text-purple-950' : 'bg-zinc-100 text-zinc-650'}`}>
                       {post.featured ? 'Featured on Home' : 'Standard'}
                     </span>
                   </td>
                   <td className="p-4 text-center">
-                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded ${post.status === 'Approved' ? 'bg-emerald-100 text-emerald-950' : 'bg-amber-100 text-amber-950'}`}>
-                      {post.status}
+                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded ${post.isApproved ? 'bg-emerald-100 text-emerald-950' : 'bg-amber-100 text-amber-950'}`}>
+                      {post.isApproved ? 'Approved' : 'Pending'}
                     </span>
                   </td>
                   <td className="p-4 text-right space-x-2">
+                    {post.isApproved && (
+                      <button 
+                        onClick={() => toggleFeatured(post.id)}
+                        className="text-xs font-bold text-purple-600 hover:underline cursor-pointer"
+                      >
+                        Feature Toggle
+                      </button>
+                    )}
+                    {!post.isApproved && (
+                      <button 
+                        onClick={() => approveReview(post.id)}
+                        className="text-xs font-bold text-emerald-600 hover:underline cursor-pointer"
+                      >
+                        Approve
+                      </button>
+                    )}
                     <button 
-                      onClick={() => {
-                        communityActions.toggleFeatured(post.id);
-                        toast.success('Homepage display status changed!');
-                      }}
-                      className="text-xs font-bold text-purple-600 hover:underline cursor-pointer"
-                    >
-                      Feature Toggle
-                    </button>
-                    <button 
-                      onClick={() => {
-                        communityActions.moderate(post.id, 'Approved');
-                        toast.success('Post approved!');
-                      }}
-                      className="text-xs font-bold text-emerald-600 hover:underline cursor-pointer"
-                    >
-                      Approve
-                    </button>
-                    <button 
-                      onClick={() => {
-                        communityActions.moderate(post.id, 'Rejected');
-                        toast.error('Post rejected!');
-                      }}
+                      onClick={() => deleteReview(post.id)}
                       className="text-xs font-bold text-red-650 hover:underline cursor-pointer"
                     >
-                      Reject
+                      Delete
                     </button>
                   </td>
                 </tr>
             ))}
+            {filteredReviews.length === 0 && (
+              <tr><td colSpan="6" className="p-6 text-center text-zinc-500">No {activeTab} reviews found.</td></tr>
+            )}
           </tbody>
         </table>
       </div>

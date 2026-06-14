@@ -12,6 +12,7 @@ router.post('/', verifyToken, validateReview, reviewController.createReview);
 
 // Admin-only moderation
 router.put('/:id/approve', verifyToken, isAdmin, reviewController.approveReview);
+router.put('/:id/feature', verifyToken, isAdmin, reviewController.featureReview);
 router.delete('/:id', verifyToken, isAdmin, reviewController.deleteReview);
 
 module.exports = router;

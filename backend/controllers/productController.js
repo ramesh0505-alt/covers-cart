@@ -58,10 +58,10 @@ exports.createProduct = async (req, res) => {
             description, 
             price: parseFloat(price), 
             salePrice: salePrice ? parseFloat(salePrice) : null, 
-            images, 
-            stock: parseInt(stock), 
-            deviceModels, 
-            materials, 
+            images: images || [], 
+            stock: stock ? parseInt(stock) : 100, 
+            deviceModels: deviceModels || [], 
+            materials: materials || [], 
             categoryId 
           }
         });
@@ -135,10 +135,10 @@ exports.updateProduct = async (req, res) => {
             description, 
             price: parseFloat(price), 
             salePrice: salePrice ? parseFloat(salePrice) : null, 
-            images, 
-            stock: parseInt(stock), 
-            deviceModels, 
-            materials, 
+            ...(images && { images }),
+            ...(stock && { stock: parseInt(stock) }),
+            ...(deviceModels && { deviceModels }),
+            ...(materials && { materials }),
             categoryId 
           }
         });

@@ -1,25 +1,68 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
 
 export default function AdminCMS() {
-  const [sections, setSections] = useState([
-    { id: 'sec-1', name: 'Hero Main Banner Slider', status: 'Published', type: 'Hero' },
-    { id: 'sec-2', name: 'Featured Trending Products Grid', status: 'Published', type: 'Product Grid' },
-    { id: 'sec-3', name: 'Limited Drops Promo Counter', status: 'Published', type: 'Marketing Drop' },
-    { id: 'sec-4', name: 'Mystery Pouch Interactive Box', status: 'Published', type: 'Gamification' },
-    { id: 'sec-5', name: 'Loyalty Rewards CTA Banner', status: 'Draft', type: 'Banner' },
-    { id: 'sec-6', name: 'Footer Navigation links', status: 'Published', type: 'Footer' }
-  ]);
+  const [sections, setSections] = useState([]);
+  const getToken = () => localStorage.getItem('admin_portal_token') || localStorage.getItem('token');
+
+  useEffect(() => {
+    const fetchSections = async () => {
+      try {
+        const res = await fetch('/api/cms/homepage-sections');
+        const data = await res.json();
+        if (data && data.length > 0) {
+          setSections(data.map(d => ({
+            id: d.id,
+            name: d.type + ' Section',
+            status: d.active ? 'Published' : 'Draft',
+            type: d.type,
+            config: d.config
+          })));
+        } else {
+          setSections([
+            { id: 'sec-1', name: 'Hero Main Banner Slider', status: 'Published', type: 'Hero', config: {} },
+            { id: 'sec-2', name: 'Featured Trending Products Grid', status: 'Published', type: 'Product Grid', config: {} },
+            { id: 'sec-3', name: 'Limited Drops Promo Counter', status: 'Published', type: 'Marketing Drop', config: {} }
+          ]);
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    fetchSections();
+  }, []);
+
+  const saveSections = async (newSections) => {
+    try {
+      const payload = {
+        sections: newSections.map(s => ({
+          type: s.type,
+          active: s.status === 'Published',
+          config: s.config || {}
+        }))
+      };
+      await fetch('/api/cms/homepage-sections', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${getToken()}` },
+        body: JSON.stringify(payload)
+      });
+    } catch (err) {
+      console.error(err);
+      toast.error('Failed to save layout');
+    }
+  };
 
   const handleToggleStatus = (id) => {
-    setSections(prev => prev.map(s => {
+    const updated = sections.map(s => {
       if (s.id === id) {
         const nextStatus = s.status === 'Published' ? 'Draft' : 'Published';
         toast.success(`Section visibility set to ${nextStatus}!`);
         return { ...s, status: nextStatus };
       }
       return s;
-    }));
+    });
+    setSections(updated);
+    saveSections(updated);
   };
 
   const moveSection = (idx, direction) => {
@@ -31,6 +74,7 @@ export default function AdminCMS() {
     updated[idx] = updated[targetIdx];
     updated[targetIdx] = temp;
     setSections(updated);
+    saveSections(updated);
     toast.success('Layout ordering rearranged!');
   };
 

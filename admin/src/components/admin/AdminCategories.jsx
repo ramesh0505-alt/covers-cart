@@ -1,13 +1,28 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
 
 export default function AdminCategories() {
-  const [categories, setCategories] = useState([
-    { id: 'cat-1', name: 'Premium Cases', slug: 'premium-cases', count: 12, status: 'Published', description: 'Hard-shell premium aesthetic covers' },
-    { id: 'cat-2', name: 'Leather Cases', slug: 'leather-cases', count: 5, status: 'Published', description: 'Authentic hand-stitched leather covers' },
-    { id: 'cat-3', name: 'Anime Cases', slug: 'anime-cases', count: 24, status: 'Published', description: 'Licensed anime graphics' },
-    { id: 'cat-4', name: 'Mystery Cases', slug: 'mystery-cases', count: 3, status: 'Draft', description: 'Random tier boxes and promotional pouch bundles' }
-  ]);
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const getToken = () => localStorage.getItem('admin_portal_token') || localStorage.getItem('token');
+
+  const fetchCategories = async () => {
+    try {
+      const res = await fetch('/api/categories');
+      const data = await res.json();
+      setCategories(data || []);
+    } catch (err) {
+      console.error(err);
+      toast.error('Failed to load categories');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
 
   const [search, setSearch] = useState('');
   const [showModal, setShowModal] = useState(false);
@@ -26,29 +41,48 @@ export default function AdminCategories() {
     setShowModal(true);
   };
 
-  const handleDelete = (id) => {
-    setCategories(prev => prev.filter(c => c.id !== id));
-    toast.success('Category removed successfully!');
+  const handleDelete = async (id) => {
+    try {
+      await fetch(`/api/categories/${id}`, {
+        method: 'DELETE',
+        headers: { Authorization: `Bearer ${getToken()}` }
+      });
+      toast.success('Category removed successfully!');
+      fetchCategories();
+    } catch (err) {
+      toast.error('Failed to delete category');
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (editing) {
-      setCategories(prev => prev.map(c => c.id === editing ? { ...c, ...form, slug: form.name.toLowerCase().replace(/ /g, '-') } : c));
-      toast.success('Category updated!');
-    } else {
-      const newCat = {
-        id: `cat-${Date.now()}`,
-        name: form.name,
-        slug: form.name.toLowerCase().replace(/ /g, '-'),
-        count: 0,
-        status: form.status,
-        description: form.description
-      };
-      setCategories(prev => [...prev, newCat]);
-      toast.success('Category created!');
+    const payload = {
+      name: form.name,
+      description: form.description,
+      status: form.status,
+    };
+    
+    try {
+      if (editing) {
+        await fetch(`/api/categories/${editing}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${getToken()}` },
+          body: JSON.stringify(payload)
+        });
+        toast.success('Category updated!');
+      } else {
+        await fetch('/api/categories', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${getToken()}` },
+          body: JSON.stringify(payload)
+        });
+        toast.success('Category created!');
+      }
+      fetchCategories();
+      setShowModal(false);
+    } catch (err) {
+      toast.error('Failed to save category');
     }
-    setShowModal(false);
   };
 
   return (

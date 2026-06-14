@@ -154,7 +154,24 @@ exports.getMe = async (req, res) => {
     }
 
     if (!user) {
-      return res.status(401).json({ error: 'User not found.' });
+      if (db.prisma && req.user?.email) {
+        try {
+          user = await db.prisma.user.create({
+            data: {
+              id: userId,
+              email: req.user.email,
+              name: req.user.name || 'Customer',
+              password: 'supabase_auth_placeholder',
+              role: req.user.role || 'USER'
+            }
+          });
+        } catch (syncErr) {
+          console.error('Prisma sync failed for Supabase user:', syncErr.message);
+          return res.status(401).json({ error: 'User not found and sync failed.' });
+        }
+      } else {
+        return res.status(401).json({ error: 'User not found.' });
+      }
     }
 
     res.json({

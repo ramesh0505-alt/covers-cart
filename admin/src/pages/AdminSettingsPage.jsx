@@ -7,13 +7,39 @@ export default function AdminSettingsPage() {
   const [storeName, setStoreName] = useState('CoverScart');
   const [currency, setCurrency] = useState('INR (₹)');
   const [allowGuestCheckout, setAllowGuestCheckout] = useState(false);
+  const [whatsappNumber, setWhatsappNumber] = useState('919502104919');
   const [loading, setLoading] = useState(false);
+
+  const getToken = () => localStorage.getItem('admin_portal_token') || localStorage.getItem('token');
+
+  useState(() => {
+    fetch('/api/cms/settings')
+      .then(res => res.json())
+      .then(data => {
+        if (data.storeName) setStoreName(data.storeName);
+        if (data.currency) setCurrency(data.currency);
+        if (data.allowGuestCheckout !== undefined) setAllowGuestCheckout(data.allowGuestCheckout === 'true' || data.allowGuestCheckout === true);
+        if (data.whatsappNumber) setWhatsappNumber(data.whatsappNumber);
+      })
+      .catch(e => console.error(e));
+  }, []);
 
   const handleSave = async (e) => {
     e.preventDefault();
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 800));
-    toast.success('System settings saved successfully!');
+    try {
+      await fetch('/api/cms/settings', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${getToken()}`
+        },
+        body: JSON.stringify({ storeName, currency, allowGuestCheckout, whatsappNumber })
+      });
+      toast.success('System settings saved successfully!');
+    } catch (error) {
+      toast.error('Failed to save settings.');
+    }
     setLoading(false);
   };
 
@@ -53,6 +79,17 @@ export default function AdminSettingsPage() {
                 <option>USD ($)</option>
                 <option>EUR (€)</option>
               </select>
+            </div>
+
+            <div>
+              <label className="block text-xs font-bold text-[var(--color-outline)] uppercase mb-1.5">WhatsApp Support Number</label>
+              <input 
+                type="text" 
+                value={whatsappNumber}
+                onChange={(e) => setWhatsappNumber(e.target.value)}
+                className="w-full border border-[#cfc4c5] p-3 rounded-lg text-sm"
+                placeholder="e.g. 919502104919"
+              />
             </div>
 
             <div className="flex items-center gap-3">

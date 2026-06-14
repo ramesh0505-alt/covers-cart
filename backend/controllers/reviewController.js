@@ -99,6 +99,35 @@ exports.approveReview = async (req, res) => {
   res.status(404).json({ error: "Review not found" });
 };
 
+exports.featureReview = async (req, res) => {
+  const { id } = req.params;
+
+  if (db.prisma) {
+    try {
+      // Find the review to toggle its featured status.
+      // Note: Assuming a 'featured' column exists. If not, this is caught and fallback is used.
+      const existing = await db.prisma.review.findUnique({ where: { id } });
+      if (existing) {
+        const updated = await db.prisma.review.update({
+          where: { id },
+          data: { featured: !existing.featured }
+        });
+        return res.json(updated);
+      }
+    } catch (err) {
+      console.error("Prisma feature review failed:", err.message);
+    }
+  }
+
+  // Fallback
+  const review = db.fallbackReviews.find(r => r.id === id);
+  if (review) {
+    review.featured = !review.featured;
+    return res.json(review);
+  }
+  res.status(404).json({ error: "Review not found" });
+};
+
 exports.deleteReview = async (req, res) => {
   const { id } = req.params;
 

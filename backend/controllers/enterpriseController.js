@@ -83,6 +83,42 @@ exports.getAbandonedCartAnalytics = async (req, res) => {
   }
 };
 
+exports.getAnalyticsDashboard = async (req, res) => {
+  try {
+    let stats;
+    if (db.prisma) {
+      try {
+        const totalRevenueAggr = await db.prisma.order.aggregate({
+          _sum: { total: true },
+          where: { status: { not: 'Cancelled' } }
+        });
+        const totalRevenue = totalRevenueAggr._sum.total || 0;
+        const totalOrders = await db.prisma.order.count();
+        const activeCustomers = await db.prisma.user.count({ where: { status: 'Active' } });
+        const lowStockProducts = await db.prisma.product.count({ where: { stock: { lte: 10 } } });
+        stats = { totalRevenue, totalOrders, activeCustomers, lowStockProducts };
+      } catch (e) {
+        stats = {
+          totalRevenue: db.fallbackOrders.reduce((acc, o) => o.status !== 'Cancelled' ? acc + o.total : acc, 0),
+          totalOrders: db.fallbackOrders.length,
+          activeCustomers: db.fallbackUsers.filter(u => u.status === 'Active').length,
+          lowStockProducts: db.fallbackProducts.filter(p => p.stock <= 10).length
+        };
+      }
+    } else {
+      stats = {
+        totalRevenue: db.fallbackOrders.reduce((acc, o) => o.status !== 'Cancelled' ? acc + o.total : acc, 0),
+        totalOrders: db.fallbackOrders.length,
+        activeCustomers: db.fallbackUsers.filter(u => u.status === 'Active').length,
+        lowStockProducts: db.fallbackProducts.filter(p => p.stock <= 10).length
+      };
+    }
+    res.json(stats);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
 // 2. RETURNS MANAGEMENT
 exports.requestReturn = async (req, res) => {
   const { orderId, userId, refundAmount, items } = req.body;

@@ -125,12 +125,26 @@ export function AdminMarketing() {
 }
 
 export function AdminAnalytics() {
+  const [stats, setStats] = useState(null);
+  const getToken = () => localStorage.getItem('admin_portal_token') || localStorage.getItem('token');
+
+  useEffect(() => {
+    fetch('/api/enterprise/analytics-dashboard', { headers: { Authorization: `Bearer ${getToken()}` }})
+      .then(r => r.json())
+      .then(data => setStats(data))
+      .catch(e => console.error(e));
+  }, []);
+
   return (
     <div className="space-y-6 animate-fade-in text-xs">
       <div>
         <h1 className="text-xl font-display font-extrabold text-black">Enterprise Analytics Center</h1>
         <p className="text-xs text-zinc-500 font-medium">Audit sales trends, profit margins per cover category, customer lifetime value distributions, and mystery pools payouts.</p>
       </div>
+
+      {!stats ? (
+        <div className="p-8 text-center text-zinc-500">Loading Enterprise Analytics...</div>
+      ) : (
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         
@@ -198,6 +212,7 @@ export function AdminAnalytics() {
         </div>
 
       </div>
+      )}
     </div>
   );
 }

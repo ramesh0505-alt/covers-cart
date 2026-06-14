@@ -4,9 +4,20 @@ import { useAdminData } from '../../context/AdminDataContext';
 import toast from 'react-hot-toast';
 
 export default function AdminCRM() {
-  const { customerActions } = useAdminData();
   const [search, setSearch] = useState('');
   const [selectedCust, setSelectedCust] = useState(null);
+  
+  const getToken = () => localStorage.getItem('admin_portal_token') || localStorage.getItem('token');
+  const customerActions = {
+    grantPoints: async (id, points) => {
+       await fetch(`/api/users/${id}/points`, { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${getToken()}` }, body: JSON.stringify({ points }) });
+       fetchCustomers(page);
+    },
+    suspend: async (id) => {
+       await fetch(`/api/users/${id}/suspend`, { method: 'POST', headers: { Authorization: `Bearer ${getToken()}` } });
+       fetchCustomers(page);
+    }
+  };
   const [pointsAward, setPointsAward] = useState(100);
 
   const [customers, setCustomers] = useState([]);

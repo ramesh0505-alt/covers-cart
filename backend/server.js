@@ -111,6 +111,7 @@ const mediaRoutes = require('./routes/media');
 const eventRoutes = require('./routes/events');
 const collectionRoutes = require('./routes/collections');
 const mysteryRoutes = require('./routes/mystery');
+const dropsRoutes = require('./routes/drops');
 
 app.use('/api/products', productRoutes);
 app.use('/api/categories', categoryRoutes);
@@ -125,6 +126,7 @@ app.use('/api/media', mediaRoutes);
 app.use('/api/events', eventRoutes);
 app.use('/api/collections', collectionRoutes);
 app.use('/api/mystery', mysteryRoutes);
+app.use('/api/drops', dropsRoutes);
 app.use('/api/addresses', require('./routes/addresses'));
 app.use('/api/banners', require('./routes/banners'));
 app.use('/api/payments', require('./routes/payments'));

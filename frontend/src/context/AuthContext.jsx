@@ -1,6 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { supabase } from '../lib/supabase';
+import API from '../lib/api';
 
 const AuthContext = createContext(null);
 
@@ -21,6 +22,13 @@ export function AuthProvider({ children }) {
         console.error('Error fetching profile:', error.message);
       } else if (data) {
         setProfile(data);
+      }
+      
+      // Sync to Backend Prisma
+      try {
+        await API.get('/auth/me');
+      } catch (syncErr) {
+        console.error('Failed to sync profile to backend:', syncErr);
       }
     } catch (err) {
       console.error('Unexpected error fetching profile:', err);

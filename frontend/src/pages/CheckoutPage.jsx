@@ -28,7 +28,15 @@ export default function CheckoutPage() {
   const [deliveryMethod, setDeliveryMethod] = useState('Standard');
   const [submitting, setSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
+  const [whatsappNumber, setWhatsappNumber] = useState('919502104919');
 
+  useEffect(() => {
+    API.get('/cms/settings')
+      .then(res => {
+        if (res.data?.whatsappNumber) setWhatsappNumber(res.data.whatsappNumber);
+      })
+      .catch(e => console.error(e));
+  }, []);
 
   const shippingCost = deliveryMethod === 'Express' ? 999 : 0;
   const taxAmount = Math.round(totalPrice * 0.08); // 8% tax rate
@@ -97,7 +105,6 @@ export default function CheckoutPage() {
 
       const message = `Hello CoverScart,%0A%0AI would like to place an order.%0A%0AOrder ID: ${newOrderId}%0AName: ${fullName}%0APhone: ${mobile}%0AEmail: ${email}%0AAddress: ${orderData.shippingAddress}%0A%0AProducts:%0A${itemsList}%0A%0ATotal: ₹${finalTotal}%0A%0APlease send payment instructions.`;
 
-      const whatsappNumber = '919999999999'; // Replace with actual number
       const whatsappUrl = `whatsapp://send?phone=${whatsappNumber}&text=${message}`;
       const fallbackUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
 
@@ -123,10 +130,7 @@ export default function CheckoutPage() {
           <span className="material-symbols-outlined text-black text-2xl">arrow_back</span>
         </button>
         <h1 className="text-xl font-bold tracking-tight text-black font-display">Checkout</h1>
-        <button 
-          onClick={() => toast.success('Support chat is coming soon!')}
-          className="hover:opacity-70 transition-opacity p-2 active:scale-95 transition-transform duration-150 cursor-pointer"
-        >
+        <button className="hover:opacity-70 transition-opacity p-2 active:scale-95 transition-transform duration-150 cursor-pointer">
           <span className="material-symbols-outlined text-black text-2xl">help_outline</span>
         </button>
       </header>

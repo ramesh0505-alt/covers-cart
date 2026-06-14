@@ -14,12 +14,8 @@ export default function AdminUsersPage() {
         setUsers(res.data || []);
       } catch (err) {
         console.error(err);
-        // Fallback mock users if route is not implemented
-        setUsers([
-          { id: '1', email: 'admin@coverscart.com', name: 'Store Owner', role: 'admin' },
-          { id: '2', email: 'ramesh@example.com', name: 'Ramesh Patel', role: 'user' },
-          { id: '3', email: 'john@example.com', name: 'John Doe', role: 'user' }
-        ]);
+        toast.error('Failed to load users');
+        setUsers([]);
       } finally {
         setLoading(false);
       }
