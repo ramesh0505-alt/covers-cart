@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login | CoverStall</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#dae2fd",
+                        "secondary-fixed": "#6bff8f",
+                        "outline-variant": "#bdc9c5",
+                        "surface-tint": "#006b5d",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#131b2e",
+                        "surface-container-high": "#e2e7ff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-primary-container": "#fafffc",
+                        "tertiary-fixed-dim": "#ffb5a0",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#b05f48",
+                        "on-surface-variant": "#3e4946",
+                        "primary-fixed-dim": "#77d7c5",
+                        "primary": "#00695c",
+                        "on-secondary-fixed-variant": "#005321",
+                        "on-background": "#131b2e",
+                        "primary-fixed": "#93f4e0",
+                        "surface-container-highest": "#dae2fd",
+                        "background": "#faf8ff",
+                        "outline": "#6e7a76",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#eaedff",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#f2f3ff",
+                        "secondary-fixed-dim": "#4ae176",
+                        "surface": "#faf8ff",
+                        "inverse-on-surface": "#eef0ff",
+                        "surface-bright": "#faf8ff",
+                        "on-primary-fixed": "#00201b",
+                        "surface-dim": "#d2d9f4",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#6bff8f",
+                        "on-tertiary-fixed-variant": "#76321f",
+                        "tertiary-fixed": "#ffdbd1",
+                        "tertiary": "#924732",
+                        "inverse-surface": "#283044",
+                        "inverse-primary": "#77d7c5",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#005046",
+                        "secondary": "#006e2f",
+                        "on-tertiary-container": "#fffdff",
+                        "on-secondary-fixed": "#002109",
+                        "pure-black": "#0E0E0E",
+                        "primary-container": "#108474",
+                        "on-secondary-container": "#007432",
+                        "surface-white": "#FFFFFF",
+                        "on-tertiary-fixed": "#3b0900"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-lg": "32px",
+                        "unit": "4px",
+                        "stack-md": "16px",
+                        "gutter": "16px",
+                        "stack-sm": "8px",
+                        "container-margin": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "title-md": ["Hanken Grotesk"],
+                        "body-sm": ["Hanken Grotesk"],
+                        "label-caps": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Hanken Grotesk', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .floating-label-input:focus-within label,
+        .floating-label-input input:not(:placeholder-shown) + label {
+            transform: translateY(-1.5rem) scale(0.85);
+            color: #108474;
+        }
+
+        .focus-glow:focus-within {
+            box-shadow: 0 0 0 4px rgba(16, 132, 116, 0.15);
+        }
+
+        @keyframes pulse-subtle {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.01); }
+            100% { transform: scale(1); }
+        }
+        .btn-pulse:active {
+            animation: pulse-subtle 0.2s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- Top Navigation Bar (JSON Guided) -->
+<header class="sticky top-0 z-50 flex justify-between items-center px-container-margin py-stack-md w-full bg-surface-white border-b border-outline-variant shadow-sm h-16">
+<button aria-label="Go back" class="flex items-center justify-center w-10 h-10 hover:bg-surface-container-low rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<div class="absolute left-1/2 -translate-x-1/2">
+<img alt="CoverScart Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AP1WRLuHMMQSbIYMZEbbpqkSZGBBZTPPShGYn_el8XS0_Gt5aCkkIaZbC4r0BmjadizBGtOUIWC60oQ1IAL97fOoZVMcv_-Tcx6GEpjK5-3aVjGW2Duu0gKXHl9GGUI2UPwneuNcgpQCIrl_87-0lCIMls72Pe1Iaw3WzPB4I-7UAVAHgspJXeLn6mA0GXZu0cbKQmpUQmQDcmOxFWHQnV-boGApM4tlkXRKmny5BIfFTpayJcMYeORb8Qb3dCM"/>
+</div>
+<div class="w-10"></div> <!-- Spacer for symmetry -->
+</header>
+<main class="flex-grow flex flex-col items-center px-container-margin py-stack-lg max-w-md mx-auto w-full">
+<!-- Welcome Section -->
+<section class="w-full text-center mb-stack-lg space-y-unit">
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface">Welcome Back</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant">Login to continue your shopping experience</p>
+</section>
+<!-- Login Form -->
+<form class="w-full space-y-stack-md" id="loginForm" onsubmit="return false;">
+<!-- Email Field -->
+<div class="relative floating-label-input focus-glow border border-outline-variant rounded-xl bg-surface-white transition-all duration-200">
+<input class="block w-full px-4 pt-6 pb-2 text-body-lg font-body-lg bg-transparent border-none focus:ring-0 peer outline-none" id="identifier" name="identifier" placeholder=" " type="text"/>
+<label class="absolute left-4 top-4 text-body-lg font-body-lg text-outline transition-all duration-200 pointer-events-none origin-left" for="identifier">Email or Phone</label>
+</div>
+<!-- Password Field -->
+<div class="relative floating-label-input focus-glow border border-outline-variant rounded-xl bg-surface-white transition-all duration-200">
+<input class="block w-full px-4 pt-6 pb-2 text-body-lg font-body-lg bg-transparent border-none focus:ring-0 peer outline-none" id="password" name="password" placeholder=" " type="password"/>
+<label class="absolute left-4 top-4 text-body-lg font-body-lg text-outline transition-all duration-200 pointer-events-none origin-left" for="password">Password</label>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 p-2 text-on-surface-variant hover:text-primary transition-colors" onclick="togglePassword()" type="button">
+<span class="material-symbols-outlined" id="passwordIcon">visibility</span>
+</button>
+</div>
+<!-- Options Row -->
+<div class="flex items-center justify-between py-unit">
+<label class="flex items-center space-x-2 cursor-pointer group">
+<div class="relative flex items-center justify-center">
+<input class="peer h-5 w-5 rounded border-outline-variant text-primary focus:ring-primary focus:ring-offset-0 transition-all cursor-pointer" type="checkbox"/>
+</div>
+<span class="text-body-sm font-body-sm text-on-surface-variant group-hover:text-on-surface transition-colors">Remember me</span>
+</label>
+<a class="text-body-sm font-body-sm font-semibold text-primary-container hover:underline transition-all" href="#">Forgot password?</a>
+</div>
+<!-- Submit Button -->
+<button class="w-full bg-pure-black text-surface-white font-bold py-4 rounded-xl shadow-lg hover:opacity-90 active:scale-95 transition-all duration-150 btn-pulse text-body-lg" type="submit">
+                Login
+            </button>
+</form>
+<!-- Divider -->
+<div class="w-full flex items-center gap-4 my-stack-lg">
+<div class="h-[1px] flex-grow bg-outline-variant"></div>
+<span class="text-label-caps font-label-caps text-outline uppercase tracking-widest">or continue with</span>
+<div class="h-[1px] flex-grow bg-outline-variant"></div>
+</div>
+<!-- Social Login Grid -->
+<div class="w-full grid grid-cols-3 gap-stack-sm mb-stack-lg">
+<button aria-label="Login with Google" class="flex items-center justify-center p-4 border border-outline-variant rounded-xl hover:bg-surface-container-low transition-all active:scale-95">
+<svg class="w-6 h-6" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+</svg>
+</button>
+<button aria-label="Login with Apple" class="flex items-center justify-center p-4 border border-outline-variant rounded-xl hover:bg-surface-container-low transition-all active:scale-95">
+<svg class="w-6 h-6 text-pure-black" fill="currentColor" viewbox="0 0 24 24">
+<path d="M17.05 20.28c-.96.95-2.21 1.72-3.41 1.72-1.19 0-1.49-.69-2.87-.69-1.38 0-1.74.68-2.84.68-1.2 0-2.39-.77-3.35-1.72-2.03-2.02-2.45-5.91-.77-8.15.84-1.12 2-1.83 3.23-1.83 1.25 0 1.9.64 2.73.64.83 0 1.34-.64 2.73-.64 1.2 0 2.27.67 3.03 1.66-2.62 1.35-2.2 5.09.45 6.34zm-2.08-14.73c.63-.77.83-1.8.69-2.78-1 .04-1.93.57-2.58 1.32-.61.7-.87 1.71-.69 2.64.99.08 1.94-.43 2.58-1.18z"></path>
+</svg>
+</button>
+<button aria-label="Login with Facebook" class="flex items-center justify-center p-4 border border-outline-variant rounded-xl hover:bg-surface-container-low transition-all active:scale-95">
+<svg class="w-6 h-6 text-[#1877F2]" fill="currentColor" viewbox="0 0 24 24">
+<path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
+</svg>
+</button>
+</div>
+<!-- Footer Link -->
+<footer class="w-full text-center mt-auto py-stack-md">
+<p class="text-body-lg font-body-lg text-on-surface-variant">
+                Don't have an account? 
+                <a class="text-primary-container font-bold hover:underline transition-all" href="#">Create Account</a>
+</p>
+</footer>
+</main>
+<!-- Bottom Navigation Bar (Contextually Hidden on Login but structure maintained for shell rules) -->
+<!-- Note: Standard app shell might include this, but Login screen usually suppresses global nav for focus.
+         However, the system hierarchy asks to suppress on Transactional/Login screens. 
+         I am keeping the bottom nav purely for visual consistency if requested, but hiding by default. -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 bg-surface-white border-t border-outline-variant shadow-[0px_-4px_20px_rgba(15,23,42,0.05)] md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-caps font-label-caps">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="text-label-caps font-label-caps">Shop</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="text-label-caps font-label-caps">Account</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="text-label-caps font-label-caps">Cart</span>
+</a>
+</nav>
+<script>
+        function togglePassword() {
+            const passwordField = document.getElementById('password');
+            const icon = document.getElementById('passwordIcon');
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                icon.textContent = 'visibility_off';
+            } else {
+                passwordField.type = 'password';
+                icon.textContent = 'visibility';
+            }
+        }
+
+        // Add visual feedback on input focus
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.classList.add('border-primary-container');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.classList.remove('border-primary-container');
+            });
+        });
+    </script>
+</body></html>

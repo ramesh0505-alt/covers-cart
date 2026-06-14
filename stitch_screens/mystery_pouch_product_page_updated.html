@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mystery Pouch - Mystery Phone Case Surprise</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#eaedff",
+                    "error-container": "#ffdad6",
+                    "surface-dim": "#d2d9f4",
+                    "surface-container-highest": "#dae2fd",
+                    "inverse-surface": "#283044",
+                    "surface-tint": "#006b5d",
+                    "tertiary-fixed": "#ffdbd1",
+                    "error": "#ba1a1a",
+                    "outline-variant": "#bdc9c5",
+                    "primary-fixed": "#93f4e0",
+                    "surface-container-low": "#f2f3ff",
+                    "surface": "#faf8ff",
+                    "pure-black": "#0E0E0E",
+                    "surface-bright": "#faf8ff",
+                    "surface-container-high": "#e2e7ff",
+                    "on-secondary-fixed": "#002109",
+                    "on-tertiary-container": "#fffdff",
+                    "inverse-on-surface": "#eef0ff",
+                    "on-primary-fixed": "#00201b",
+                    "primary-container": "#108474",
+                    "primary": "#00695c",
+                    "on-secondary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-background": "#131b2e",
+                    "on-tertiary-fixed-variant": "#76321f",
+                    "on-error": "#ffffff",
+                    "tertiary-container": "#b05f48",
+                    "on-surface": "#131b2e",
+                    "on-primary": "#ffffff",
+                    "background": "#faf8ff",
+                    "on-secondary-fixed-variant": "#005321",
+                    "on-secondary-container": "#007432",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-container": "#fafffc",
+                    "on-tertiary-fixed": "#3b0900",
+                    "secondary": "#006e2f",
+                    "on-primary-fixed-variant": "#005046",
+                    "tertiary": "#924732",
+                    "on-surface-variant": "#3e4946",
+                    "secondary-fixed": "#6bff8f",
+                    "inverse-primary": "#77d7c5",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed-dim": "#4ae176",
+                    "tertiary-fixed-dim": "#ffb5a0",
+                    "surface-white": "#FFFFFF",
+                    "secondary-container": "#6bff8f",
+                    "outline": "#6e7a76",
+                    "primary-fixed-dim": "#77d7c5",
+                    "surface-variant": "#dae2fd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "stack-sm": "8px",
+                    "stack-lg": "32px",
+                    "gutter": "16px",
+                    "container-margin": "20px",
+                    "stack-md": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Hanken Grotesk"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "label-caps": ["Hanken Grotesk"],
+                    "title-md": ["Hanken Grotesk"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "body-sm": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .hero-gradient {
+            background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(250,248,255,1) 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-lg antialiased">
+<!-- Top AppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface-white border-b border-surface-container shadow-sm flex justify-between items-center px-container-margin h-16">
+<button class="text-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-pure-black">MYSTERY POUCH</h1>
+<button class="text-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform relative">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+<span class="absolute -top-1 -right-1 bg-secondary text-on-secondary text-[10px] w-4 h-4 flex items-center justify-center rounded-full">2</span>
+</button>
+</header>
+<main class="pt-16 pb-32 max-w-md mx-auto">
+<!-- Hero Section -->
+<section class="relative aspect-square overflow-hidden bg-surface-container-low border-b border-surface-container shadow-sm">
+<img alt="Mystery Pouch Main Surprise Image" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLvgqtkFz-OAXrGfB48Akq239UZgz9pZGDJ3UsUSMXRK5NU8XZdww8ILn-AyXQmPU1EKQOlwC0ld3XE4DQhczNX5V74MV-vR6TozPmJbj4UPRIreIrqgamtz6TaApaiEyNRElJCJ4IZKLAIqeXkFx3ycPxmSNbWHXBNvZr4rTuO2r_eZJxF_EF0lvMMZbt9ie-5NQCx2sKiCLCLVUeJTBNgmKS0g9Fk3hQg8ojDMz2w1gZRR6xnEFP2pnQ"/>
+<div class="absolute bottom-0 left-0 w-full h-1/3 hero-gradient"></div>
+</section>
+<!-- Product Title & Pricing -->
+<section class="px-container-margin mt-stack-md">
+<div class="flex justify-between items-start">
+<div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-pure-black">Mystery Pouch</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">You choose the device. We choose the surprise.</p>
+</div>
+<div class="text-right">
+<p class="font-label-caps text-label-caps text-on-surface-variant line-through">Rs. 799</p>
+<p class="font-title-md text-title-md text-primary">Rs. 299</p>
+</div>
+</div>
+<div class="mt-stack-sm">
+<span class="inline-block px-3 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded-full uppercase tracking-wider">Special experimental pricing</span>
+</div>
+</section>
+<!-- Mystery Concept Card -->
+<section class="px-container-margin mt-stack-lg">
+<div class="p-stack-md bg-surface-white border border-surface-container rounded-xl shadow-sm">
+<div class="flex items-center gap-stack-sm mb-stack-sm">
+<span class="material-symbols-outlined text-primary" data-icon="experiment">experiment</span>
+<h3 class="font-title-md text-title-md">The Experiment</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                    This is an experimental mystery concept. You will receive a random pouch/case designed specially for your selected device. Each pouch is curated from our premium collections, including anime, minimalist, and leather-finish series.
+                </p>
+</div>
+</section>
+<!-- Important Notice Card -->
+<section class="px-container-margin mt-stack-md">
+<div class="p-stack-md bg-error-container text-on-error-container rounded-xl flex gap-stack-md border border-error/20 shadow-sm">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+<div class="space-y-1">
+<p class="font-label-caps text-label-caps uppercase">Important Notice</p>
+<p class="font-body-sm text-body-sm font-semibold">Non-returnable item. Guaranteed perfect fit for your selected device or 100% refund.</p>
+</div>
+</div>
+</section>
+<!-- Device Selection -->
+<section class="px-container-margin mt-stack-lg space-y-stack-md">
+<div>
+<label class="font-label-caps text-label-caps text-on-surface-variant mb-2 block uppercase">1. Select Brand</label>
+<div class="flex gap-stack-sm overflow-x-auto hide-scrollbar pb-2">
+<button class="brand-chip px-5 py-2 border border-primary text-on-primary bg-primary rounded-xl font-body-sm whitespace-nowrap transition-all" onclick="selectBrand(this)">Apple</button>
+<button class="brand-chip px-5 py-2 border border-outline text-on-surface rounded-xl font-body-sm whitespace-nowrap transition-all" onclick="selectBrand(this)">Samsung</button>
+<button class="brand-chip px-5 py-2 border border-outline text-on-surface rounded-xl font-body-sm whitespace-nowrap transition-all" onclick="selectBrand(this)">Vivo</button>
+<button class="brand-chip px-5 py-2 border border-outline text-on-surface rounded-xl font-body-sm whitespace-nowrap transition-all" onclick="selectBrand(this)">OnePlus</button>
+</div>
+</div>
+<div>
+<label class="font-label-caps text-label-caps text-on-surface-variant mb-2 block uppercase">2. Select Model</label>
+<select class="w-full bg-surface-white border border-outline rounded-xl px-4 py-3 font-body-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all">
+<option>iPhone 15 Pro Max</option>
+<option>iPhone 15 Pro</option>
+<option>iPhone 14 Plus</option>
+<option>iPhone 13</option>
+</select>
+</div>
+<div>
+<label class="font-label-caps text-label-caps text-on-surface-variant mb-2 block uppercase">3. Vibe Preference</label>
+<div class="flex flex-wrap gap-stack-sm">
+<button class="vibe-chip px-4 py-2 bg-surface-container rounded-full text-on-surface-variant font-body-sm text-xs border border-transparent hover:border-primary transition-all">Dark &amp; Moody</button>
+<button class="vibe-chip px-4 py-2 bg-surface-container rounded-full text-on-surface-variant font-body-sm text-xs border border-transparent hover:border-primary transition-all">Vibrant Anime</button>
+<button class="vibe-chip px-4 py-2 bg-surface-container rounded-full text-on-surface-variant font-body-sm text-xs border border-transparent hover:border-primary transition-all">Professional Leather</button>
+<button class="vibe-chip px-4 py-2 bg-surface-container rounded-full text-on-surface-variant font-body-sm text-xs border border-transparent hover:border-primary transition-all">Random Surprise 🎲</button>
+</div>
+</div>
+</section>
+<!-- Trust Section -->
+<section class="px-container-margin mt-stack-lg grid grid-cols-3 gap-stack-sm">
+<div class="text-center space-y-1">
+<div class="w-10 h-10 mx-auto bg-surface-container flex items-center justify-center rounded-full">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="verified">verified</span>
+</div>
+<p class="text-[10px] font-bold leading-tight uppercase">Perfect Fit Guaranteed</p>
+</div>
+<div class="text-center space-y-1">
+<div class="w-10 h-10 mx-auto bg-surface-container flex items-center justify-center rounded-full">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<p class="text-[10px] font-bold leading-tight uppercase">Surprise Concept</p>
+</div>
+<div class="text-center space-y-1">
+<div class="w-10 h-10 mx-auto bg-surface-container flex items-center justify-center rounded-full">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="local_shipping">local_shipping</span>
+</div>
+<p class="text-[10px] font-bold leading-tight uppercase">Fast Delivery</p>
+</div>
+</section>
+<!-- Mystery Preview -->
+<section class="mt-stack-lg bg-pure-black py-stack-lg overflow-hidden">
+<div class="px-container-margin mb-stack-md">
+<h3 class="text-surface-white font-title-md text-title-md">What Could You Get?</h3>
+<p class="text-outline-variant font-body-sm text-xs">A few silhouettes from our current mystery stock.</p>
+</div>
+<div class="flex gap-stack-md px-container-margin overflow-x-auto hide-scrollbar">
+<div class="flex-shrink-0 w-32 aspect-[9/16] bg-zinc-900 rounded-xl border border-zinc-800 flex items-center justify-center relative overflow-hidden">
+<img class="w-full h-full object-cover blur-lg opacity-40" data-alt="A blurred silhouette of a premium smartphone case with intricate geometric patterns, glowing softly in a dark studio setting with teal backlighting. The aesthetic is futuristic and high-end tech. The product is partially obscured to maintain a sense of mystery and excitement for the consumer." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJ1bGyQJ8SeALieWWVQZphHUflBM50pfi3MCCk59KdhUT1W3qO4BHEsdyVUVotujAvZAEuzJw37ehNMFBedD4CI2Z5utQuVi0OztC25Ocbxtg-axez-jNCD-jWrSo8k85VVDfT6a-tyb-HJG-E3chG1ROo8vaPZyZiC7S98-91hWnOdNRjUsd_03FzWYqi-QpyB0yfVIkp-CJtKGQ8scXcT5mwZ-_aO-IUEn1isc9HUV8nVQ4Cx9kyC9mYCV46mb76a8R00wcYseM"/>
+<span class="material-symbols-outlined text-surface-white text-3xl opacity-20 absolute" data-icon="help">help</span>
+</div>
+<div class="flex-shrink-0 w-32 aspect-[9/16] bg-zinc-900 rounded-xl border border-zinc-800 flex items-center justify-center relative overflow-hidden">
+<img class="w-full h-full object-cover blur-lg opacity-40" data-alt="A blurred and darkened preview of a leather phone wallet case. Rich brown leather textures are faintly visible under warm spotlighting. The background is a clean minimalist studio setup with soft shadows and deep contrast, emphasizing a sophisticated corporate aesthetic for the accessory." src="https://lh3.googleusercontent.com/aida-public/AB6AXuChIi94Zxq6aIEK8cGekECumNjQaI5r6FXKGw22Vwezgt7n2mn2Nkr-NcYHzUmeMzA6TmpaTyTLXsHD_G52K_59W87flGHHDjdkDcdTihlSZ7T7eWtHV63BHYN-wxXL4nJmEQtzU7Qck9w-VixMjicgoF7T8EQeUZSyq8_Z7eW7vSlIObtGml-IRV0bmRs_1fqa8gRit8P_ybih9n4HybVDHQ_UHpdSL-2TbgyBTWBqqrvs4mXhhA6Pg6e-4UK6BtQyI3VyliPP3h4"/>
+<span class="material-symbols-outlined text-surface-white text-3xl opacity-20 absolute" data-icon="help">help</span>
+</div>
+<div class="flex-shrink-0 w-32 aspect-[9/16] bg-zinc-900 rounded-xl border border-zinc-800 flex items-center justify-center relative overflow-hidden">
+<img class="w-full h-full object-cover blur-lg opacity-40" data-alt="A mystery smartphone case silhouette with vibrant splashes of neon purple and pink, suggesting a pop-art or anime-inspired design. The lighting is high-contrast and dramatic, creating an aura of playful energy. Soft out-of-focus edges and deep shadows maintain the surprise element while hinting at high-quality print detail." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNhSqyjKWgqJQBDT_APhJzVynQMSJOn4sONBduBxJHXgWlG4WLkda1SnaM45_q59DuiETVaak9d0fCzRBki3a0QQ4KOcDyomnKKLChJlH5dOJCK_cAWja3tN-pIgkzk9jjkIdOI_cXMuZiImIhZNaR9JSsP62G2rci5NmuFefKaYEMMmfOT6gt4IWBh4BdvhJOVpLvNZlf-PKGgNrb_FoW1hiHCt-2uHRyfV-sAWEAtFR3ZdFp0nQhOMBStwuE6JnCDhOOD12XtO8"/>
+<span class="material-symbols-outlined text-surface-white text-3xl opacity-20 absolute" data-icon="help">help</span>
+</div>
+</div>
+</section>
+<!-- Reviews Section -->
+<section class="px-container-margin mt-stack-lg pb-10">
+<h3 class="font-title-md text-title-md mb-stack-md">The Verdict</h3>
+<div class="space-y-stack-sm">
+<div class="p-4 bg-surface-container-lowest border border-surface-container rounded-xl">
+<div class="flex gap-1 text-primary mb-1">
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+</div>
+<p class="font-body-sm text-body-sm italic">"The suspense made it worth it 😂 and honestly, the case I got is way better than what I usually pick!"</p>
+<p class="text-[10px] text-on-surface-variant mt-2">— Rahul M. (iPhone 15 Pro)</p>
+</div>
+<div class="p-4 bg-surface-container-lowest border border-surface-container rounded-xl">
+<div class="flex gap-1 text-primary mb-1">
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star">star</span>
+</div>
+<p class="font-body-sm text-body-sm italic">"A bit nervous about a random case but it fits perfectly. For 299, it's a steal."</p>
+<p class="text-[10px] text-on-surface-variant mt-2">— Sarah K. (Galaxy S23)</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Sticky Bottom Bar (BottomNavBar substitute as per requirements) -->
+<nav class="fixed bottom-0 left-0 w-full flex items-center justify-center pb-safe z-50 bg-surface-white shadow-[0px_-4px_20px_rgba(15,23,42,0.05)] rounded-t-xl h-24">
+<button class="flex flex-row items-center justify-center gap-stack-sm bg-pure-black text-surface-white w-full py-4 rounded-xl mx-container-margin mb-4 active:scale-[0.98] transition-transform duration-200 hover:opacity-90 shadow-lg shadow-pure-black/20">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-label-caps text-label-caps uppercase">Reveal My Mystery Pouch</span>
+</button>
+</nav>
+<script>
+        function selectBrand(btn) {
+            // Reset all chips
+            document.querySelectorAll('.brand-chip').forEach(chip => {
+                chip.classList.remove('bg-primary', 'text-on-primary', 'border-primary');
+                chip.classList.add('border-outline', 'text-on-surface');
+            });
+            // Highlight selected
+            btn.classList.add('bg-primary', 'text-on-primary', 'border-primary');
+            btn.classList.remove('border-outline', 'text-on-surface');
+        }
+
+        // Vibe chips selection logic
+        document.querySelectorAll('.vibe-chip').forEach(chip => {
+            chip.addEventListener('click', function() {
+                document.querySelectorAll('.vibe-chip').forEach(c => c.classList.remove('bg-primary-container', 'text-on-primary-container'));
+                this.classList.add('bg-primary-container', 'text-on-primary-container');
+            });
+        });
+
+        // Simple scroll parallax/reveal effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body></html>

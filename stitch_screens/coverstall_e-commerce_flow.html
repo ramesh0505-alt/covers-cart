@@ -1,0 +1,461 @@
+<!DOCTYPE html><html lang="en"><head><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>CoverScart | Designer Mobile Covers</title>
+<!-- Tailwind CSS v3 CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              teal: '#4fd1c5',
+              dark: '#111827',
+              accent: '#059669',
+            }
+          },
+          animation: {
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'shimmer': 'shimmer 2s infinite linear',
+            'float': 'float 4s ease-in-out infinite',
+          },
+          keyframes: {
+            shimmer: {
+              '0%': { transform: 'translateX(-100%)' },
+              '100%': { transform: 'translateX(100%)' }
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-8px)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-typography">
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .vertical-text { writing-mode: vertical-rl; transform: rotate(180deg); }
+    
+    @media (prefers-reduced-motion: reduce) {
+      .animate-float, .animate-pulse-slow, .animate-shimmer, .reveal-item {
+        animation: none !important;
+        transition: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+
+    /* Motion Classes */
+    .reveal-item {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-item.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .stagger-1 { transition-delay: 100ms; }
+    .stagger-2 { transition-delay: 200ms; }
+    .stagger-3 { transition-delay: 300ms; }
+    .stagger-4 { transition-delay: 400ms; }
+
+    .hover-lift {
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .hover-lift:active, .hover-lift:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    }
+
+    .shimmer-container {
+      position: relative;
+      overflow: hidden;
+    }
+    .shimmer-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transform: translateX(-100%);
+      pointer-events: none;
+    }
+  </style>
+<style data-purpose="layout-tweaks">
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    
+    .hero-mask {
+      clip-path: ellipse(100% 85% at 50% 15%);
+    }
+  </style>
+<link data-snapdom="injected-import" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&amp;display=swap" rel="stylesheet"></head>
+<body class="bg-white text-gray-900 selection:bg-brand-teal selection:text-white"><div class="bg-[#108474] text-white overflow-hidden whitespace-nowrap h-8 flex items-center relative w-full" style="font-family: &quot;Hanken Grotesk&quot;, sans-serif;"><style>@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }</style><div class="flex animate-[marquee_20s_linear_infinite] min-w-full"><span class="px-4 text-[10px] font-bold tracking-widest uppercase flex-shrink-0">✨ GET FASTER DELIVERY ON PREPAID ORDERS. FREE SHIPPING. SHIPPING. SHIPPING. ✨</span><span class="px-4 text-[10px] font-bold tracking-widest uppercase flex-shrink-0">✨ GET FASTER DELIVERY ON PREPAID ORDERS. FREE SHIPPING. SHIPPING. SHIPPING. ✨</span><span class="px-4 text-[10px] font-bold tracking-widest uppercase flex-shrink-0">✨ GET FASTER DELIVERY ON PREPAID ORDERS. FREE SHIPPING. SHIPPING. SHIPPING. ✨</span><span class="px-4 text-[10px] font-bold tracking-widest uppercase flex-shrink-0">✨ GET FASTER DELIVERY ON PREPAID ORDERS. FREE SHIPPING. SHIPPING. SHIPPING. ✨</span></div></div>
+<!-- BEGIN: Top Banner -->
+<!-- END: Top Banner -->
+<!-- BEGIN: MainHeader -->
+<header class="sticky top-0 z-50 bg-white border-b border-gray-100 px-4 py-3 flex items-center justify-between"><div class="flex items-center justify-between w-full max-w-screen-xl mx-auto">
+<button aria-label="Menu" class="p-2 flex-shrink-0">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<div class="flex items-center space-x-2">
+<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24">
+<path d="M16 11V7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7V11" stroke="black" stroke-linecap="round" stroke-width="2"></path>
+<rect height="12" rx="2" stroke="black" stroke-width="2" width="14" x="5" y="9"></rect>
+<path d="M9 14L12 17L15 14" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="text-xl font-bold tracking-tighter uppercase">COVERSCART</span>
+</div>
+<div class="flex items-center gap-2 flex-shrink-0">
+<button aria-label="Search" class="p-2">
+<span class="material-symbols-outlined text-2xl">search</span>
+</button>
+<div class="relative p-2">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="absolute top-1 right-1 bg-[#006d5b] text-white text-[9px] rounded-full w-4 h-4 flex items-center justify-center font-bold">0</span>
+</div>
+</div>
+</div></header>
+<!-- END: MainHeader -->
+<main class="space-y-12">
+<!-- BEGIN: HeroSection -->
+<section class="relative bg-[#1a2b2b] text-white py-20 px-8 overflow-hidden flex items-center justify-center text-center" data-purpose="hero">
+<!-- Background Image Overlay -->
+<div class="absolute inset-0 opacity-40 pointer-events-none">
+<img alt="" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBf1AAXwhgopnRl4qjxL98ShBMl4U0XtxMUid57wDpfEqyAq7qhd0Lan0693cttBqbvFdF3pERMlcH2oaOkU68zSB6OBKCiqC-cLhO7YHoBSSUm2ndkMmBlFFtqK0DQjPb4SS2ev5xhvuBfqhEEXEDBnVXTu2PMnxuEogaxh1RfahM3D4jUa4DL7X-NdyYaG210jNpIky2KgHsa41TjzVBLi7aZPKRuk5WJ36JPLSoiNv434IS3FICZ842lczh0tKl3fJrSb4ciVog">
+</div>
+<div class="relative z-10 max-w-md mx-auto">
+<h1 class="text-4xl font-bold leading-tight mb-2 reveal-item stagger-1 active">Designer Printed <br><span class="text-brand-teal">Mobile Covers</span></h1>
+<p class="text-xs text-gray-300 mb-8 leading-relaxed reveal-item stagger-2 active">
+          Premium glass cases, soft armor, and custom covers — all starting at just ₹299. Find your perfect fit, ship it fast.
+        </p>
+<div class="flex gap-3 justify-center">
+<button class="bg-brand-teal text-brand-dark px-6 py-2 text-xs font-bold rounded-sm uppercase tracking-wider hover-lift reveal-item stagger-3 active">Shop Now</button>
+<button class="border border-white text-white px-6 py-2 text-xs font-bold rounded-sm uppercase tracking-wider animate-pulse-slow reveal-item stagger-4 active">Customize</button>
+</div>
+</div>
+</section><section class="py-6 bg-white overflow-hidden" data-purpose="infinite-carousel"><div class="flex items-center mb-4 px-6"><h2 class="font-bold text-lg">Featured Showcase</h2></div><div class="relative flex overflow-hidden"><div class="flex animate-[marquee_30s_linear_infinite] gap-4 px-4 min-w-full gap-6"><div class="w-64 h-80 flex-shrink-0 rounded-xl overflow-hidden bg-gray-100 shadow-sm"><img alt="Product Showcase" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLvR0fnbThvZpdoF15x97DXsHWv8odImRekdQNIgHeVLKdwFiAVCEIM2XGNG-H8QBgTXDlqIZHU4gx-kqT-PzNa64B4gyngNF2Gt_VNBn7sQ4Sp2p-3b9vyU7_PriaS2beM5CAFweZtr6LJ2FEQxl37A6ZYkyXT--6l2Q6Blx16YomzWtshRHJcRWbRAcctEne5nKbpTwdAl8rQsLFzezJ0sTr5VftEwNv3A5uHHflyMCLUoOyQVhqGvFn0"></div><div class="w-64 h-80 flex-shrink-0 rounded-xl overflow-hidden bg-gray-100 shadow-sm"><video autoplay="" class="w-full h-full object-cover" loop="" muted="" playsinline="" poster="https://lh3.googleusercontent.com/aida/AP1WRLueMVqYhKyB8dhZg-H3-r1w0HA5zd2gfsHWGFlKJPX92ZaYZw7XACoWEY0r74yfze2osejvZLrKfyTO-vPjxSo-K8tJU9-veulFXZHTysqc-1_2kaUxbf4b9mzCkQ4dwlz4xVfoMX5Srf0vXEStiQYnRff38CH2D8KzLTUwOBK8APZIZ10O3pnoo1HjrVKvs7cGwuGhmZae3hIQhq-sLKQILiXmBxi6exyYU9KNBopczTnfj3Jz7ulOlW0"><source src="" type="video/mp4"></video></div><div class="w-64 h-80 flex-shrink-0 rounded-xl overflow-hidden bg-gray-100 shadow-sm"><img alt="Product Showcase" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLvSvO19vHDuo6uwhv_yf7CvBMjxtGhWbi7UraPef6CE5JHLcCIMtC0mojbUGUlaXY0ytEadUStykf1zvYEK_CcOprdTsFuj9MT4vrsjURhg7Lu82_oOQrmXBj4V9zW3ukhRRZ1Vdm602yvfcdFPGeJ5QenmuBIGGhMzkl6I-aYRBIjFbdr3Evpf_ofx3Hh-PfrJgXw51agQjTc4OE1Ei3dV8nGnUARuGCMPMN9Hl3eCt1dbD6xmEQnQoQ"></div><div class="w-64 h-80 flex-shrink-0 rounded-xl overflow-hidden bg-gray-100 shadow-sm"><img alt="Product Showcase" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLvuB4gtMWxNnbZyBakPpg-ctyzKYNY16EXZt_xEsTaXp0ovja2tjCAAOyMk7QvMYnQUxbmx16Dq1E5rZJtVKp9jCJSSuy8DdKmuixB1Omc_A4M0pTamcdQetcb_xDg0wyFUu8oKPUtSrFzoKprbrdkWlhnd87FA225smFwgAG9LXYuf4h5FdR8pxBmCBHs_AB6IhscvuP3EhJS2LjplzY0isiTbklK_2_J_bV0daTey9pAyIjIdhAA0UAU"></div><div class="w-64 h-80 flex-shrink-0 rounded-xl overflow-hidden bg-gray-100 shadow-sm"><img alt="Product Showcase" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLvR0fnbThvZpdoF15x97DXsHWv8odImRekdQNIgHeVLKdwFiAVCEIM2XGNG-H8QBgTXDlqIZHU4gx-kqT-PzNa64B4gyngNF2Gt_VNBn7sQ4Sp2p-3b9vyU7_PriaS2beM5CAFweZtr6LJ2FEQxl37A6ZYkyXT--6l2Q6Blx16YomzWtshRHJcRWbRAcctEne5nKbpTwdAl8rQsLFzezJ0sTr5VftEwNv3A5uHHflyMCLUoOyQVhqGvFn0"></div><div class="w-64 h-80 flex-shrink-0 rounded-xl overflow-hidden bg-gray-100 shadow-sm"><video autoplay="" class="w-full h-full object-cover" loop="" muted="" playsinline="" poster="https://lh3.googleusercontent.com/aida/AP1WRLueMVqYhKyB8dhZg-H3-r1w0HA5zd2gfsHWGFlKJPX92ZaYZw7XACoWEY0r74yfze2osejvZLrKfyTO-vPjxSo-K8tJU9-veulFXZHTysqc-1_2kaUxbf4b9mzCkQ4dwlz4xVfoMX5Srf0vXEStiQYnRff38CH2D8KzLTUwOBK8APZIZ10O3pnoo1HjrVKvs7cGwuGhmZae3hIQhq-sLKQILiXmBxi6exyYU9KNBopczTnfj3Jz7ulOlW0"><source src="" type="video/mp4"></video></div><div class="w-64 h-80 flex-shrink-0 rounded-xl overflow-hidden bg-gray-100 shadow-sm"><img alt="Product Showcase" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLvSvO19vHDuo6uwhv_yf7CvBMjxtGhWbi7UraPef6CE5JHLcCIMtC0mojbUGUlaXY0ytEadUStykf1zvYEK_CcOprdTsFuj9MT4vrsjURhg7Lu82_oOQrmXBj4V9zW3ukhRRZ1Vdm602yvfcdFPGeJ5QenmuBIGGhMzkl6I-aYRBIjFbdr3Evpf_ofx3Hh-PfrJgXw51agQjTc4OE1Ei3dV8nGnUARuGCMPMN9Hl3eCt1dbD6xmEQnQoQ"></div><div class="w-64 h-80 flex-shrink-0 rounded-xl overflow-hidden bg-gray-100 shadow-sm"><img alt="Product Showcase" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLvuB4gtMWxNnbZyBakPpg-ctyzKYNY16EXZt_xEsTaXp0ovja2tjCAAOyMk7QvMYnQUxbmx16Dq1E5rZJtVKp9jCJSSuy8DdKmuixB1Omc_A4M0pTamcdQetcb_xDg0wyFUu8oKPUtSrFzoKprbrdkWlhnd87FA225smFwgAG9LXYuf4h5FdR8pxBmCBHs_AB6IhscvuP3EhJS2LjplzY0isiTbklK_2_J_bV0daTey9pAyIjIdhAA0UAU"></div></div></div></section>
+<!-- END: HeroSection -->
+<!-- BEGIN: BrowseByStyle -->
+<section class="py-8 px-4 relative z-20 bg-white rounded-t-[3rem]" data-purpose="categories">
+<div class="flex justify-between items-end mb-4 px-2">
+<h2 class="font-bold text-lg">Browse by Style</h2>
+<a class="text-[10px] uppercase font-bold text-gray-500 border-b border-gray-500" href="#">View All</a>
+</div>
+<div class="flex gap-3 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-2 px-4">
+<!-- Category Card 1 -->
+<div class="reveal-item stagger-1 relative rounded-xl overflow-hidden aspect-[4/5] group w-48 flex-shrink-0 snap-center hover-lift active">
+<img alt="Anime/Action" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA01lxw1_Qwl-hUShM3043ZfYE-kKafDJUVOvkmUQ66kd04hXWXiBptE4m8dqXQ44zq2HhDh-I9uRW24mOdFgzq5xayLzOg0A53MXefu_znCV3C2dmpqUQEsCLwhcdyQNzn3u3Qvl9aOvcltie4u4yBgV26WA9395zfmwqp9thuGviD6nv90iaH4aBRzZVo4izbYLhNKvQIA6yJlYYvvufxHFdlhRk86cYSBqqr7-__Y4ONeMW67CbSHJixcbkWnXhg4baMRPWTf5Y">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-4 flex flex-col justify-end">
+<span class="text-[8px] uppercase font-bold text-gray-300">Pop Culture</span>
+<span class="text-sm font-bold text-white">Anime/Action</span>
+</div>
+</div>
+<!-- Category Card 2 -->
+<div class="reveal-item stagger-2 relative rounded-xl overflow-hidden aspect-[4/5] w-48 flex-shrink-0 snap-center hover-lift active">
+<img alt="Minimalist" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTgvBBCdPHVjfyg8djlp1anCYfafCytwdBShGk_TxOUPRPzyI6Peewe1pMf_DUAaQlH_VPV9naJe_fqV07BYGjmV2otquplTvUmRHMZsIfKcGOT88DstkPCuujKrvIxF5gBAKbFcRwkQbUR6Lbvk_0tIn2XoY5vfcopGy-vdJtjjuBU_PbQ2OYlsGmG_CP-enszcZeTkab7_xVb4nd2ypP_p0eEhc6PctvqiXqDwxBZ1jyp4IH1AfAZtfFXq9KPwo9AGeHAtF3DDc">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-4 flex flex-col justify-end">
+<span class="text-[8px] uppercase font-bold text-gray-300">Minimalist</span>
+<span class="text-sm font-bold text-white">Tech Designs</span>
+</div>
+</div>
+<!-- Category Card 3 -->
+<div class="reveal-item stagger-3 relative rounded-xl overflow-hidden aspect-[4/5] w-48 flex-shrink-0 snap-center hover-lift active">
+<img alt="Animal Pets" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfxvdvetUz5EE7Fyvm83cX1DluX5DJjE-Fkht4dz6-XkirlU6tr6TKxJg5zlxB3_not6MFw_7fhY935pVlDDIQYL8zjv6XHwMN31RPygcsVD3FBge6ikSEqb2XWDheAMWQQlZoScvVnsoROcmnhB7O1Bd0QUFbH7SfQ0nYOCH8FaGiIZM5IhfPuaVvOpgNqHDIhnqZUWZ0JguLya10-gOb3DaD_MaTKEUfAL0sOy9eXMqgBnoDAYF0DXRWvnb6yY-2frlcueHRqUk">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-4 flex flex-col justify-end">
+<span class="text-[8px] uppercase font-bold text-gray-300">Illustration</span>
+<span class="text-sm font-bold text-white">Animal Pets</span>
+</div>
+</div>
+<!-- Category Card 4 -->
+<div class="reveal-item stagger-4 relative rounded-xl overflow-hidden aspect-[4/5] w-48 flex-shrink-0 snap-center hover-lift active">
+<img alt="Artistic Patterns" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmqnrs2C7WwNf8yMKQ7Ey1LVaKxdw3f88VqQg7svZ5-R5yOhylqDQyt237ixUZCqyPyFjRzNmE7PGas23n9INjNvmUPtgU4eVVhsrA6cI6y1XusTTdkQvI-dw1oht26sFO0J5gsCRrNMEO3bZCf-3N9uI45zN6vP2BIJWcjD6yvcKDZRbdmQYlAnu0R4NQFYUm956m4aMU4Yi9VVXjdocqmEjatV6djnbKWpGZgBWZNEMoCcWZCEbSFUtoRZvaD7_6YhJT-PrVNAQ">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-4 flex flex-col justify-end">
+<span class="text-[8px] uppercase font-bold text-gray-300">Artistic</span>
+<span class="text-sm font-bold text-white">Patterns</span>
+</div>
+</div>
+</div>
+</section>
+<!-- END: BrowseByStyle -->
+<!-- BEGIN: NewArrivals -->
+<section class="py-8 px-4 bg-gray-50" data-purpose="new-arrivals">
+<h2 class="font-bold text-lg mb-4 px-2">New Arrival</h2>
+<div class="grid grid-cols-1 gap-4">
+<!-- Arrival Card: ArmorPad -->
+<div class="relative flex bg-[#f0f0f0] rounded-xl overflow-hidden h-40 shimmer-container border border-gray-100">
+<div class="shimmer-overlay animate-shimmer"></div>
+<div class="flex-1 p-5 flex flex-col justify-between z-10">
+<div>
+<span class="text-[10px] text-gray-500 font-medium">ArmorPad Cases</span>
+<button class="mt-2 block bg-white text-[9px] font-bold px-3 py-1.5 rounded-sm border border-gray-200 uppercase hover-lift">Shop Now →</button>
+</div>
+<h3 class="text-xl font-bold">ArmorPad Cases</h3>
+</div>
+<div class="w-1/3 relative z-10">
+<img alt="ArmorPad" class="h-full w-full object-cover animate-float" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdqfTDXVlpJd3jaClrKjqMVKGKUpVRsyTRQlQbz6EAJgAd69DJp49NrjBt5A9Dtc64ZQ9cgHsjy9_x5N6n1sE81MDnWuebElBlJByzDUh_H9m8xlkzoQh-qb57tyv7yb5nJCalJNHtMqhenTNwtauQeofDgtR-1L3W4xG-u3besC_7PXEEk6seJ7H8NRTBDdlRzruapqbGyB08BWHi3loGGO4HGDD52YguiXkgX1lK3etsrjk72dybfjWARNgEmic_BuW_8lj05w4">
+</div>
+<div class="bg-brand-teal/20 w-8 flex items-center justify-center border-l border-brand-teal/10 z-10">
+<span class="vertical-text text-[9px] font-bold tracking-widest uppercase text-gray-600">NEW ARRIVAL</span>
+</div>
+</div>
+<!-- Arrival Card: Premium Leather -->
+<div class="relative flex bg-[#e5e7eb] rounded-xl overflow-hidden h-40 shimmer-container border border-gray-100">
+<div class="shimmer-overlay animate-shimmer" style="animation-delay: 0.5s;"></div>
+<div class="flex-1 p-5 flex flex-col justify-between z-10">
+<div>
+<div class="flex gap-4 text-[9px] font-bold">
+<div><span class="text-gray-400 line-through mr-1">₹799</span> <span class="text-red-500">₹299.00</span></div>
+</div>
+<button class="mt-2 block bg-white text-[9px] font-bold px-3 py-1.5 rounded-sm border border-gray-200 uppercase hover-lift">Shop Now →</button>
+</div>
+<h3 class="text-xl font-bold leading-tight">Premium Leather <br>Cases</h3>
+</div>
+<div class="w-1/3 relative z-10">
+<img alt="Leather Cases" class="h-full w-full object-cover animate-float" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfWZJ51bLSr11GRGA7sK-0Q7h3CuqDis-8KZLyCo1sQivVMaHTxhaGf9-I9Lo9KQFGHUYj4Su_tFgUGaEQ_CJnA9L5TYhNj6BsPrSw-WPE8lD5YaPmZIy3TPcDyXG3PrksavuP8sEVAZ6q4lp5wnjrpxmflnsTwv7xtjITVVqo_MIWKhM2gX5f2WZDlN2Qyv_ZQDIGMfZef36JcRvm5lb5fzGYKvT_weH5JiOFw8SGmkZ89UkhVcD4rSrPPxmvi4AhjNCmTZ8htVU">
+</div>
+<div class="bg-brand-teal/20 w-8 flex items-center justify-center border-l border-brand-teal/10 z-10">
+<span class="vertical-text text-[9px] font-bold tracking-widest uppercase text-gray-600">NEW ARRIVAL</span>
+</div>
+</div>
+<!-- Arrival Card: MagSafe -->
+<div class="relative flex bg-[#d1d5db] rounded-xl overflow-hidden h-40 shimmer-container border border-gray-100">
+<div class="shimmer-overlay animate-shimmer" style="animation-delay: 1s;"></div>
+<div class="flex-1 p-5 flex flex-col justify-between z-10">
+<div>
+<button class="mt-2 block bg-white text-[9px] font-bold px-3 py-1.5 rounded-sm border border-gray-200 uppercase hover-lift">Shop Now →</button>
+</div>
+<h3 class="text-xl font-bold">MagSafe Cases</h3>
+</div>
+<div class="w-1/3 relative z-10">
+<img alt="MagSafe" class="h-full w-full object-cover animate-float" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcwgyJPNteySyAYx7snf3TjMIZh90pqUxiQgEvyVM_uY8yHzAtTrVY1dmRiREvLNIIMWjj0SbvqDxgSzEZBrNJim87dq_NuvPcbmxDi8zN3ppUKWUU_QTu1AArb5oEDGQ6HCXjegRwDxuyJZBrWUC8__pt6OSX1RUn6n0SmfLXfOGfq03flUegI4goHOIqt4WIJuIXo82wid-2uDUYva4sriUUq5OeCt4ncVbenaPCkJrYO6NrpYL5fd8TU5e-jrrf6cwuxBZGBa8">
+</div>
+<div class="bg-brand-teal/20 w-8 flex items-center justify-center border-l border-brand-teal/10 z-10">
+<span class="vertical-text text-[9px] font-bold tracking-widest uppercase text-gray-600">NEW ARRIVAL</span>
+</div>
+</div>
+</div>
+</section>
+<!-- END: NewArrivals -->
+<!-- BEGIN: OurPicks -->
+<section class="py-10 px-4" data-purpose="product-grid">
+<div class="flex justify-between items-center mb-6 px-2">
+<h2 class="font-bold text-lg">Our Picks</h2>
+<div class="flex gap-2">
+<button class="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:bg-gray-50 transition-colors">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<button class="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:bg-gray-50 transition-colors">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-x-4 gap-y-8">
+<!-- Product 1 -->
+<div class="hover-lift" data-purpose="product-card">
+<div class="relative bg-gray-50 rounded-2xl p-4 mb-3 aspect-[4/5] flex items-center justify-center overflow-hidden">
+<img alt="Product" class="h-full object-contain animate-float" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD85iH6lWe1q45ubyAapgGMHYqqaDxKkWBd8uCj0GAEmmIPy-7FZyNf137T6XVEGn4kUpOdQASAeHC1ZrZ7-s9-H01IDN1aqYRyIpw2Uz9roJxvp_pAdiQrFtLs7qOdOIGyWbxP13Qo9MsY2kf1KX_GhrT9fEkLvJK1mD0GZ0IfQShFa5kYjtO3ipjSN5VluDbQ99sL5NtB0kIjgS1-QEk20V31CYmcRVG008J87_CC54jh3TwuEIlIQjtlmsXeg6CCRS3E4VTLPNk">
+<button class="absolute top-3 right-3 bg-white p-1.5 rounded-full shadow-sm hover:scale-110 transition-transform">
+<svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+<h4 class="text-[11px] font-semibold text-gray-700 truncate">Crimson Sun Mountai...</h4>
+<p class="text-[11px] font-bold mt-1">
+<span class="text-brand-accent">₹299.00</span>
+<span class="text-gray-400 line-through ml-1 font-normal text-[10px]">₹799.00</span>
+</p>
+</div>
+<!-- Product 2 -->
+<div class="hover-lift" data-purpose="product-card">
+<div class="relative bg-gray-50 rounded-2xl p-4 mb-3 aspect-[4/5] flex items-center justify-center overflow-hidden">
+<img alt="Product" class="h-full object-contain animate-float" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwOLoI0ePbj5V_KMboqZhvL2PNh7W-c773jA84zZqq7Nr217tCRKBiyjKCuywitS-ZiQQhKG0qPZaXCLuIyFNDyTZ5I9lN9d_9yqbU80JihRifYKQeMZbHbdnkwl703GejXiof7rGJ6HkRh_cjC_6e5O0SE3Q0302sw6-OVp3d9vF76eAEbfOdET7vH8ydUnekSK34Ey3-i1YzajbQlD8Ecx5AaA2CAD4ITCTf3C0me6DTInMNoZcNLYL0A2XaKQny_BghE6LmkuQ">
+<button class="absolute top-3 right-3 bg-white p-1.5 rounded-full shadow-sm hover:scale-110 transition-transform">
+<svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+<h4 class="text-[11px] font-semibold text-gray-700 truncate">Cherry Blossom Oce...</h4>
+<p class="text-[11px] font-bold mt-1">
+<span class="text-brand-accent">₹299.00</span>
+<span class="text-gray-400 line-through ml-1 font-normal text-[10px]">₹799.00</span>
+</p>
+</div>
+<!-- Product 3 -->
+<div class="hover-lift" data-purpose="product-card">
+<div class="relative bg-gray-50 rounded-2xl p-4 mb-3 aspect-[4/5] flex items-center justify-center overflow-hidden">
+<img alt="Product" class="h-full object-contain animate-float" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqD1yrrjLET-ISobRYezfJdQUrNJ_jXqNjRwNXdc9n0xV35241yoKlMkBfcXXErRbbtVG3f6DBUHdwSRplakDs2OyYX0Nr_6Tm6vzQAQO1qaMswc-uXnA8F58YSmRntLGujqXud8y0c-mn9ztUuJya5aOYidktDbR2ZjeG3WyT_NVTrnwDjRCZ72YzMFDeW2aOPjBI45HHrNbM-xePeudd3RWSC38kKp9NHCmCGBYNjm7UIOUndJg_P-q33GzGUUnsQA7Ru2z11cU">
+<button class="absolute top-3 right-3 bg-white p-1.5 rounded-full shadow-sm hover:scale-110 transition-transform">
+<svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+<h4 class="text-[11px] font-semibold text-gray-700 truncate">Autumn Moon Valley...</h4>
+<p class="text-[11px] font-bold mt-1">
+<span class="text-brand-accent">₹299.00</span>
+<span class="text-gray-400 line-through ml-1 font-normal text-[10px]">₹799.00</span>
+</p>
+</div>
+<!-- Product 4 -->
+<div class="hover-lift" data-purpose="product-card">
+<div class="relative bg-gray-50 rounded-2xl p-4 mb-3 aspect-[4/5] flex items-center justify-center overflow-hidden">
+<img alt="Product" class="h-full object-contain animate-float" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiStsl4FsxfzRuHjRVPobkpZsJTXxw1_o4WrA9e8xglTyVsKjMM7AdqfZTVvTHxWedn4_D5tO8UEd0EJqyn72zkmuU9OYd0i3oduSXDz4zoaq0Ng51q6rC4BAC7IohnIsIdmTSJMH9fO2txIOsXFqLnEO-FYELGPqckaPg9TtfEw3u1ND7SolZmoqouf4RG6FAnoDbuI7nABGq9E9vooPUOS8FkZnM4z7rd2NJ_0f7y_AXyRpJPsgHA61UyVX6ocnBy9L0jFHugCs">
+<button class="absolute top-3 right-3 bg-white p-1.5 rounded-full shadow-sm hover:scale-110 transition-transform">
+<svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+<h4 class="text-[11px] font-semibold text-gray-700 truncate">Elegant Lace Girl...</h4>
+<p class="text-[11px] font-bold mt-1">
+<span class="text-brand-accent">₹299.00</span>
+<span class="text-gray-400 line-through ml-1 font-normal text-[10px]">₹799.00</span>
+</p>
+</div>
+</div>
+</section>
+<!-- END: OurPicks -->
+<!-- BEGIN: InstagramSection -->
+<section class="py-12 bg-white text-center reveal-item active" data-purpose="instagram">
+<span class="text-[9px] uppercase tracking-widest text-gray-500 font-bold">Follow us on Instagram</span>
+<h2 class="text-2xl font-bold mt-1 mb-8">#COVERSCART</h2>
+<div class="grid grid-cols-2 gap-1 px-4">
+<div class="aspect-square bg-gray-100 overflow-hidden"><img class="w-full h-full object-cover hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2a-gOnA6BYSRiLgpkF9CRQZATy1PLg6Ovd8M5Q_TMmazIeuBgrz5zglvEqdI_cF-7lC_RQ8G3F3IKQwDGCJ8ZwrJCJyBhE_nYd0uYGcYtUhTojmh1rEuDASQaDwUZSP4EgNEcpz9__0-Div3MxdsoZEhLqMSd1n1jCMF-UUnVetMO31KdNTdSvytJGFofmigpOkcMRNQD8TNCjNs56JEWkvGFwcTUjJVRUcAiuMW-78ZQeL1L_eK5ColfyZtpmcUJuFObE2WZRAY"></div>
+<div class="aspect-square bg-gray-100 overflow-hidden"><img class="w-full h-full object-cover hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEzaW3djKmimJQWxABTN3F_UDpurwmBGLF8pJcIB7eIEw03rHq0Ef9-8xu4wvqIeGhNuC9auHmLzTAqMxxALdceU94cvAcpvqecVz9V9HM4Lf_SUUNpGlddaQRiSdR4V8mjWs9dTkhwwLJlFz022_WFEM728xXIq2pg3WRLNlQTFeTEKVVmmJE8nre_N2foxSj186ZhLyCFhd3BHFE8vr0-LRAVmBT8WN8nPr3QEDzG-zSJJoLmYeM1pl-w50_KkwaneMIw0A34bg"></div>
+</div>
+</section>
+<!-- END: InstagramSection -->
+</main>
+<!-- BEGIN: Footer -->
+<section class="py-12 px-6 bg-white border-t border-gray-100" data-purpose="newsletter">
+<div class="max-w-xs mx-auto text-center">
+<h2 class="text-2xl font-bold text-gray-900 mb-2">Join our newsletter</h2>
+<p class="text-sm text-gray-500 mb-8">Get updates on new arrivals and exclusive offers.</p>
+<form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="event.preventDefault()">
+<div class="relative flex-1">
+<input class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-sm text-sm focus:outline-none focus:border-brand-teal transition-colors" placeholder="Email address" type="email">
+</div>
+<button class="w-full bg-brand-dark text-white py-3 text-xs font-bold rounded-sm uppercase tracking-widest hover:bg-brand-teal transition-colors active:scale-95" type="submit">
+        Subscribe
+      </button>
+</form>
+</div>
+</section><footer class="bg-surface-container text-on-surface-variant pt-12 pb-24 px-4" data-purpose="main-footer">
+<div class="max-w-screen-xl mx-auto">
+<div class="grid grid-cols-1 gap-y-10 mb-12">
+<!-- Brand Section -->
+<div class="flex flex-col items-start reveal-item active">
+<div class="flex items-center space-x-1 mb-4">
+<svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M16 11V7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7V11" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+<rect height="12" rx="2" stroke="currentColor" stroke-width="2" width="14" x="5" y="9"></rect>
+</svg>
+<span class="text-2xl font-bold tracking-tighter uppercase text-on-surface">COVERSCART</span>
+</div>
+<p class="text-sm leading-relaxed max-w-xs">
+          Premium covers for every device. Protected your tech with style since 2020.
+        </p>
+</div>
+<!-- Links (Accordion Style for Mobile) -->
+<div class="space-y-4 reveal-item stagger-1 active"><details class="group border-b border-outline-variant pb-2" open=""><summary class="flex justify-between items-center list-none cursor-pointer py-4"><span class="text-sm font-bold uppercase tracking-wider text-on-surface">Quick Links</span><span class="material-symbols-outlined text-sm group-open:rotate-180 transition-transform duration-300">expand_more</span></summary><ul class="mt-2 space-y-1 text-sm space-y-0"><li class=""><a class="flex items-center h-[44px] hover:text-primary transition-colors" href="#">Track Order</a></li><li class=""><a class="flex items-center h-[44px] hover:text-primary transition-colors" href="#">FAQ</a></li><li class=""><a class="flex items-center h-[44px] hover:text-primary transition-colors" href="#">Contact Us</a></li><li class=""><a class="flex items-center h-[44px] hover:text-primary transition-colors" href="#">About Us</a></li></ul></details><details class="group border-b border-outline-variant pb-2"><summary class="flex justify-between items-center list-none cursor-pointer py-4"><span class="text-sm font-bold uppercase tracking-wider text-on-surface">Shop Categories</span><span class="material-symbols-outlined text-sm group-open:rotate-180 transition-transform duration-300">expand_more</span></summary><ul class="mt-2 space-y-1 text-sm space-y-0"><li class=""><a class="flex items-center h-[44px] hover:text-primary transition-colors" href="#">Apple Cases</a></li><li class=""><a class="flex items-center h-[44px] hover:text-primary transition-colors" href="#">Samsung Cases</a></li><li class=""><a class="flex items-center h-[44px] hover:text-primary transition-colors" href="#">OnePlus Cases</a></li><li class=""><a class="flex items-center h-[44px] hover:text-primary transition-colors" href="#">Custom Cases</a></li></ul></details><details class="group border-b border-outline-variant pb-2"><summary class="flex justify-between items-center list-none cursor-pointer py-4"><span class="text-sm font-bold uppercase tracking-wider text-on-surface">Policy Links</span><span class="material-symbols-outlined text-sm group-open:rotate-180 transition-transform duration-300">expand_more</span></summary><ul class="mt-2 space-y-1 text-sm space-y-0"><li class=""><a class="flex items-center h-[44px] hover:text-primary transition-colors" href="#">Privacy Policy</a></li><li class=""><a class="flex items-center h-[44px] hover:text-primary transition-colors" href="#">Terms &amp; Conditions</a></li><li class=""><a class="flex items-center h-[44px] hover:text-primary transition-colors" href="#">Shipping &amp; Returns</a></li></ul></details></div>
+<!-- Social & Payment -->
+<div class="flex flex-col gap-8 reveal-item stagger-2 active">
+<div>
+<h4 class="text-xs font-bold uppercase tracking-widest mb-4">Follow Us</h4>
+<div class="flex gap-4">
+<a class="w-8 h-8 flex items-center justify-center rounded-full bg-surface-container-highest hover:bg-primary hover:text-on-primary transition-all duration-300 hover:scale-110" href="#">
+<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+</a>
+<a class="w-8 h-8 flex items-center justify-center rounded-full bg-surface-container-highest hover:bg-primary hover:text-on-primary transition-all duration-300 hover:scale-110" href="#">
+<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></svg>
+</a>
+<a class="w-8 h-8 flex items-center justify-center rounded-full bg-surface-container-highest hover:bg-primary hover:text-on-primary transition-all duration-300 hover:scale-110" href="#">
+<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Bar -->
+<div class="border-t border-outline-variant pt-8 flex flex-col items-center gap-6 reveal-item active mt-12">
+<p class="text-[10px] text-gray-500">© 2026 CoverScart. All rights reserved.</p>
+<button class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-on-surface hover:text-primary transition-all duration-300 hover:-translate-y-1" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        Back to Top
+        <span class="material-symbols-outlined text-sm">arrow_upward</span>
+</button>
+</div>
+</div>
+</footer>
+<!-- END: Footer -->
+<!-- BEGIN: BottomNav -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 flex justify-around py-3 z-[60]" data-purpose="mobile-bottom-nav">
+<a class="flex flex-col items-center gap-1 group active:scale-95 transition-transform" href="#">
+<svg class="w-5 h-5 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="text-[8px] font-bold uppercase text-brand-accent">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 group text-gray-400 active:scale-95 transition-transform" href="#">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="text-[8px] font-bold uppercase">Shop</span>
+</a>
+<a class="flex flex-col items-center gap-1 group text-gray-400 active:scale-95 transition-transform" href="#"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="text-[8px] font-bold uppercase">Profile</span></a>
+<a class="flex flex-col items-center gap-1 group text-gray-400 active:scale-95 transition-transform" href="#">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="text-[8px] font-bold uppercase">Cart</span>
+</a>
+</nav>
+<!-- END: BottomNav -->
+<script>
+  // Entrance and Scroll Reveal Logic
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        // If it's a section reveal, we might want to unobserve after it triggers
+        // observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.reveal-item').forEach(el => {
+    observer.observe(el);
+  });
+
+  // Initial Entrance: Trigger hero items immediately
+  window.addEventListener('load', () => {
+    document.querySelectorAll('[data-purpose="hero"] .reveal-item').forEach(el => {
+      el.classList.add('active');
+    });
+    // Also trigger initial styles since they are usually in view
+    document.querySelectorAll('[data-purpose="categories"] .reveal-item').forEach(el => {
+      el.classList.add('active');
+    });
+  });
+
+  // Handle tap states for better micro-interactions on mobile
+  document.querySelectorAll('.hover-lift').forEach(btn => {
+    btn.addEventListener('touchstart', () => {
+      btn.style.transform = 'translateY(-2px) scale(0.98)';
+    });
+    btn.addEventListener('touchend', () => {
+      btn.style.transform = '';
+    });
+  });
+</script>
+
+
+
+
+</body></html>

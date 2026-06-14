@@ -1,0 +1,323 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Checkout | CoverScart</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#dae2fd",
+                    "surface-white": "#FFFFFF",
+                    "tertiary-container": "#b05f48",
+                    "surface-container": "#eaedff",
+                    "on-tertiary-container": "#fffdff",
+                    "error-container": "#ffdad6",
+                    "outline-variant": "#bdc9c5",
+                    "surface-container-lowest": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-secondary-container": "#007432",
+                    "outline": "#6e7a76",
+                    "surface-container-low": "#f2f3ff",
+                    "surface": "#faf8ff",
+                    "on-primary-fixed-variant": "#005046",
+                    "surface-bright": "#faf8ff",
+                    "surface-container-high": "#e2e7ff",
+                    "tertiary": "#924732",
+                    "on-primary-fixed": "#00201b",
+                    "inverse-surface": "#283044",
+                    "on-tertiary-fixed-variant": "#76321f",
+                    "secondary": "#006e2f",
+                    "background": "#faf8ff",
+                    "tertiary-fixed": "#ffdbd1",
+                    "on-background": "#131b2e",
+                    "on-error-container": "#93000a",
+                    "primary-container": "#108474",
+                    "on-tertiary-fixed": "#3b0900",
+                    "on-error": "#ffffff",
+                    "pure-black": "#0E0E0E",
+                    "inverse-primary": "#77d7c5",
+                    "on-surface": "#131b2e",
+                    "tertiary-fixed-dim": "#ffb5a0",
+                    "secondary-fixed-dim": "#4ae176",
+                    "on-surface-variant": "#3e4946",
+                    "on-primary-container": "#fafffc",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "inverse-on-surface": "#eef0ff",
+                    "on-secondary-fixed-variant": "#005321",
+                    "on-secondary-fixed": "#002109",
+                    "surface-container-highest": "#dae2fd",
+                    "surface-dim": "#d2d9f4",
+                    "primary": "#00695c",
+                    "on-primary": "#ffffff",
+                    "secondary-container": "#6bff8f",
+                    "surface-tint": "#006b5d",
+                    "primary-fixed-dim": "#77d7c5",
+                    "primary-fixed": "#93f4e0",
+                    "secondary-fixed": "#6bff8f"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "container-margin": "20px",
+                    "stack-sm": "8px",
+                    "stack-md": "16px",
+                    "stack-lg": "32px",
+                    "unit": "4px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "body-sm": ["Hanken Grotesk"],
+                    "label-caps": ["Hanken Grotesk"],
+                    "headline-lg-mobile": ["Hanken Grotesk"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "title-md": ["Hanken Grotesk"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .transition-height { transition: max-height 0.3s ease-out; overflow: hidden; }
+        .collapsed { max-height: 0; }
+        .expanded { max-height: 500px; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body-lg text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top AppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface-white border-b border-surface-container h-16">
+<div class="flex items-center justify-between px-container-margin h-full w-full max-w-7xl mx-auto">
+<button aria-label="Go back" class="active:scale-95 transition-transform hover:opacity-80">
+<span class="material-symbols-outlined text-primary text-title-md">arrow_back</span>
+</button>
+<h1 class="font-title-md text-title-md text-primary tracking-tight">CHECKOUT</h1>
+<div class="w-8"></div> <!-- Spacer for center alignment -->
+</div>
+</header>
+<main class="pt-20 pb-32 px-container-margin max-w-3xl mx-auto space-y-stack-lg">
+<!-- Order Summary (Collapsible) -->
+<section class="bg-surface-white border border-surface-container rounded shadow-sm overflow-hidden">
+<button class="w-full flex items-center justify-between p-stack-md hover:bg-surface-container-low transition-colors" onclick="toggleSummary()">
+<div class="text-left">
+<h2 class="font-label-caps text-label-caps text-outline uppercase">Order Summary</h2>
+<p class="font-title-md text-title-md text-pure-black">₹299.00</p>
+</div>
+<div class="flex items-center gap-2 text-primary">
+<span class="font-label-caps text-label-caps" id="summary-label">View Items</span>
+<span class="material-symbols-outlined transition-transform" id="summary-icon">expand_more</span>
+</div>
+</button>
+<div class="transition-height collapsed bg-surface-container-low" id="summary-content">
+<div class="p-stack-md space-y-stack-sm divide-y divide-outline-variant">
+<div class="flex gap-stack-md py-stack-sm">
+<img class="w-16 h-16 object-cover rounded bg-surface-variant" data-alt="A premium minimalist smartphone case with a matte forest green finish, displayed against a clean studio backdrop. The lighting is soft and professional, highlighting the rugged textures and precise cutouts of the case. The aesthetic is modern corporate, emphasizing durability and high-end fashion." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxxoCj2_OdeRaeCZvBaBjSD9D2QK6jjP8qN4norh5_wXYXqw6AIWe-VAvsSsMabhIMKoPZ7TdUUpm7vWMtNYyQhJMDb9uIB7YbgPEZH9NVuj0D3WvlTjyW_nbAxYQMbCpOTIEFBuJRtE05iYZDuYqCG-WSFuMQG3aXn9EJhL4Lfzdzo_lWKeG6r69I2EjRJClKBwfW3xcI0EgBb9ps46NjyHK0UNVDn9k42lF3j35r964NUcIl1XiiVjTfFF_PFiWWO87Ot2bpbz4">
+<div class="flex-1">
+<p class="font-body-lg text-body-lg font-semibold text-pure-black">Rugged Armor Series - Midnight Forest</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">iPhone 15 Pro • Qty: 1</p>
+</div>
+<p class="font-body-lg text-body-lg font-bold text-pure-black">₹299.00</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 1: Shipping Address -->
+<section class="space-y-stack-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">local_shipping</span>
+<h3 class="font-title-md text-title-md text-pure-black">Shipping Address</h3>
+</div>
+<form class="grid grid-cols-1 md:grid-cols-2 gap-stack-md gap-y-stack-lg">
+<div class="col-span-full">
+<label class="font-body-sm text-body-sm text-on-surface-variant mb-1 block">Full Name</label>
+<input class="w-full border-outline-variant rounded p-3 focus:ring-1 focus:ring-primary-container focus:border-primary-container transition-all outline-none bg-surface-white" placeholder="e.g. Rahul Sharma" type="text">
+</div>
+<div>
+<label class="font-body-sm text-body-sm text-on-surface-variant mb-1 block">Email Address</label>
+<input class="w-full border-outline-variant rounded p-3 focus:ring-1 focus:ring-primary-container focus:border-primary-container transition-all outline-none bg-surface-white" placeholder="rahul@example.com" type="email">
+</div>
+<div>
+<label class="font-body-sm text-body-sm text-on-surface-variant mb-1 block">Phone Number</label>
+<input class="w-full border-outline-variant rounded p-3 focus:ring-1 focus:ring-primary-container focus:border-primary-container transition-all outline-none bg-surface-white" placeholder="+91 98765 43210" type="tel">
+</div>
+<div class="col-span-full">
+<label class="font-body-sm text-body-sm text-on-surface-variant mb-1 block">Street Address</label>
+<input class="w-full border-outline-variant rounded p-3 focus:ring-1 focus:ring-primary-container focus:border-primary-container transition-all outline-none bg-surface-white" placeholder="Flat No., Building, Area" type="text">
+</div>
+<div>
+<label class="font-body-sm text-body-sm text-on-surface-variant mb-1 block">City</label>
+<input class="w-full border-outline-variant rounded p-3 focus:ring-1 focus:ring-primary-container focus:border-primary-container transition-all outline-none bg-surface-white" placeholder="Mumbai" type="text">
+</div>
+<div>
+<label class="font-body-sm text-body-sm text-on-surface-variant mb-1 block">PIN Code</label>
+<input class="w-full border-outline-variant rounded p-3 focus:ring-1 focus:ring-primary-container focus:border-primary-container transition-all outline-none bg-surface-white" placeholder="400001" type="text">
+</div>
+</form>
+</section>
+<!-- Section 2: Shipping Method -->
+<section class="space-y-stack-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">speed</span>
+<h3 class="font-title-md text-title-md text-pure-black">Shipping Method</h3>
+</div>
+<div class="border-2 border-primary-container bg-surface-container-low p-stack-md rounded flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-stack-md">
+<div class="bg-primary text-surface-white p-2 rounded-full">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div>
+<p class="font-body-lg text-body-lg font-bold text-pure-black">Standard Delivery</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Estimated 3-5 business days</p>
+</div>
+</div>
+<span class="font-label-caps text-label-caps text-secondary font-bold uppercase">FREE</span>
+</div>
+</section>
+<!-- Section 3: Payment Method -->
+<section class="space-y-stack-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">payments</span>
+<h3 class="font-title-md text-title-md text-pure-black">Payment Method</h3>
+</div>
+<div class="space-y-stack-sm">
+<!-- UPI -->
+<label class="flex flex-col border border-outline-variant rounded-lg p-stack-md cursor-pointer hover:border-primary transition-all has-[:checked]:border-primary-container has-[:checked]:bg-surface-container-low">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<input checked="" class="text-primary focus:ring-primary accent-primary" name="payment" onclick="toggleCardFields(false)" type="radio" value="upi">
+<div>
+<p class="font-body-lg text-body-lg font-semibold text-pure-black">UPI (PhonePe, Google Pay, BHIM)</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">account_balance_wallet</span>
+</div>
+</label>
+<!-- Cards -->
+<label class="flex flex-col border border-outline-variant rounded-lg p-stack-md cursor-pointer hover:border-primary transition-all has-[:checked]:border-primary-container has-[:checked]:bg-surface-container-low group">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<input class="text-primary focus:ring-primary accent-primary" name="payment" onclick="toggleCardFields(true)" type="radio" value="card">
+<div>
+<p class="font-body-lg text-body-lg font-semibold text-pure-black">Credit / Debit Cards</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">credit_card</span>
+</div>
+<div class="transition-height collapsed space-y-stack-sm mt-stack-md" id="card-form">
+<div class="pt-stack-sm border-t border-outline-variant">
+<label class="font-body-sm text-body-sm text-on-surface-variant mb-1 block">Card Number</label>
+<input class="w-full border-outline-variant rounded p-3 focus:ring-1 focus:ring-primary-container outline-none bg-surface-white" placeholder="0000 0000 0000 0000" type="text">
+</div>
+<div class="grid grid-cols-2 gap-stack-md">
+<div>
+<label class="font-body-sm text-body-sm text-on-surface-variant mb-1 block">MM/YY</label>
+<input class="w-full border-outline-variant rounded p-3 focus:ring-1 focus:ring-primary-container outline-none bg-surface-white" placeholder="12/28" type="text">
+</div>
+<div>
+<label class="font-body-sm text-body-sm text-on-surface-variant mb-1 block">CVV</label>
+<input class="w-full border-outline-variant rounded p-3 focus:ring-1 focus:ring-primary-container outline-none bg-surface-white" placeholder="***" type="password">
+</div>
+</div>
+</div>
+</label>
+<!-- COD -->
+<label class="flex flex-col border border-outline-variant rounded-lg p-stack-md cursor-pointer hover:border-primary transition-all has-[:checked]:border-primary-container has-[:checked]:bg-surface-container-low">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<input class="text-primary focus:ring-primary accent-primary" name="payment" onclick="toggleCardFields(false)" type="radio" value="cod">
+<div>
+<p class="font-body-lg text-body-lg font-semibold text-pure-black">Cash on Delivery</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">payments</span>
+</div>
+</label>
+</div>
+</section>
+</main>
+<!-- Sticky Bottom Bar -->
+<footer class="fixed bottom-0 w-full z-50 bg-surface-white shadow-[0_-4px_20px_rgba(15,23,42,0.1)] pb-safe border-t border-surface-container">
+<div class="max-w-3xl mx-auto px-container-margin h-24 flex items-center justify-between gap-stack-lg">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Total Amount</span>
+<span class="font-display-lg text-headline-lg-mobile text-pure-black leading-none">₹299.00</span>
+</div>
+<button class="bg-pure-black text-surface-white font-bold h-14 px-10 rounded shadow-md hover:opacity-90 active:scale-95 transition-all flex items-center gap-2 group w-full md:w-auto justify-center">
+<span class="uppercase tracking-wider">Pay Now</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</footer>
+<script>
+        function toggleSummary() {
+            const content = document.getElementById('summary-content');
+            const icon = document.getElementById('summary-icon');
+            const label = document.getElementById('summary-label');
+            
+            if (content.classList.contains('collapsed')) {
+                content.classList.replace('collapsed', 'expanded');
+                icon.style.transform = 'rotate(180deg)';
+                label.innerText = 'Hide Items';
+            } else {
+                content.classList.replace('expanded', 'collapsed');
+                icon.style.transform = 'rotate(0deg)';
+                label.innerText = 'View Items';
+            }
+        }
+
+        function toggleCardFields(show) {
+            const cardForm = document.getElementById('card-form');
+            if (show) {
+                cardForm.classList.replace('collapsed', 'expanded');
+            } else {
+                cardForm.classList.replace('expanded', 'collapsed');
+            }
+        }
+
+        // Add subtle focus ring effect on all inputs
+        const inputs = document.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="password"]');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.querySelector('label')?.classList.add('text-primary');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.querySelector('label')?.classList.remove('text-primary');
+            });
+        });
+    </script>
+
+
+
+
+</body></html>

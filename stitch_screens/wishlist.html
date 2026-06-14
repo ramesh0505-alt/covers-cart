@@ -1,0 +1,275 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Wishlist | LUXE UTILITY</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#e2e7ff",
+                    "on-secondary-fixed": "#002109",
+                    "on-primary-fixed-variant": "#005046",
+                    "on-secondary-fixed-variant": "#005321",
+                    "on-tertiary-fixed": "#3b0900",
+                    "on-surface-variant": "#3e4946",
+                    "inverse-on-surface": "#eef0ff",
+                    "on-primary": "#ffffff",
+                    "pure-black": "#0E0E0E",
+                    "inverse-primary": "#77d7c5",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-container": "#fafffc",
+                    "on-primary-fixed": "#00201b",
+                    "on-surface": "#131b2e",
+                    "secondary": "#006e2f",
+                    "on-secondary-container": "#007432",
+                    "secondary-container": "#6bff8f",
+                    "background": "#faf8ff",
+                    "on-error-container": "#93000a",
+                    "on-background": "#131b2e",
+                    "on-tertiary-container": "#fffdff",
+                    "surface-white": "#FFFFFF",
+                    "surface-variant": "#dae2fd",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed": "#ffdbd1",
+                    "primary-fixed": "#93f4e0",
+                    "secondary-fixed": "#6bff8f",
+                    "surface-container": "#eaedff",
+                    "outline-variant": "#bdc9c5",
+                    "on-error": "#ffffff",
+                    "tertiary-container": "#b05f48",
+                    "tertiary-fixed-dim": "#ffb5a0",
+                    "tertiary": "#924732",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#4ae176",
+                    "primary": "#00695c",
+                    "surface-dim": "#d2d9f4",
+                    "on-secondary": "#ffffff",
+                    "surface-container-low": "#f2f3ff",
+                    "surface": "#faf8ff",
+                    "outline": "#6e7a76",
+                    "on-tertiary-fixed-variant": "#76321f",
+                    "error": "#ba1a1a",
+                    "primary-fixed-dim": "#77d7c5",
+                    "primary-container": "#108474",
+                    "inverse-surface": "#283044",
+                    "surface-bright": "#faf8ff",
+                    "surface-tint": "#006b5d",
+                    "surface-container-highest": "#dae2fd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "unit": "4px",
+                    "stack-lg": "32px",
+                    "stack-md": "16px",
+                    "stack-sm": "8px",
+                    "container-margin": "20px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Hanken Grotesk"],
+                    "title-md": ["Hanken Grotesk"],
+                    "label-caps": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "body-sm": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Hanken Grotesk', sans-serif; -webkit-font-smoothing: antialiased; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .wishlist-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+        @media (min-width: 1024px) { .wishlist-grid { grid-template-columns: repeat(4, 1fr); } }
+    </style>
+</head>
+<body class="bg-surface-white text-on-surface mb-24">
+<!-- Top App Bar -->
+<header class="w-full sticky top-0 z-50 bg-surface-white dark:bg-pure-black border-b border-surface-container dark:border-on-surface-variant flex items-center justify-between px-container-margin h-16 w-full max-w-screen-xl mx-auto">
+<button class="hover:opacity-80 transition-opacity active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim">arrow_back</span>
+</button>
+<h1 class="font-title-md text-title-md text-primary dark:text-primary-fixed-dim">Wishlist</h1>
+<button class="hover:opacity-80 transition-opacity active:scale-95 transition-transform relative">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim">shopping_bag</span>
+<span class="absolute -top-1 -right-1 bg-primary text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">2</span>
+</button>
+</header>
+<main class="max-w-screen-xl mx-auto px-container-margin pt-stack-md">
+<!-- Page Title Section -->
+<div class="mb-stack-lg">
+<h2 class="font-display-lg text-display-lg md:text-display-lg text-pure-black tracking-tighter">Your Favorites</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-unit">Curated selection of premium protection.</p>
+</div>
+<!-- Wishlist Grid -->
+<section class="wishlist-grid gap-gutter mb-stack-lg">
+<!-- Item 1 -->
+<article class="group flex flex-col gap-stack-sm relative">
+<div class="aspect-[4/5] overflow-hidden rounded-xl bg-surface-container-low border border-[#F1F5F9] relative flex items-center justify-center">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A premium high-gloss phone case featuring a stunning deep crimson mountain landscape illustration. The product is shot in a minimalist studio setting with soft directional lighting, emphasizing the sleek textures and rugged utility of the design. The overall aesthetic is modern corporate luxury, using a palette of deep greens and stark blacks against a clean white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOxIf14usFxQPZIAtjw5e0K3dA_2nltiZNJl_hVuJmlGLIcC75_-zm2kJMWSCSVFk_eP1y6WsQnjcQSTqKUnVOiozwe1BOMjfhW8M2SPOMXFtdi0nXXEViwoyg8G2v-8lUg6YypXShwMg8061QcBdXmM0Un8Rz4wX2825ASgOh5u26X9mTmrFzN79xDsEK81vwx24lS3ZA5WHZAcwQI6VgPHPChvqoA5NLz9I6Ft3qn9JJK7DR7bgi2nIGAtNjvPuWM1MQMTJiuvA">
+<button class="absolute top-3 right-3 bg-white/90 backdrop-blur shadow-sm p-1.5 rounded-full hover:bg-error/10 transition-colors active:scale-90">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-error text-[20px]">close</span>
+</button>
+</div>
+<div class="flex flex-col gap-1 px-1">
+<h3 class="font-body-lg text-body-lg text-pure-black truncate">Crimson Sun Mountain Glass Case</h3>
+<div class="flex items-center justify-between">
+<span class="font-title-md text-title-md text-primary">Rs. 299.00</span>
+</div>
+</div>
+<button class="w-full py-3 bg-pure-black text-white font-label-caps text-label-caps rounded-xl flex items-center justify-center gap-2 hover:bg-primary transition-colors active:scale-95 mt-auto">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+                    ADD TO CART
+                </button>
+</article>
+<!-- Item 2 -->
+<article class="group flex flex-col gap-stack-sm relative">
+<div class="aspect-[4/5] overflow-hidden rounded-xl bg-surface-container-low border border-[#F1F5F9] relative flex items-center justify-center">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A minimalist tech accessory display featuring a rugged forest green phone case with carbon fiber textures. The background is a sophisticated deep slate grey with soft, diffused shadows. The lighting is high-end and cinematic, showcasing the premium build quality and modern utility of the accessory within the luxe utility design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7WfO4UlQg27uInQstxar5QCHV-ttwpF-3RbCS8D4mx1kjgGgfZtmvhtFM6U0S7wSqkwXCEF3yO3Yx5NCdDqq-8QErQ80M40Uelxw3sFxN90JbbWXYfy-HtNUgaj7VLcZBVXHodJBhyB1WmxZo1YXrQJog-RBAd976rxd_EFWi1-sE-yp5Gtvmmh4EHUj6QkSalrnV5Vf-X8GGRt-9jHPyTRJt2L138WIPjkQy-QiayqnluFBF1Cpq-2P8nUzhORW6lw1F2T1UuJ8">
+<button class="absolute top-3 right-3 bg-white/90 backdrop-blur shadow-sm p-1.5 rounded-full hover:bg-error/10 transition-colors active:scale-90">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-error text-[20px]">close</span>
+</button>
+</div>
+<div class="flex flex-col gap-1 px-1">
+<h3 class="font-body-lg text-body-lg text-pure-black truncate">Stealth Carbon Deep Forest</h3>
+<div class="flex items-center justify-between">
+<span class="font-title-md text-title-md text-primary">Rs. 349.00</span>
+</div>
+</div>
+<button class="w-full py-3 bg-pure-black text-white font-label-caps text-label-caps rounded-xl flex items-center justify-center gap-2 hover:bg-primary transition-colors active:scale-95 mt-auto">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+                    ADD TO CART
+                </button>
+</article>
+<!-- Item 3 -->
+<article class="group flex flex-col gap-stack-sm relative">
+<div class="aspect-[4/5] overflow-hidden rounded-xl bg-surface-container-low border border-[#F1F5F9] relative flex items-center justify-center">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Close up photography of a premium frosted translucent phone case with an emerald green camera bezel. The setting is an architectural minimalist space with white marble and clean lines. Bright daylight highlights the precision engineering and high-end fashion aesthetic of the luxury e-commerce product." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGNL4TOYmq-SNSUZNhBb89rc3iysijWbzyY0mWOclEsdJC8BtEt2dZ5gdBwY-khBAtEqqEZwqI9qyEN9qy4JzmbeDGbRisShH3awKPOGlq65H0SJP3IFh-IjrRWmXAQiUmHgL05axZaVcV9094khRft0r1N1P8iB9dVhnZIs0eTcjBsrY9e4jyZT-e2MEX_0IajxwotwlfgOBEA1nUuToIrjI-3smGQ48u0azJpM-o4Z9pHgfSpck1suc1L4wgEJUXssB8QvBBGa4">
+<button class="absolute top-3 right-3 bg-white/90 backdrop-blur shadow-sm p-1.5 rounded-full hover:bg-error/10 transition-colors active:scale-90">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-error text-[20px]">close</span>
+</button>
+</div>
+<div class="flex flex-col gap-1 px-1">
+<h3 class="font-body-lg text-body-lg text-pure-black truncate">Frost Emerald Precision Case</h3>
+<div class="flex items-center justify-between">
+<span class="font-title-md text-title-md text-primary">Rs. 399.00</span>
+</div>
+</div>
+<button class="w-full py-3 bg-pure-black text-white font-label-caps text-label-caps rounded-xl flex items-center justify-center gap-2 hover:bg-primary transition-colors active:scale-95 mt-auto">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+                    ADD TO CART
+                </button>
+</article>
+<!-- Item 4 -->
+<article class="group flex flex-col gap-stack-sm relative">
+<div class="aspect-[4/5] overflow-hidden rounded-xl bg-surface-container-low border border-[#F1F5F9] relative flex items-center justify-center">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A professional product shot of a dark obsidian black phone case with a matte finish. The case is displayed on a minimalist concrete pedestal with dramatic, low-contrast shadows. The vibe is rugged and tactical yet sophisticated, perfectly aligning with the modern corporate minimalist style of the CoverStall brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmnmsAaIkcMhxFQWM7xzwImTfGY-eq-10cjMxXC6p6V5Q-qQJwpMaPz7zaRI7tXs8RB1I8J7KBrIuGAnrV_-AA4z09MrwJ9_7-kqAlL9Bx5ZQy4ZGZJYXixWoJetg2gETaxaGU2rThF_lUafhfLJ9QX6i6l5oo-D6RfUDdFubkmAa5KgG9xvdEr6PNWntkQVAeHJq-5FGJ_PJlPOdmVkfY9MSI_IlxGXahPtONbhPK4f_4P1SY_d2WJZ9vP6sSr5YoixpL46gVGl8">
+<button class="absolute top-3 right-3 bg-white/90 backdrop-blur shadow-sm p-1.5 rounded-full hover:bg-error/10 transition-colors active:scale-90">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-error text-[20px]">close</span>
+</button>
+</div>
+<div class="flex flex-col gap-1 px-1">
+<h3 class="font-body-lg text-body-lg text-pure-black truncate">Obsidian Tactical Matte Shell</h3>
+<div class="flex items-center justify-between">
+<span class="font-title-md text-title-md text-primary">Rs. 279.00</span>
+</div>
+</div>
+<button class="w-full py-3 bg-pure-black text-white font-label-caps text-label-caps rounded-xl flex items-center justify-center gap-2 hover:bg-primary transition-colors active:scale-95 mt-auto">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+                    ADD TO CART
+                </button>
+</article>
+</section>
+<!-- Empty Wishlist State Placeholder (Hidden) -->
+<div class="hidden py-24 flex flex-col items-center justify-center text-center" id="empty-state">
+<span class="material-symbols-outlined text-[64px] text-outline-variant mb-stack-md">favorite_border</span>
+<h3 class="font-headline-lg text-headline-lg text-pure-black">Your Wishlist is Empty</h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-2 max-w-xs">Discover our latest protection essentials and save your favorites here.</p>
+<button class="mt-stack-lg px-8 py-4 bg-pure-black text-white rounded-xl font-label-caps text-label-caps hover:bg-primary transition-all">
+                START SHOPPING
+            </button>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-surface-white dark:bg-pure-black shadow-[0px_-4px_20px_rgba(15,23,42,0.05)] rounded-t-xl py-stack-sm flex justify-around items-center border-t border-surface-container dark:border-on-surface-variant">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">storefront</span>
+<span class="font-label-caps text-label-caps">Shop</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-caps text-label-caps">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-bold active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="font-label-caps text-label-caps">Wishlist</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="font-label-caps text-label-caps">Cart</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-caps text-label-caps">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple Interaction Script
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if(this.querySelector('.material-symbols-outlined')?.textContent === 'close') {
+                    const card = this.closest('article');
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.9)';
+                    setTimeout(() => {
+                        card.remove();
+                        checkEmptyState();
+                    }, 300);
+                }
+                
+                if(this.textContent.includes('ADD TO CART')) {
+                    const originalText = this.innerHTML;
+                    this.innerHTML = '<span class="material-symbols-outlined text-[18px]">check</span> ADDED';
+                    this.classList.replace('bg-pure-black', 'bg-secondary');
+                    setTimeout(() => {
+                        this.innerHTML = originalText;
+                        this.classList.replace('bg-secondary', 'bg-pure-black');
+                    }, 2000);
+                }
+            });
+        });
+
+        function checkEmptyState() {
+            const grid = document.querySelector('.wishlist-grid');
+            const empty = document.getElementById('empty-state');
+            if(grid.children.length === 0) {
+                grid.classList.add('hidden');
+                empty.classList.remove('hidden');
+            }
+        }
+    </script>
+
+
+</body></html>

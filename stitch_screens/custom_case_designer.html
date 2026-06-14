@@ -1,0 +1,319 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Premium Case Designer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-bright": "#faf8ff",
+                      "tertiary-fixed": "#ffdbd1",
+                      "on-tertiary-fixed": "#3b0900",
+                      "on-primary-fixed-variant": "#005046",
+                      "secondary-fixed-dim": "#4ae176",
+                      "primary-fixed": "#93f4e0",
+                      "tertiary-container": "#b05f48",
+                      "error": "#ba1a1a",
+                      "on-tertiary": "#ffffff",
+                      "inverse-primary": "#77d7c5",
+                      "secondary": "#006e2f",
+                      "primary": "#00695c",
+                      "inverse-on-surface": "#eef0ff",
+                      "secondary-container": "#6bff8f",
+                      "on-tertiary-fixed-variant": "#76321f",
+                      "tertiary": "#924732",
+                      "on-tertiary-container": "#fffdff",
+                      "surface-container-high": "#e2e7ff",
+                      "on-secondary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "primary-fixed-dim": "#77d7c5",
+                      "surface-container-lowest": "#ffffff",
+                      "outline-variant": "#bdc9c5",
+                      "on-secondary-container": "#007432",
+                      "surface-dim": "#d2d9f4",
+                      "surface": "#faf8ff",
+                      "on-background": "#131b2e",
+                      "on-primary-fixed": "#00201b",
+                      "background": "#faf8ff",
+                      "surface-white": "#FFFFFF",
+                      "outline": "#6e7a76",
+                      "error-container": "#ffdad6",
+                      "on-secondary-fixed": "#002109",
+                      "surface-tint": "#006b5d",
+                      "on-surface": "#131b2e",
+                      "primary-container": "#108474",
+                      "surface-container-highest": "#dae2fd",
+                      "inverse-surface": "#283044",
+                      "surface-variant": "#dae2fd",
+                      "surface-container-low": "#f2f3ff",
+                      "secondary-fixed": "#6bff8f",
+                      "on-secondary-fixed-variant": "#005321",
+                      "on-primary": "#ffffff",
+                      "on-surface-variant": "#3e4946",
+                      "pure-black": "#0E0E0E",
+                      "surface-container": "#eaedff",
+                      "tertiary-fixed-dim": "#ffb5a0",
+                      "on-primary-container": "#fafffc",
+                      "on-error-container": "#93000a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "stack-lg": "32px",
+                      "gutter": "16px",
+                      "stack-sm": "8px",
+                      "unit": "4px",
+                      "stack-md": "16px",
+                      "container-margin": "20px"
+              },
+              "fontFamily": {
+                      "display-lg": ["Hanken Grotesk"],
+                      "label-caps": ["Hanken Grotesk"],
+                      "headline-lg-mobile": ["Hanken Grotesk"],
+                      "headline-lg": ["Hanken Grotesk"],
+                      "title-md": ["Hanken Grotesk"],
+                      "body-sm": ["Hanken Grotesk"],
+                      "body-lg": ["Hanken Grotesk"]
+              },
+              "fontSize": {
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Hanken Grotesk', sans-serif;
+            background-color: #faf8ff;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .preview-shadow {
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- TopAppBar Navigation Shell -->
+<header class="bg-surface-bright dark:bg-surface-dim text-primary dark:text-primary-fixed w-full sticky top-0 z-50 border-b border-outline-variant flex justify-between items-center px-container-margin py-stack-sm h-16">
+<button aria-label="Go back" class="flex items-center justify-center w-10 h-10 hover:bg-surface-container-low transition-colors active:scale-95 transition-transform">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Case Designer</h1>
+<button aria-label="Shopping bag" class="flex items-center justify-center w-10 h-10 hover:bg-surface-container-low transition-colors active:scale-95 transition-transform">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+</header>
+<main class="pb-32">
+<!-- Hero Preview Section -->
+<section class="relative w-full h-[40vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-surface-bright to-surface-container-low bg-surface-container-highest">
+<!-- Animated Ambient Background -->
+
+<div class="relative z-10 group cursor-pointer transition-transform duration-500 hover:scale-105">
+<div class="w-48 h-96 bg-white rounded-[2.5rem] preview-shadow border-8 border-pure-black relative overflow-hidden transition-all duration-700" id="case-preview">
+<!-- Dynamic Content Overlay -->
+<div class="absolute inset-0 bg-cover bg-center transition-all duration-500" data-alt="A macro shot of a sleek marble texture with deep emerald and gold veins running through a white base, designed specifically for a high-end smartphone case back. The aesthetic is luxurious and minimal, featuring sharp details and a soft matte finish that reflects contemporary fashion trends." id="dynamic-pattern" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB4C3NXBW9xQ7UhQpEoLwzD3QT5lW8QvVmSQcgQ85SpYL9FCCyC0_SPNHP3GzCqF_79K2xnfSbk6cCQ6lonkfasXsNb8EWe7RQ4jYEbLwXCGdVfJVtx0QzEhfAJ_XaiZ8S9b-k4a0wB1RCn6fkDgHqQiEitqwnob4LlFSKzkIeLWjDio22vu-WOcnBif5AA6F9UdH4XRRCHxlhe8BsZFfUzOLzs5i168W-B0LmpcSNue2d79fuynr6SrWa1Lbf2ScSmTkgz2uVSn4M');">
+</div>
+<!-- Overlay Texture for realism -->
+<div class="absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-white/10 pointer-events-none"></div>
+<!-- Custom Text Overlay -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 transition-opacity" id="preview-text">
+<span class="text-white font-bold text-2xl drop-shadow-md">YOUR TEXT</span>
+</div>
+</div>
+<!-- 3D Float Effect Shadow -->
+<div class="absolute -bottom-8 left-1/2 -translate-x-1/2 w-32 h-4 bg-black/10 blur-xl rounded-full"></div>
+</div>
+</section>
+<!-- Customization Panel -->
+<div class="px-container-margin mt-stack-lg space-y-10">
+<!-- Step 1: Base Pattern -->
+<section>
+<div class="flex items-baseline justify-between mb-stack-md">
+<h2 class="font-title-md text-title-md">1. Select Base Pattern</h2>
+<span class="text-body-sm text-outline">Optional</span>
+</div>
+<div class="flex gap-4 overflow-x-auto hide-scrollbar pb-2 -mx-5 px-5">
+<button class="flex-shrink-0 w-24 space-y-2 group" onclick="changePattern('Anime')">
+<div class="aspect-[2/3] rounded-xl overflow-hidden border-2 border-primary ring-2 ring-primary ring-offset-2">
+<img alt="Pattern 1" class="w-full h-full object-cover" data-alt="A premium smartphone case pattern featuring vibrant, high-contrast abstract wave shapes in deep forest green and mint tones, evoking a futuristic and organic aesthetic. The design is clean, sharp, and perfectly suited for a modern tech-savvy individual who values high-end fashion." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5WmNs6S9t4FzmycSHJ_sDBuBiwwPPqZBROjTHh12fsBNoxiUShlSzGoKrw61-PcIHMxnlasyXXIOCY3m2OKe4F7_sJ9siKpg8kmiwncXwEtCvjezK1KxECEC_5fBV8dEKmtJu_qy7ZJ2sD9klUqe7jrZriHF9e3XDAKPdc2puRuXqoRLfh9EesI9kn4rJmvmOhZ3qEooKTzwQJZfKl7mpTtwW7Gz1C3UquLvb4eCF4rsHpLUOfY8nFt1FN-ZtF_hKrJV5lT5XO0s">
+</div>
+<p class="text-center font-label-caps text-label-caps text-primary">Marble</p>
+</button>
+<button class="flex-shrink-0 w-24 space-y-2 group" onclick="changePattern('Cyber')">
+<div class="aspect-[2/3] rounded-xl overflow-hidden border-2 border-transparent group-hover:border-outline-variant transition-colors">
+<img alt="Pattern 2" class="w-full h-full object-cover" data-alt="A technical and futuristic cyber-themed pattern for a phone case, showcasing neon light circuits and geometric shapes in slate grey and electric teal. The composition is structured and minimalist, emphasizing precision and high-tech utility with a polished, sleek surface texture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2YgKTDTFZXwHYGvIej_tgmYoUoC7WgZu8TQrrYDA2RZfSVNaGbbml3CScvPY6SH4vgCCbYEyYIOVG-cqMpnGQrqQzmKTpqp3l5-2ahRpl6pcUxVCsMScWXT79fzD86eQCz7V3zoiJW38sbgAvt7Q9GYB_3rrdlq4ukMEaXOFgzbmTNJdpoS7zu-VshyIHarVj-7mo9MX_5m6iYOwYyVV1js65vOgn0HrGHqpYcGLVI4GsaQHj1NC91l62ijZ4DFuKKIVINeQe05I">
+</div>
+<p class="text-center font-label-caps text-label-caps text-on-surface-variant">Cyber</p>
+</button>
+<button class="flex-shrink-0 w-24 space-y-2 group" onclick="changePattern('Liquid')">
+<div class="aspect-[2/3] rounded-xl overflow-hidden border-2 border-transparent group-hover:border-outline-variant transition-colors">
+<img alt="Pattern 3" class="w-full h-full object-cover" data-alt="An ethereal liquid chrome texture design for a mobile case, featuring iridescent reflections and fluid, mercury-like shapes that shift in color from deep emerald to soft lilac. The overall mood is sophisticated and avant-garde, capturing a luxury aesthetic through smooth gradients and high-specular highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-mjXSwzBcxa-hiDzEz1-39Y9QOhEbx_pUrISiJHEH-5gt_C331QlV9nE_sTNiw6n3v5UP09C3G9j3J26w4q27SIM6hOG49PCDI-QFvXaObJ6mphdyDr2YPnEkNSZ3UTIZPdcnJfsXOdmScSf73SuF15_fFxoGZyPos2e6MkINiNV_2DPbGMYsVLmGJo_5Mtq1gmQra-yE3EMQyoZYPy7sUIK0fDM_oiYvMjqJqX7JX3ReWDnO7NkvqZZV1nkP9Ey8EOo8CehFwco">
+</div>
+<p class="text-center font-label-caps text-label-caps text-on-surface-variant">Liquid</p>
+</button>
+<button class="flex-shrink-0 w-24 space-y-2 group" onclick="changePattern('Duo')">
+<div class="aspect-[2/3] rounded-xl overflow-hidden border-2 border-transparent group-hover:border-outline-variant transition-colors">
+<img alt="Pattern 4" class="w-full h-full object-cover" data-alt="A bold, asymmetric color-blocked pattern for a luxury smartphone accessory, utilizing a palette of charcoal grey and vibrant lime green. The design is modern corporate with a twist of rugged utility, featuring clean lines and a matte, premium finish that feels soft to the touch." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEwXFQTfdBcs7e4tD4BO0u4954dAIYduAi6aNAFTRrzvCmdLhk92aTNfKb19PaXsNFGto1tYpdwNiJ4kCHCAUwCJY349gsIRdSlDUYCodYgRwwDtvkgkkjIjPILr294BjV6Z-jWXdZcAXrwLMIeza03kRavZm-U6DUoFln_Fe4YeAdv8E8RO6sSVp8hfmBJB5CTCuiLFhedPnfm_RyQdpf2Gb6PtneMSXwfNroGAb8Rg-oCHoxmjE2PTHr7T8fvS7AxHMDIlmcqRs">
+</div>
+<p class="text-center font-label-caps text-label-caps text-on-surface-variant">Duo-Tone</p>
+</button>
+</div>
+</section>
+<!-- Step 2: Personalize with Image -->
+<section>
+<h2 class="font-title-md text-title-md mb-stack-md">2. Personalize with Image</h2>
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-8 flex flex-col items-center justify-center gap-3 bg-surface-container-lowest hover:bg-surface-container transition-colors cursor-pointer group"><div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-2 group-hover:scale-110 transition-transform duration-500"><span class="material-symbols-outlined text-4xl">cloud_upload</span></div><div class="text-center"><p class="font-title-md text-title-md text-on-surface">Upload Your Design</p><p class="font-body-sm text-body-sm text-outline mt-1">High resolution PNG/JPG (Max 10MB)</p></div></div>
+</section>
+<!-- Step 3: Add Custom Text -->
+<section>
+<h2 class="font-title-md text-title-md mb-stack-md">3. Add Custom Text</h2>
+<div class="bg-white p-gutter rounded-xl shadow-sm border border-outline-variant space-y-4 bg-surface-bright">
+<div>
+<label class="block font-body-sm text-body-sm text-outline mb-1">Your Message</label>
+<input class="w-full px-4 py-3 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all font-body-lg text-body-lg" oninput="updateText(this.value)" placeholder="Type here..." type="text">
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block font-body-sm text-body-sm text-outline mb-1">Font Style</label>
+<select class="w-full px-3 py-2 rounded-lg border border-outline-variant bg-surface-bright font-body-sm text-body-sm">
+<option>Hanken Bold</option>
+<option>Serif Modern</option>
+<option>Mono Space</option>
+</select>
+</div>
+<div>
+<label class="block font-body-sm text-body-sm text-outline mb-1">Color</label>
+<div class="flex gap-2 py-1">
+<button class="w-6 h-6 rounded-full bg-white border border-outline-variant ring-2 ring-primary ring-offset-2"></button>
+<button class="w-6 h-6 rounded-full bg-pure-black"></button>
+<button class="w-6 h-6 rounded-full bg-primary"></button>
+<button class="w-6 h-6 rounded-full bg-secondary-fixed-dim"></button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Step 4: Device Selection -->
+<section>
+<h2 class="font-title-md text-title-md mb-stack-md">4. Select Your Device</h2>
+<div class="space-y-3">
+<div class="relative">
+<select class="w-full appearance-none px-4 py-3 rounded-xl border border-outline-variant bg-white focus:ring-2 focus:ring-primary outline-none font-body-lg text-body-lg">
+<option>Select Brand (e.g. Apple)</option>
+<option>Apple</option>
+<option>Samsung</option>
+<option>Google</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-outline">expand_more</span>
+</div>
+<div class="relative">
+<select class="w-full appearance-none px-4 py-3 rounded-xl border border-outline-variant bg-white focus:ring-2 focus:ring-primary outline-none font-body-lg text-body-lg">
+<option>Select Model (e.g. iPhone 15 Pro)</option>
+<option>iPhone 15 Pro</option>
+<option>iPhone 15</option>
+<option>Galaxy S24 Ultra</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-outline">expand_more</span>
+</div>
+</div>
+</section>
+<!-- Step 5: Material -->
+<section>
+<h2 class="font-title-md text-title-md mb-stack-md">5. Choose Material</h2>
+<div class="grid grid-cols-2 gap-3"><button class="p-4 rounded-xl border-2 border-primary bg-primary/5 text-left transition-all hover:shadow-md"><div class="flex justify-between items-start mb-3"><span class="material-symbols-outlined text-primary">glass</span><span class="text-label-caps font-bold text-primary">FREE</span></div><p class="font-title-md text-on-surface">Ultra Glass</p><p class="text-[10px] text-outline uppercase tracking-widest mt-1">Premium Gloss</p></button><button class="p-4 rounded-xl border-2 border-outline-variant bg-white text-left hover:border-primary/50 transition-all hover:shadow-md"><div class="flex justify-between items-start mb-3"><span class="material-symbols-outlined text-outline">texture</span><span class="text-label-caps font-bold text-on-surface">+₹100</span></div><p class="font-title-md text-on-surface">Liquid Silicone</p><p class="text-[10px] text-outline uppercase tracking-widest mt-1">Soft Touch</p></button><button class="p-4 rounded-xl border-2 border-outline-variant bg-white text-left hover:border-primary/50 transition-all hover:shadow-md"><div class="flex justify-between items-start mb-3"><span class="material-symbols-outlined text-outline">potted_plant</span><span class="text-label-caps font-bold text-on-surface">+₹250</span></div><p class="font-title-md text-on-surface">Eco Leather</p><p class="text-[10px] text-outline uppercase tracking-widest mt-1">Sustainable</p></button><button class="p-4 rounded-xl border-2 border-outline-variant bg-white text-left hover:border-primary/50 transition-all hover:shadow-md"><div class="flex justify-between items-start mb-3"><span class="material-symbols-outlined text-outline">security</span><span class="text-label-caps font-bold text-on-surface">+₹150</span></div><p class="font-title-md text-on-surface">Tough Armor</p><p class="text-[10px] text-outline uppercase tracking-widest mt-1">Rugged Protection</p></button></div>
+</section>
+</div>
+</main>
+<!-- Sticky Bottom Bar -->
+<div class="fixed bottom-0 left-0 w-full z-50 px-4 pb-6 pt-4 bg-surface-white/80 backdrop-blur-md shadow-[0px_-4px_20px_rgba(15,23,42,0.05)] border-t border-outline-variant/30"><div class="max-w-md mx-auto flex items-center justify-between gap-6"><div class="flex flex-col"><span class="text-[10px] font-bold text-outline uppercase tracking-widest">Total Price</span><span class="text-2xl font-bold text-primary">₹499.00</span></div><button class="flex-grow bg-pure-black text-white h-14 rounded-full font-bold flex items-center justify-center gap-2 active:scale-95 transition-transform shadow-lg"><span class="">Add to Cart</span><span class="material-symbols-outlined">shopping_cart</span></button></div></div>
+<!-- Bottom Navigation Shell (Secondary Destinations Filter Applied: Suppressed for focused Task) -->
+<script>
+        function updateText(val) {
+            const previewText = document.getElementById('preview-text');
+            const span = previewText.querySelector('span');
+            if (val.trim() !== '') {
+                span.innerText = val.toUpperCase();
+                previewText.style.opacity = '1';
+            } else {
+                previewText.style.opacity = '0';
+            }
+        }
+
+        const patterns = {
+            'Anime': 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800',
+            'Cyber': 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800',
+            'Liquid': 'https://images.unsplash.com/photo-1604076913837-52ab5629fba9?auto=format&fit=crop&q=80&w=800',
+            'Duo': 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&q=80&w=800'
+        };
+
+        function changePattern(key) {
+            const preview = document.getElementById('dynamic-pattern');
+            preview.style.opacity = '0';
+            setTimeout(() => {
+                preview.style.backgroundImage = `url('${patterns[key]}')`;
+                preview.style.opacity = '1';
+            }, 300);
+            
+            // UI Feedback: Highlight Selected
+            const buttons = document.querySelectorAll('button.flex-shrink-0');
+            buttons.forEach(btn => {
+                const imgContainer = btn.querySelector('div');
+                const label = btn.querySelector('p');
+                imgContainer.classList.remove('border-primary', 'ring-2', 'ring-primary', 'ring-offset-2');
+                imgContainer.classList.add('border-transparent');
+                label.classList.remove('text-primary');
+                label.classList.add('text-on-surface-variant');
+            });
+
+            // Re-apply to active
+            event.currentTarget.querySelector('div').classList.remove('border-transparent');
+            event.currentTarget.querySelector('div').classList.add('border-primary', 'ring-2', 'ring-primary', 'ring-offset-2');
+            event.currentTarget.querySelector('p').classList.remove('text-on-surface-variant');
+            event.currentTarget.querySelector('p').classList.add('text-primary');
+        }
+
+        // Simple parallax effect on scroll for preview
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const preview = document.getElementById('case-preview');
+            const rate = scrolled * 0.05;
+            if (scrolled < 400) {
+                preview.style.transform = `translate3d(0px, ${rate}px, 0px) rotate(${rate * 0.1}deg)`;
+            }
+        });
+    </script>
+
+
+</body></html>

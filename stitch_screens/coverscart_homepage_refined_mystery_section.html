@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+
+<html lang="en" style=""><head></head><body class="bg-background text-on-background selection:bg-primary-fixed selection:text-on-primary-fixed">```html
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CoverScart | Designer Mobile Covers</title>
+<!-- Tailwind CSS v3 CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+                "on-surface": "#131b2e",
+                "inverse-primary": "#77d7c5",
+                "tertiary-container": "#b05f48",
+                "primary-fixed": "#93f4e0",
+                "surface-container-low": "#f2f3ff",
+                "on-error-container": "#93000a",
+                "on-secondary-fixed-variant": "#005321",
+                "on-tertiary-fixed": "#3b0900",
+                "on-secondary": "#ffffff",
+                "on-error": "#ffffff",
+                "surface-container-high": "#e2e7ff",
+                "secondary": "#006e2f",
+                "pure-black": "#0E0E0E",
+                "secondary-container": "#6bff8f",
+                "on-tertiary": "#ffffff",
+                "on-primary-container": "#fafffc",
+                "tertiary-fixed": "#ffdbd1",
+                "outline-variant": "#bdc9c5",
+                "primary-fixed-dim": "#77d7c5",
+                "on-primary-fixed-variant": "#005046",
+                "on-primary": "#ffffff",
+                "background": "#faf8ff",
+                "on-secondary-container": "#007432",
+                "tertiary": "#924732",
+                "on-background": "#131b2e",
+                "inverse-on-surface": "#eef0ff",
+                "on-primary-fixed": "#00201b",
+                "surface-dim": "#d2d9f4",
+                "surface-container": "#eaedff",
+                "secondary-fixed-dim": "#4ae176",
+                "on-surface-variant": "#3e4946",
+                "surface-bright": "#faf8ff",
+                "surface-container-highest": "#dae2fd",
+                "error-container": "#ffdad6",
+                "secondary-fixed": "#6bff8f",
+                "on-tertiary-fixed-variant": "#76321f",
+                "primary": "#00695c",
+                "on-tertiary-container": "#fffdff",
+                "outline": "#6e7a76",
+                "surface-white": "#FFFFFF",
+                "primary-container": "#108474",
+                "inverse-surface": "#283044",
+                "on-secondary-fixed": "#002109",
+                "surface": "#faf8ff",
+                "surface-tint": "#006b5d",
+                "surface-container-lowest": "#ffffff",
+                "error": "#ba1a1a",
+                "surface-variant": "#dae2fd",
+                "tertiary-fixed-dim": "#ffb5a0",
+                brand: {
+                  teal: '#108474',
+                  dark: '#111827',
+                  accent: '#059669',
+                }
+          },
+          borderRadius: {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+          },
+          spacing: {
+                "stack-sm": "8px",
+                "stack-md": "16px",
+                "gutter": "16px",
+                "container-margin": "20px",
+                "stack-lg": "32px",
+                "unit": "4px"
+          },
+          fontFamily: {
+                "headline-lg": ["Hanken Grotesk"],
+                "body-lg": ["Hanken Grotesk"],
+                "headline-lg-mobile": ["Hanken Grotesk"],
+                "body-sm": ["Hanken Grotesk"],
+                "display-lg": ["Hanken Grotesk"],
+                "title-md": ["Hanken Grotesk"],
+                "label-caps": ["Hanken Grotesk"]
+          },
+          animation: {
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'shimmer': 'shimmer 2s infinite linear',
+            'float': 'float 4s ease-in-out infinite',
+          },
+          keyframes: {
+            shimmer: {
+              '0%': { transform: 'translateX(-100%)' },
+              '100%': { transform: 'translateX(100%)' }
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-8px)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-typography">
+    @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;600;700;800;900&display=swap');
+    body { font-family: 'Hanken Grotesk', sans-serif; }
+    .vertical-text { writing-mode: vertical-rl; transform: rotate(180deg); }
+    
+    @media (prefers-reduced-motion: reduce) {
+      .animate-float, .animate-pulse-slow, .animate-shimmer, .reveal-item {
+        animation: none !important;
+        transition: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+
+    /* Motion Classes */
+    .reveal-item {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-item.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .stagger-1 { transition-delay: 100ms; }
+    .stagger-2 { transition-delay: 200ms; }
+    .stagger-3 { transition-delay: 300ms; }
+    .stagger-4 { transition-delay: 400ms; }
+
+    .hover-lift {
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .hover-lift:active, .hover-lift:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    }
+
+    .shimmer-container {
+      position: relative;
+      overflow: hidden;
+    }
+    .shimmer-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transform: translateX(-100%);
+      pointer-events: none;
+    }
+  </style>
+<style data-purpose="layout-tweaks">
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    
+    .hero-mask {
+      clip-path: ellipse(100% 85% at 50% 15%);
+    }
+  </style>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<div class="bg-primary-container text-white overflow-hidden whitespace-nowrap h-8 flex items-center relative w-full" style='font-family: "Hanken Grotesk", sans-serif;'><style>@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }</style><div class="flex animate-[marquee_20s_linear_infinite] min-w-full"><span class="px-4 text-[10px] font-bold tracking-widest uppercase flex-shrink-0">✨ GET FASTER DELIVERY ON PREPAID ORDERS. FREE SHIPPING. ✨</span><span class="px-4 text-[10px] font-bold tracking-widest uppercase flex-shrink-0">✨ GET FASTER DELIVERY ON PREPAID ORDERS. FREE SHIPPING. ✨</span><span class="px-4 text-[10px] font-bold tracking-widest uppercase flex-shrink-0">✨ GET FASTER DELIVERY ON PREPAID ORDERS. FREE SHIPPING. ✨</span><span class="px-4 text-[10px] font-bold tracking-widest uppercase flex-shrink-0">✨ GET FASTER DELIVERY ON PREPAID ORDERS. FREE SHIPPING. ✨</span></div></div>
+<!-- BEGIN: Top Banner -->
+<!-- END: Top Banner -->
+<!-- BEGIN: MainHeader -->
+<header class="sticky top-0 z-50 bg-white border-b border-surface-container px-4 py-3 flex items-center justify-between"><div class="flex items-center justify-between w-full max-w-screen-xl mx-auto">
+<button aria-label="Menu" class="p-2 flex-shrink-0" onclick="location.href='{{DATA:SCREEN:SCREEN_61}}'">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<div class="flex items-center space-x-2 cursor-pointer" onclick="location.href='{{DATA:SCREEN:SCREEN_32}}'">
+<svg class="w-6 h-6" fill="none" viewbox="0 0 24 24">
+<path d="M16 11V7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7V11" stroke="#108474" stroke-linecap="round" stroke-width="2"></path>
+<rect height="12" rx="2" stroke="#108474" stroke-width="2" width="14" x="5" y="9"></rect>
+<path d="M9 14L12 17L15 14" stroke="#108474" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="text-xl font-bold tracking-tighter uppercase text-primary">CoverScart</span>
+</div>
+<div class="flex items-center gap-2 flex-shrink-0">
+<button aria-label="Search" class="p-2" onclick="location.href='{{DATA:SCREEN:SCREEN_86}}'">
+<span class="material-symbols-outlined text-2xl">search</span>
+</button>
+<div class="relative p-2 cursor-pointer" onclick="location.href='{{DATA:SCREEN:SCREEN_70}}'">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="absolute top-1 right-1 bg-primary text-white text-[9px] rounded-full w-4 h-4 flex items-center justify-center font-bold">0</span>
+</div>
+</div>
+</div></header>
+<!-- END: MainHeader -->
+<main class="space-y-12">
+<!-- BEGIN: HeroSection -->
+<section class="relative bg-on-surface text-white py-20 px-8 overflow-hidden flex items-center justify-center text-center" data-purpose="hero">
+<!-- Background Image Overlay -->
+<div class="absolute inset-0 opacity-40 pointer-events-none">
+<img alt="" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBf1AAXwhgopnRl4qjxL98ShBMl4U0XtxMUid57wDpfEqyAq7qhd0Lan0693cttBqbvFdF3pERMlcH2oaOkU68zSB6OBKCiqC-cLhO7YHoBSSUm2ndkMmBlFFtqK0DQjPb4SS2ev5xhvuBfqhEEXEDBnVXTu2PMnxuEogaxh1RfahM3D4jUa4DL7X-NdyYaG210jNpIky2KgHsa41TjzVBLi7aZPKRuk5WJ36JPLSoiNv434IS3FICZ842lczh0tKl3fJrSb4ciVog"/>
+</div>
+<div class="relative z-10 max-w-md mx-auto">
+<h1 class="text-4xl font-bold leading-tight mb-2 reveal-item stagger-1 active">Designer Printed <br/><span class="text-primary-fixed">Mobile Covers</span></h1>
+<p class="text-xs text-surface-variant mb-8 leading-relaxed reveal-item stagger-2 active">
+          Premium glass cases, soft armor, and custom covers — all starting at just ₹299. Find your perfect fit, ship it fast.
+        </p>
+<div class="flex gap-3 justify-center">
+<button class="bg-primary text-white px-6 py-2 text-xs font-bold rounded-sm uppercase tracking-wider hover-lift reveal-item stagger-3 active" onclick="location.href='{{DATA:SCREEN:SCREEN_27}}'">Shop Now</button>
+<button class="border border-white text-white px-6 py-2 text-xs font-bold rounded-sm uppercase tracking-wider animate-pulse-slow reveal-item stagger-4 active" onclick="location.href='{{DATA:SCREEN:SCREEN_64}}'">Customize</button>
+</div>
+</div>
+</section><section class="py-6 bg-white overflow-hidden" data-purpose="infinite-carousel"><div class="flex items-center mb-4 px-6"><h2 class="font-bold text-lg text-on-surface">Featured Showcase</h2></div><div class="relative flex overflow-hidden"><div class="flex animate-[marquee_30s_linear_infinite] gap-4 px-4 min-w-full gap-6"><div class="w-64 h-80 flex-shrink-0 rounded-xl overflow-hidden bg-surface-container shadow-sm cursor-pointer" onclick="location.href='{{DATA:SCREEN:SCREEN_33}}'"><img alt="Product Showcase" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLvR0fnbThvZpdoF15x97DXsHWv8odImRekdQNIgHeVLKdwFiAVCEIM2XGNG-H8QBgTXDlqIZHU4gx-kqT-PzNa64B4gyngNF2Gt_VNBn7sQ4Sp2p-3b9vyU7_PriaS2beM5CAFweZtr6LJ2FEQxl37A6ZYkyXT--6l2Q6Blx16YomzWtshRHJcRWbRAcctEne5nKbpTwdAl8rQsLFzezJ0sTr5VftEwNv3A5uHHflyMCLUoOyQVhqGvFn0"/></div><div class="w-64 h-80 flex-shrink-0 rounded-xl overflow-hidden bg-surface-container shadow-sm cursor-pointer" onclick="location.href='{{DATA:SCREEN:SCREEN_33}}'"><video autoplay="" class="w-full h-full object-cover" loop="" muted="" playsinline="" poster="https://lh3.googleusercontent.com/aida/AP1WRLueMVqYhKyB8dhZg-H3-r1w0HA5zd2gfsHWGFlKJPX92ZaYZw7XACoWEY0r74yfze2osejvZLrKfyTO-vPjxSo-K8tJU9-veulFXZHTysqc-1_2kaUxbf4b9mzCkQ4dwlz4xVfoMX5Srf0vXEStiQYnRff38CH2D8KzLTUwOBK8APZIZ10O3pnoo1HjrVKvs7cGwuGhmZae3hIQhq-sLKQILiXmBxi6exyYU9KNBopczTnfj3Jz7ulOlW0"><source src="" type="video/mp4"/></video></div><div class="w-64 h-80 flex-shrink-0 rounded-xl overflow-hidden bg-surface-container shadow-sm cursor-pointer" onclick="location.href='{{DATA:SCREEN:SCREEN_33}}'"><img alt="Product Showcase" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLvSvO19vHDuo6uwhv_yf7CvBMjxtGhWbi7UraPef6CE5JHLcCIMtC0mojbUGUlaXY0ytEadUStykf1zvYEK_CcOprdTsFuj9MT4vrsjURhg7Lu82_oOQrmXBj4V9zW3ukhRRZ1Vdm602yvfcdFPGeJ5QenmuBIGGhMzkl6I-aYRBIjFbdr3Evpf_ofx3Hh-PfrJgXw51agQjTc4OE1Ei3dV8nGnUARuGCMPMN9Hl3eCt1dbD6xmEQnQoQ"/></div><div class="w-64 h-80 flex-shrink-0 rounded-xl overflow-hidden bg-surface-container shadow-sm cursor-pointer" onclick="location.href='{{DATA:SCREEN:SCREEN_33}}'"><img alt="Product Showcase" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLvuB4gtMWxNnbZyBakPpg-ctyzKYNY16EXZt_xEsTaXp0ovja2tjCAAOyMk7QvMYnQUxbmx16Dq1E5rZJtVKp9jCJSSuy8DdKmuixB1Omc_A4M0pTamcdQetcb_xDg0wyFUu8oKPUtSrFzoKprbrdkWlhnd87FA225smFwgAG9LXYuf4h5FdR8pxBmCBHs_AB6IhscvuP3EhJS2LjplzY0isiTbklK_2_J_bV0daTey9pAyIjIdhAA0UAU"/></div><div class="w-64 h-80 flex-shrink-0 rounded-xl overflow-hidden bg-surface-container shadow-sm cursor-pointer" onclick="location.href='{{DATA:SCREEN:SCREEN_33}}'"><img alt="Product Showcase" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLvR0fnbThvZpdoF15x97DXsHWv8odImRekdQNIgHeVLKdwFiAVCEIM2XGNG-H8QBgTXDlqIZHU4gx-kqT-PzNa64B4gyngNF2Gt_VNBn7sQ4Sp2p-3b9vyU7_PriaS2beM5CAFweZtr6LJ2FEQxl37A6ZYkyXT--6l2Q6Blx16YomzWtshRHJcRWbRAcctEne5nKbpTwdAl8rQsLFzezJ0sTr5VftEwNv3A5uHHflyMCLUoOyQVhqGvFn0"/></div><div class="w-64 h-80 flex-shrink-0 rounded-xl overflow-hidden bg-surface-container shadow-sm cursor-pointer" onclick="location.href='{{DATA:SCREEN:SCREEN_33}}'"><video autoplay="" class="w-full h-full object-cover" loop="" muted="" playsinline="" poster="https://lh3.googleusercontent.com/aida/AP1WRLueMVqYhKyB8dhZg-H3-r1w0HA5zd2gfsHWGFlKJPX92ZaYZw7XACoWEY0r74yfze2osejvZLrKfyTO-vPjxSo-K8tJU9-veulFXZHTysqc-1_2kaUxbf4b9mzCkQ4dwlz4xVfoMX5Srf0vXEStiQYnRff38CH2D8KzLTUwOBK8APZIZ10O3pnoo1HjrVKvs7cGwuGhmZae3hIQhq-sLKQILiXmBxi6exyYU9KNBopczTnfj3Jz7ulOlW0"><source src="" type="video/mp4"/></video></div><div class="w-64 h-80 flex-shrink-0 rounded-xl overflow-hidden bg-surface-container shadow-sm cursor-pointer" onclick="location.href='{{DATA:SCREEN:SCREEN_33}}'"><img alt="Product Showcase" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLvSvO19vHDuo6uwhv_yf7CvBMjxtGhWbi7UraPef6CE5JHLcCIMtC0mojbUGUlaXY0ytEadUStykf1zvYEK_CcOprdTsFuj9MT4vrsjURhg7Lu82_oOQrmXBj4V9zW3ukhRRZ1Vdm602yvfcdFPGeJ5QenmuBIGGhMzkl6I-aYRBIjFbdr3Evpf_ofx3Hh-PfrJgXw51agQjTc4OE1Ei3dV8nGnUARuGCMPMN9Hl3eCt1dbD6xmEQnQoQ"/></div><div class="w-64 h-80 flex-shrink-0 rounded-xl overflow-hidden bg-surface-container shadow-sm cursor-pointer" onclick="location.href='{{DATA:SCREEN:SCREEN_33}}'"><img alt="Product Showcase" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLvuB4gtMWxNnbZyBakPpg-ctyzKYNY16EXZt_xEsTaXp0ovja2tjCAAOyMk7QvMYnQUxbmx16Dq1E5rZJtVKp9jCJSSuy8DdKmuixB1Omc_A4M0pTamcdQetcb_xDg0wyFUu8oKPUtSrFzoKprbrdkWlhnd87FA225smFwgAG9LXYuf4h5FdR8pxBmCBHs_AB6IhscvuP3EhJS2LjplzY0isiTbklK_2_J_bV0daTey9pAyIjIdhAA0UAU"/></div></div></div></section>
+<!-- END: HeroSection -->
+<!-- BEGIN: BrowseByStyle -->
+<section class="py-8 px-4 relative z-20 bg-white rounded-t-[3rem]" data-purpose="categories">
+<div class="flex justify-between items-end mb-4 px-2">
+<h2 class="font-bold text-lg text-on-surface">Browse by Style</h2>
+<a class="text-[10px] uppercase font-bold text-outline border-b border-outline" href="{{DATA:SCREEN:SCREEN_27}}">View All</a>
+</div>
+<div class="flex gap-3 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-2 px-4">
+<!-- Category Card 1 -->
+<div class="reveal-item stagger-1 relative rounded-xl overflow-hidden aspect-[4/5] group w-48 flex-shrink-0 snap-center hover-lift active cursor-pointer" onclick="location.href='{{DATA:SCREEN:SCREEN_27}}'">
+<img alt="Anime/Action" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA01lxw1_Qwl-hUShM3043ZfYE-kKafDJUVOvkmUQ66kd04hXWXiBptE4m8dqXQ44zq2HhDh-I9uRW24mOdFgzq5xayLzOg0A53MXefu_znCV3C2dmpqUQEsCLwhcdyQNzn3u3Qvl9aOvcltie4u4yBgV26WA9395zfmwqp9thuGviD6nv90iaH4aBRzZVo4izbYLhNKvQIA6yJlYYvvufxHFdlhRk86cYSBqqr7-__Y4ONeMW67CbSHJixcbkWnXhg4baMRPWTf5Y"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-4 flex flex-col justify-end">
+<span class="text-[8px] uppercase font-bold text-gray-300">Pop Culture</span>
+<span class="text-sm font-bold text-white">Anime/Action</span>
+</div>
+</div>
+<!-- Category Card 2 -->
+<div class="reveal-item stagger-2 relative rounded-xl overflow-hidden aspect-[4/5] w-48 flex-shrink-0 snap-center hover-lift active cursor-pointer" onclick="location.href='{{DATA:SCREEN:SCREEN_27}}'">
+<img alt="Minimalist" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTgvBBCdPHVjfyg8djlp1anCYfafCytwdBShGk_TxOUPRPzyI6Peewe1pMf_DUAaQlH_VPV9naJe_fqV07BYGjmV2otquplTvUmRHMZsIfKcGOT88DstkPCuujKrvIxF5gBAKbFcRwkQbUR6Lbvk_0tIn2XoY5vfcopGy-vdJtjjuBU_PbQ2OYlsGmG_CP-enszcZeTkab7_xVb4nd2ypP_p0eEhc6PctvqiXqDwxBZ1jyp4IH1AfAZtfFXq9KPwo9AGeHAtF3DDc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-4 flex flex-col justify-end">
+<span class="text-[8px] uppercase font-bold text-gray-300">Minimalist</span>
+<span class="text-sm font-bold text-white">Tech Designs</span>
+</div>
+</div>
+<!-- Category Card 3 -->
+<div class="reveal-item stagger-3 relative rounded-xl overflow-hidden aspect-[4/5] w-48 flex-shrink-0 snap-center hover-lift active cursor-pointer" onclick="location.href='{{DATA:SCREEN:SCREEN_27}}'">
+<img alt="Animal Pets" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfxvdvetUz5EE7Fyvm83cX1DluX5DJjE-Fkht4dz6-XkirlU6tr6TKxJg5zlxB3_not6MFw_7fhY935pVlDDIQYL8zjv6XHwMN31RPygcsVD3FBge6ikSEqb2XWDheAMWQQlZoScvVnsoROcmnhB7O1Bd0QUFbH7SfQ0nYOCH8FaGiIZM5IhfPuaVvOpgNqHDIhnqZUWZ0JguLya10-gOb3DaD_MaTKEUfAL0sOy9eXMqgBnoDAYF0DXRWvnb6yY-2frlcueHRqUk"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-4 flex flex-col justify-end">
+<span class="text-[8px] uppercase font-bold text-gray-300">Illustration</span>
+<span class="text-sm font-bold text-white">Animal Pets</span>
+</div>
+</div>
+<!-- Category Card 4 -->
+<div class="reveal-item stagger-4 relative rounded-xl overflow-hidden aspect-[4/5] w-48 flex-shrink-0 snap-center hover-lift active cursor-pointer" onclick="location.href='{{DATA:SCREEN:SCREEN_27}}'">
+<img alt="Artistic Patterns" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmqnrs2C7WwNf8yMKQ7Ey1LVaKxdw3f88VqQg7svZ5-R5yOhylqDQyt237ixUZCqyPyFjRzNmE7PGas23n9INjNvmUPtgU4eVVhsrA6cI6y1XusTTdkQvI-dw1oht26sFO0J5gsCRrNMEO3bZCf-3N9uI45zN6vP2BIJWcjD6yvcKDZRbdmQYlAnu0R4NQFYUm956m4aMU4Yi9VVXjdocqmEjatV6djnbKWpGZgBWZNEMoCcWZCEbSFUtoRZvaD7_6YhJT-PrVNAQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-4 flex flex-col justify-end">
+<span class="text-[8px] uppercase font-bold text-gray-300">Artistic</span>
+<span class="text-sm font-bold text-white">Patterns</span>
+</div>
+</div>
+</div>
+</section>
+<!-- END: BrowseByStyle -->
+<!-- BEGIN: NewArrivals -->
+<section class="py-12 px-6 overflow-hidden bg-surface-container-lowest" data-purpose="mystery-pouch-feature"><div class="max-w-screen-xl mx-auto flex flex-col gap-8 py-10">
+<div class="relative h-80 w-full flex items-center justify-center animate-float">
+<div class="absolute inset-0 z-0">
+<img alt="Mystery Pouch Teaser" class="w-full h-full object-contain rounded-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgd1TyuWo155LhZ6TSNMYGxgl8J-5u0blm1jG0DKXjK6G66yS-Zq39e1YqskDOUHCF0cs-AvTn94AhTxgy9Sq4a25zDQNhPubTcLYugoeN9vryMJum4-I5eXnXtnskJ8IMGNlx_mNk08ltu9jniky18TTZdwqHUor_tv4Neni0vDOqO26Cqetf2yVqoNv8VhkuUWFGv5V4mOIGMHImvbOea6evUuVvWJQx2Mblq4KUzDkWmPe_rfvqkLEQluRwyn0bVI3N9tt5P1k"/>
+</div>
+</div>
+<div class="flex flex-col items-center text-center space-y-4 px-4">
+<span class="text-[10px] uppercase tracking-widest font-bold text-primary reveal-item active stagger-1">
+      Every mystery is different.
+    </span>
+<h2 class="text-3xl font-bold text-on-surface reveal-item active stagger-2">
+      Unlock a Mystery Pouch 👀
+    </h2>
+<p class="text-sm text-on-surface-variant leading-relaxed max-w-xs reveal-item active stagger-3">
+      Pick your device and receive a surprise pouch design chosen randomly by our team. You won’t know what you’re getting until it arrives.
+    </p>
+<button class="mt-4 bg-primary text-white px-8 py-3 rounded-full font-bold uppercase tracking-wider text-xs hover-lift active:scale-95 reveal-item active stagger-4" onclick="location.href='{{DATA:SCREEN:SCREEN_52}}'">
+      Explore Mystery
+    </button>
+</div>
+</div></section><section class="py-8 px-4 bg-surface-container-low" data-purpose="new-arrivals">
+<h2 class="font-bold text-lg mb-4 px-2 text-on-surface">New Arrival</h2>
+<div class="grid grid-cols-1 gap-4">
+<!-- Arrival Card: ArmorPad -->
+<div class="relative flex bg-surface-container rounded-xl overflow-hidden h-40 shimmer-container border border-outline-variant cursor-pointer" onclick="location.href='{{DATA:SCREEN:SCREEN_27}}'">
+<div class="shimmer-overlay animate-shimmer"></div>
+<div class="flex-1 p-5 flex flex-col justify-between z-10">
+<div>
+<span class="text-[10px] text-on-surface-variant font-medium">ArmorPad Cases</span>
+<button class="mt-2 block bg-white text-[9px] font-bold px-3 py-1.5 rounded-sm border border-outline-variant uppercase hover-lift">Shop Now →</button>
+</div>
+<h3 class="text-xl font-bold text-on-surface">ArmorPad Cases</h3>
+</div>
+<div class="w-1/3 relative z-10">
+<img alt="ArmorPad" class="h-full w-full object-cover animate-float" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdqfTDXVlpJd3jaClrKjqMVKGKUpVRsyTRQlQbz6EAJgAd69DJp49NrjBt5A9Dtc64ZQ9cgHsjy9_x5N6n1sE81MDnWuebElBlJByzDUh_H9m8xlkzoQh-qb57tyv7yb5nJCalJNHtMqhenTNwtauQeofDgtR-1L3W4xG-u3besC_7PXEEk6seJ7H8NRTBDdlRzruapqbGyB08BWHi3loGGO4HGDD52YguiXkgX1lK3etsrjk72dybfjWARNgEmic_BuW_8lj05w4"/>
+</div>
+<div class="bg-primary/20 w-8 flex items-center justify-center border-l border-primary/10 z-10">
+<span class="vertical-text text-[9px] font-bold tracking-widest uppercase text-on-surface-variant">NEW ARRIVAL</span>
+</div>
+</div>
+<!-- Arrival Card: Premium Leather -->
+<div class="relative flex bg-surface-container-high rounded-xl overflow-hidden h-40 shimmer-container border border-outline-variant cursor-pointer" onclick="location.href='{{DATA:SCREEN:SCREEN_27}}'">
+<div class="shimmer-overlay animate-shimmer" style="animation-delay: 0.5s;"></div>
+<div class="flex-1 p-5 flex flex-col justify-between z-10">
+<div>
+<div class="flex gap-4 text-[9px] font-bold">
+<div><span class="text-outline line-through mr-1">₹799</span> <span class="text-error">₹299.00</span></div>
+</div>
+<button class="mt-2 block bg-white text-[9px] font-bold px-3 py-1.5 rounded-sm border border-outline-variant uppercase hover-lift">Shop Now →</button>
+</div>
+<h3 class="text-xl font-bold leading-tight text-on-surface">Premium Leather <br/>Cases</h3>
+</div>
+<div class="w-1/3 relative z-10">
+<img alt="Leather Cases" class="h-full w-full object-cover animate-float" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfWZJ51bLSr11GRGA7sK-0Q7h3CuqDis-8KZLyCo1sQivVMaHTxhaGf9-I9Lo9KQFGHUYj4Su_tFgUGaEQ_CJnA9L5TYhNj6BsPrSw-WPE8lD5YaPmZIy3TPcDyXG3PrksavuP8sEVAZ6q4lp5wnjrpxmflnsTwv7xtjITVVqo_MIWKhM2gX5f2WZDlN2Qyv_ZQDIGMfZef36JcRvm5lb5fzGYKvT_weH5JiOFw8SGmkZ89UkhVcD4rSrPPxmvi4AhjNCmTZ8htVU"/>
+</div>
+<div class="bg-primary/20 w-8 flex items-center justify-center border-l border-primary/10 z-10">
+<span class="vertical-text text-[9px] font-bold tracking-widest uppercase text-on-surface-variant">NEW ARRIVAL</span>
+</div>
+</div>
+<!-- Arrival Card: MagSafe -->
+<div class="relative flex bg-surface-dim rounded-xl overflow-hidden h-40 shimmer-container border border-outline-variant cursor-pointer" onclick="location.href='{{DATA:SCREEN:SCREEN_27}}'">
+<div class="shimmer-overlay animate-shimmer" style="animation-delay: 1s;"></div>
+<div class="flex-1 p-5 flex flex-col justify-between z-10">
+<div>
+<button class="mt-2 block bg-white text-[9px] font-bold px-3 py-1.5 rounded-sm border border-outline-variant uppercase hover-lift">Shop Now →</button>
+</div>
+<h3 class="text-xl font-bold text-on-surface">MagSafe Cases</h3>
+</div>
+<div class="w-1/3 relative z-10">
+<img alt="MagSafe" class="h-full w-full object-cover animate-float" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcwgyJPNteySyAYx7snf3TjMIZh90pqUxiQgEvyVM_uY8yHzAtTrVY1dmRiREvLNIIMWjj0SbvqDxgSzEZBrNJim87dq_NuvPcbmxDi8zN3ppUKWUU_QTu1AArb5oEDGQ6HCXjegRwDxuyJZBrWUC8__pt6OSX1RUn6n0SmfLXfOGfq03flUegI4goHOIqt4WIJuIXo82wid-2uDUYva4sriUUq5OeCt4ncVbenaPCkJrYO6NrpYL5fd8TU5e-jrrf6cwuxBZGBa8"/>
+</div>
+<div class="bg-primary/20 w-8 flex items-center justify-center border-l border-primary/10 z-10">
+<span class="vertical-text text-[9px] font-bold tracking-widest uppercase text-on-surface-variant">NEW ARRIVAL</span>
+</div>
+</div>
+</div>
+</section>
+<!-- END: NewArrivals -->
+<!-- BEGIN: OurPicks -->
+<section class="py-10 px-4" data-purpose="product-grid">
+<div class="flex justify-between items-center mb-6 px-2">
+<h2 class="font-bold text-lg text-on-surface">Our Picks</h2>
+<div class="flex gap-2">
+<button class="w-8 h-8 rounded-full border border-outline-variant flex items-center justify-center text-outline hover:bg-surface-container-low transition-colors">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<button class="w-8 h-8 rounded-full border border-outline-variant flex items-center justify-center text-outline hover:bg-surface-container-low transition-colors">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-x-4 gap-y-8">
+<!-- Product 1 -->
+<div class="hover-lift cursor-pointer" data-purpose="product-card" onclick="location.href='{{DATA:SCREEN:SCREEN_33}}'">
+<div class="relative bg-surface-container-lowest rounded-2xl p-4 mb-3 aspect-[4/5] flex items-center justify-center overflow-hidden border border-surface-container">
+<img alt="Product" class="h-full object-contain animate-float" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD85iH6lWe1q45ubyAapgGMHYqqaDxKkWBd8uCj0GAEmmIPy-7FZyNf137T6XVEGn4kUpOdQASAeHC1ZrZ7-s9-H01IDN1aqYRyIpw2Uz9roJxvp_pAdiQrFtLs7qOdOIGyWbxP13Qo9MsY2kf1KX_GhrT9fEkLvJK1mD0GZ0IfQShFa5kYjtO3ipjSN5VluDbQ99sL5NtB0kIjgS1-QEk20V31CYmcRVG008J87_CC54jh3TwuEIlIQjtlmsXeg6CCRS3E4VTLPNk"/>
+<button class="absolute top-3 right-3 bg-white p-1.5 rounded-full shadow-sm hover:scale-110 transition-transform" onclick="event.stopPropagation(); location.href='{{DATA:SCREEN:SCREEN_22}}'">
+<svg class="w-4 h-4 text-outline" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+<h4 class="text-[11px] font-semibold text-on-surface truncate">Crimson Sun Mountai...</h4>
+<p class="text-[11px] font-bold mt-1">
+<span class="text-primary">₹299.00</span>
+<span class="text-outline line-through ml-1 font-normal text-[10px]">₹799.00</span>
+</p>
+</div>
+<!-- Product 2 -->
+<div class="hover-lift cursor-pointer" data-purpose="product-card" onclick="location.href='{{DATA:SCREEN:SCREEN_33}}'">
+<div class="relative bg-surface-container-lowest rounded-2xl p-4 mb-3 aspect-[4/5] flex items-center justify-center overflow-hidden border border-surface-container">
+<img alt="Product" class="h-full object-contain animate-float" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwOLoI0ePbj5V_KMboqZhvL2PNh7W-c773jA84zZqq7Nr217tCRKBiyjKCuywitS-ZiQQhKG0qPZaXCLuIyFNDyTZ5I9lN9d_9yqbU80JihRifYKQeMZbHbdnkwl703GejXiof7rGJ6HkRh_cjC_6e5O0SE3Q0302sw6-OVp3d9vF76eAEbfOdET7vH8ydUnekSK34Ey3-i1YzajbQlD8Ecx5AaA2CAD4ITCTf3C0me6DTInMNoZcNLYL0A2XaKQny_BghE6LmkuQ"/>
+<button class="absolute top-3 right-3 bg-white p-1.5 rounded-full shadow-sm hover:scale-110 transition-transform" onclick="event.stopPropagation(); location.href='{{DATA:SCREEN:SCREEN_22}}'">
+<svg class="w-4 h-4 text-outline" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+<h4 class="text-[11px] font-semibold text-on-surface truncate">Cherry Blossom Oce...</h4>
+<p class="text-[11px] font-bold mt-1">
+<span class="text-primary">₹299.00</span>
+<span class="text-outline line-through ml-1 font-normal text-[10px]">₹799.00</span>
+</p>
+</div>
+<!-- Product 3 -->
+<div class="hover-lift cursor-pointer" data-purpose="product-card" onclick="location.href='{{DATA:SCREEN:SCREEN_33}}'">
+<div class="relative bg-surface-container-lowest rounded-2xl p-4 mb-3 aspect-[4/5] flex items-center justify-center overflow-hidden border border-surface-container">
+<img alt="Product" class="h-full object-contain animate-float" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqD1yrrjLET-ISobRYezfJdQUrNJ_jXqNjRwNXdc9n0xV35241yoKlMkBfcXXErRbbtVG3f6DBUHdwSRplakDs2OyYX0Nr_6Tm6vzQAQO1qaMswc-uXnA8F58YSmRntLGujqXud8y0c-mn9ztUuJya5aOYidktDbR2ZjeG3WyT_NVTrnwDjRCZ72YzMFDeW2aOPjBI45HHrNbM-xePeudd3RWSC38kKp9NHCmCGBYNjm7UIOUndJg_P-q33GzGUUnsQA7Ru2z11cU"/>
+<button class="absolute top-3 right-3 bg-white p-1.5 rounded-full shadow-sm hover:scale-110 transition-transform" onclick="event.stopPropagation(); location.href='{{DATA:SCREEN:SCREEN_22}}'">
+<svg class="w-4 h-4 text-outline" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+<h4 class="text-[11px] font-semibold text-on-surface truncate">Autumn Moon Valley...</h4>
+<p class="text-[11px] font-bold mt-1">
+<span class="text-primary">₹299.00</span>
+<span class="text-outline line-through ml-1 font-normal text-[10px]">₹799.00</span>
+</p>
+</div>
+<!-- Product 4 -->
+<div class="hover-lift cursor-pointer" data-purpose="product-card" onclick="location.href='{{DATA:SCREEN:SCREEN_33}}'">
+<div class="relative bg-surface-container-lowest rounded-2xl p-4 mb-3 aspect-[4/5] flex items-center justify-center overflow-hidden border border-surface-container">
+<img alt="Product" class="h-full object-contain animate-float" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiStsl4FsxfzRuHjRVPobkpZsJTXxw1_o4WrA9e8xglTyVsKjMM7AdqfZTVvTHxWedn4_D5tO8UEd0EJqyn72zkmuU9OYd0i3oduSXDz4zoaq0Ng51q6rC4BAC7IohnIsIdmTSJMH9fO2txIOsXFqLnEO-FYELGPqckaPg9TtfEw3u1ND7SolZmoqouf4RG6FAnoDbuI7nABGq9E9vooPUOS8FkZnM4z7rd2NJ_0f7y_AXyRpJPsgHA61UyVX6ocnBy9L0jFHugCs"/>
+<button class="absolute top-3 right-3 bg-white p-1.5 rounded-full shadow-sm hover:scale-110 transition-transform" onclick="event.stopPropagation(); location.href='{{DATA:SCREEN:SCREEN_22}}'">
+<svg class="w-4 h-4 text-outline" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+<h4 class="text-[11px] font-semibold text-on-surface truncate">Elegant Lace Girl...</h4>
+<p class="text-[11px] font-bold mt-1">
+<span class="text-primary">₹299.00</span>
+<span class="text-outline line-through ml-1 font-normal text-[10px]">₹799.00</span>
+</p>
+</div>
+</div>
+</section>
+<!-- END: OurPicks -->
+<!-- BEGIN: InstagramSection -->
+<section class="py-12 bg-white text-center reveal-item active" data-purpose="instagram">
+<span class="text-[9px] uppercase tracking-widest text-on-surface-variant font-bold">Follow us on Instagram</span>
+<h2 class="text-2xl font-bold mt-1 mb-8 text-on-surface cursor-pointer" onclick="location.href='{{DATA:SCREEN:SCREEN_20}}'">#COVERSCART</h2>
+<div class="grid grid-cols-2 gap-1 px-4">
+<div class="aspect-square bg-surface-container overflow-hidden cursor-pointer" onclick="location.href='{{DATA:SCREEN:SCREEN_20}}'"><img class="w-full h-full object-cover hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2a-gOnA6BYSRiLgpkF9CRQZATy1PLg6Ovd8M5Q_TMmazIeuBgrz5zglvEqdI_cF-7lC_RQ8G3F3IKQwDGCJ8ZwrJCJyBhE_nYd0uYGcYtUhTojmh1rEuDASQaDwUZSP4EgNEcpz9__0-Div3MxdsoZEhLqMSd1n1jCMF-UUnVetMO31KdNTdSvytJGFofmigpOkcMRNQD8TNCjNs56JEWkvGFwcTUjJVRUcAiuMW-78ZQeL1L_eK5ColfyZtpmcUJuFObE2WZRAY"/></div>
+<div class="aspect-square bg-surface-container overflow-hidden cursor-pointer" onclick="location.href='{{DATA:SCREEN:SCREEN_20}}'"><img class="w-full h-full object-cover hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEzaW3djKmimJQWxABTN3F_UDpurwmBGLF8pJcIB7eIEw03rHq0Ef9-8xu4wvqIeGhNuC9auHmLzTAqMxxALdceU94cvAcpvqecVz9V9HM4Lf_SUUNpGlddaQRiSdR4V8mjWs9dTkhwwLJlFz022_WFEM728xXIq2pg3WRLNlQTFeTEKVVmmJE8nre_N2foxSj186ZhLyCFhd3BHFE8vr0-LRAVmBT8WN8nPr3QEDzG-zSJJoLmYeM1pl-w50_KkwaneMIw0A34bg"/></div>
+</div>
+</section>
+<!-- END: InstagramSection -->
+</main>
+<!-- BEGIN: Footer -->
+<section class="py-12 px-6 bg-white border-t border-surface-container" data-purpose="newsletter">
+<div class="max-w-xs mx-auto text-center">
+<h2 class="text-2xl font-bold text-on-surface mb-2">Join our newsletter</h2>
+<p class="text-sm text-on-surface-variant mb-8">Get updates on new arrivals and exclusive offers.</p>
+<form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="event.preventDefault()">
+<div class="relative flex-1">
+<input class="w-full px-4 py-3 bg-surface-container-lowest border border-outline-variant rounded-sm text-sm focus:outline-none focus:border-primary transition-colors" placeholder="Email address" type="email"/>
+</div>
+<button class="w-full bg-pure-black text-white py-3 text-xs font-bold rounded-sm uppercase tracking-widest hover:bg-primary transition-colors active:scale-95" type="submit">
+        Subscribe
+      </button>
+</form>
+</div>
+</section><footer class="bg-surface-container text-on-surface-variant pt-12 pb-24 px-4" data-purpose="main-footer">
+<div class="max-w-screen-xl mx-auto">
+<div class="grid grid-cols-1 gap-y-10 mb-12">
+<!-- Brand Section -->
+<div class="flex flex-col items-start reveal-item active">
+<div class="flex items-center space-x-1 mb-4 cursor-pointer" onclick="location.href='{{DATA:SCREEN:SCREEN_32}}'">
+<svg class="w-8 h-8" fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M16 11V7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7V11" stroke="#108474" stroke-linecap="round" stroke-width="2"></path>
+<rect height="12" rx="2" stroke="#108474" stroke-width="2" width="14" x="5" y="9"></rect>
+</svg>
+<span class="text-2xl font-bold tracking-tighter uppercase text-primary">CoverScart</span>
+</div>
+<p class="text-sm leading-relaxed max-w-xs">
+          Premium covers for every device. Protected your tech with style since 2020.
+        </p>
+</div>
+<!-- Links (Accordion Style for Mobile) -->
+<div class="space-y-4 reveal-item stagger-1 active"><details class="group border-b border-outline-variant pb-2" open=""><summary class="flex justify-between items-center list-none cursor-pointer py-4"><span class="text-sm font-bold uppercase tracking-wider text-on-surface">Quick Links</span><span class="material-symbols-outlined text-sm group-open:rotate-180 transition-transform duration-300">expand_more</span></summary><ul class="mt-2 space-y-1 text-sm space-y-0"><li class=""><a class="flex items-center h-[44px] hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_76}}">Track Order</a></li><li class=""><a class="flex items-center h-[44px] hover:text-primary transition-colors" href="#">FAQ</a></li><li class=""><a class="flex items-center h-[44px] hover:text-primary transition-colors" href="#">Contact Us</a></li><li class=""><a class="flex items-center h-[44px] hover:text-primary transition-colors" href="#">About Us</a></li></ul></details><details class="group border-b border-outline-variant pb-2"><summary class="flex justify-between items-center list-none cursor-pointer py-4"><span class="text-sm font-bold uppercase tracking-wider text-on-surface">Shop Categories</span><span class="material-symbols-outlined text-sm group-open:rotate-180 transition-transform duration-300">expand_more</span></summary><ul class="mt-2 space-y-1 text-sm space-y-0"><li class=""><a class="flex items-center h-[44px] hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_27}}">Apple Cases</a></li><li class=""><a class="flex items-center h-[44px] hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_27}}">Samsung Cases</a></li><li class=""><a class="flex items-center h-[44px] hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_27}}">OnePlus Cases</a></li><li class=""><a class="flex items-center h-[44px] hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_64}}">Custom Cases</a></li></ul></details><details class="group border-b border-outline-variant pb-2"><summary class="flex justify-between items-center list-none cursor-pointer py-4"><span class="text-sm font-bold uppercase tracking-wider text-on-surface">Policy Links</span><span class="material-symbols-outlined text-sm group-open:rotate-180 transition-transform duration-300">expand_more</span></summary><ul class="mt-2 space-y-1 text-sm space-y-0"><li class=""><a class="flex items-center h-[44px] hover:text-primary transition-colors" href="#">Privacy Policy</a></li><li class=""><a class="flex items-center h-[44px] hover:text-primary transition-colors" href="#">Terms &amp; Conditions</a></li><li class=""><a class="flex items-center h-[44px] hover:text-primary transition-colors" href="#">Shipping &amp; Returns</a></li></ul></details></div>
+<!-- Social & Payment -->
+<div class="flex flex-col gap-8 reveal-item stagger-2 active">
+<div>
+<h4 class="text-xs font-bold uppercase tracking-widest mb-4">Follow Us</h4>
+<div class="flex gap-4">
+<a class="w-8 h-8 flex items-center justify-center rounded-full bg-surface-container-highest hover:bg-primary hover:text-on-primary transition-all duration-300 hover:scale-110" href="{{DATA:SCREEN:SCREEN_20}}">
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24"></svg></a></div></div></div></div></div></footer>
+</body></html>

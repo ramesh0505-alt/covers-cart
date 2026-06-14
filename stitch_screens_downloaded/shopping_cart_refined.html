@@ -1,0 +1,272 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Your Cart | LUXE UTILITY</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-bright": "#faf8ff",
+            "on-primary": "#ffffff",
+            "error-container": "#ffdad6",
+            "primary-container": "#108474",
+            "surface-container": "#eaedff",
+            "on-secondary": "#ffffff",
+            "error": "#ba1a1a",
+            "on-surface-variant": "#3e4946",
+            "secondary-fixed-dim": "#4ae176",
+            "background": "#faf8ff",
+            "on-background": "#131b2e",
+            "surface-white": "#FFFFFF",
+            "on-error-container": "#93000a",
+            "on-secondary-fixed": "#002109",
+            "outline-variant": "#bdc9c5",
+            "secondary-fixed": "#6bff8f",
+            "outline": "#6e7a76",
+            "surface": "#faf8ff",
+            "surface-dim": "#d2d9f4",
+            "on-error": "#ffffff",
+            "tertiary-fixed-dim": "#ffb5a0",
+            "on-tertiary": "#ffffff",
+            "primary-fixed": "#93f4e0",
+            "on-secondary-fixed-variant": "#005321",
+            "on-tertiary-fixed-variant": "#76321f",
+            "on-surface": "#131b2e",
+            "surface-container-highest": "#dae2fd",
+            "surface-container-high": "#e2e7ff",
+            "inverse-surface": "#283044",
+            "on-tertiary-fixed": "#3b0900",
+            "on-primary-container": "#fafffc",
+            "surface-tint": "#006b5d",
+            "surface-container-low": "#f2f3ff",
+            "tertiary-container": "#b05f48",
+            "primary-fixed-dim": "#77d7c5",
+            "on-primary-fixed-variant": "#005046",
+            "pure-black": "#0E0E0E",
+            "secondary-container": "#6bff8f",
+            "primary": "#00695c",
+            "on-tertiary-container": "#fffdff",
+            "surface-variant": "#dae2fd",
+            "secondary": "#006e2f",
+            "inverse-primary": "#77d7c5",
+            "tertiary-fixed": "#ffdbd1",
+            "inverse-on-surface": "#eef0ff",
+            "on-secondary-container": "#007432",
+            "tertiary": "#924732",
+            "on-primary-fixed": "#00201b",
+            "surface-container-lowest": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "stack-sm": "8px",
+            "stack-lg": "32px",
+            "unit": "4px",
+            "container-margin": "20px",
+            "gutter": "16px",
+            "stack-md": "16px"
+          },
+          "fontFamily": {
+            "body-sm": ["Hanken Grotesk"],
+            "title-md": ["Hanken Grotesk"],
+            "label-caps": ["Hanken Grotesk"],
+            "headline-lg-mobile": ["Hanken Grotesk"],
+            "display-lg": ["Hanken Grotesk"],
+            "body-lg": ["Hanken Grotesk"],
+            "headline-lg": ["Hanken Grotesk"]
+          },
+          "fontSize": {
+            "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+            "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+            "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+            "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Hanken Grotesk', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      line-height: 1;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #00695c;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="w-full sticky top-0 z-50 bg-surface-white dark:bg-pure-black border-b border-surface-container dark:border-on-surface-variant flex items-center justify-between px-container-margin h-16 w-full max-w-screen-xl mx-auto">
+<div class="flex items-center gap-4">
+<button class="active:scale-95 transition-transform hover:opacity-80">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-display-lg text-title-md tracking-tighter text-pure-black dark:text-surface-white">LUXE UTILITY</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="active:scale-95 transition-transform hover:opacity-80 relative">
+<span class="material-symbols-outlined text-primary">shopping_bag</span>
+<span class="absolute -top-1 -right-1 bg-primary text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full">2</span>
+</button>
+</div>
+</header>
+<main class="flex-grow max-w-md mx-auto w-full px-container-margin py-stack-md">
+<!-- Header Section -->
+<div class="mb-stack-lg">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-pure-black">Your Cart</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">2 items selected for checkout</p>
+</div>
+<!-- Cart Item Section -->
+<div class="space-y-stack-md mb-stack-lg">
+<!-- Item 1: Kakashi Hatake Case -->
+<div class="flex gap-gutter bg-surface-white border border-surface-container-low p-stack-md rounded-xl transition-all">
+<div class="w-24 h-24 flex-shrink-0 bg-surface-container-low rounded-lg overflow-hidden border border-surface-container">
+<img class="w-full h-full object-cover" data-alt="A high-quality studio photograph of a premium glass phone case featuring vibrant anime artwork of a ninja character. The case is displayed against a minimalist, clean white background with soft, sophisticated lighting that highlights the glossy finish of the glass and the detailed green and black color palette. The aesthetic is modern and rugged, fitting a luxury tech accessory brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiknK0xsI7gZ94ExcAvyCvB4LXnQvQEtFVdaIgSMHyMDjmaG1PmjkMmmgUBgWHXvJ8KWjzp12mdNSLQP6XhHnXirb6DQKyGevG5l_yg1dNlZPbCHA23onzAnzhptfS12jGNwHfgVZPtpz8TnI-2aw4CXqnJR704YKppkKQIwtansMiS-zYT5e_OnX5fGKtQ6nTEG_1GtAJ8rWyxjjjI5lxmbR02pDBZYAwlQ9ncdD4dX4PBvn0fsrUtVh9HZRl54weKsSc77uc5HY">
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-title-md text-body-lg text-pure-black leading-tight">Kakashi Hatake Sharingan Anime Glass case</h3>
+<button class="text-outline hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Brand: Vivo | Model: Vivo X90</p>
+</div>
+<div class="flex justify-between items-end mt-stack-sm">
+<span class="font-title-md text-body-lg text-primary">₹299.00</span>
+<div class="flex items-center border border-outline-variant rounded-lg px-2 py-1 gap-3">
+<button class="text-outline hover:text-primary active:scale-90"><span class="material-symbols-outlined text-sm">remove</span></button>
+<span class="font-label-caps text-label-caps min-w-[12px] text-center">1</span>
+<button class="text-outline hover:text-primary active:scale-90"><span class="material-symbols-outlined text-sm">add</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 2: Utility Accessory (Placeholder for multiple items) -->
+<div class="flex gap-gutter bg-surface-white border border-surface-container-low p-stack-md rounded-xl transition-all opacity-80">
+<div class="w-24 h-24 flex-shrink-0 bg-surface-container-low rounded-lg overflow-hidden border border-surface-container">
+<img class="w-full h-full object-cover" data-alt="A sleek, matte black magnetic charging cable coiled neatly on a textured dark surface. The image uses dramatic, low-contrast side lighting to emphasize the premium metallic texture and rugged build quality. The overall mood is sophisticated and utilitarian, consistent with a high-end modern tech accessory brand's visual identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCX7S-UtDm4Nu75XmnI0EC9x2CmQz_s1OnTMu0C0S7_T0pCzsIJNbIKlXnO93AtekvWDhrFzseFwqDJp60PiLg8Nh2i6ocsUqzv1o8nlGhuZt1i8_nhuHbbPPqlLCECIxKoOGOtzNyzVXkFc1oF4grB57gShIp2loemreeIKGWEBeeEHUuUbq81ksd2OlH4LawbI9xNvswCAYNPMFqzPgNSxsQel1n9WTEM2vC2xni4gf9oWbBixq2gYVHfFV15C6I_rnNxnMK77w">
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-title-md text-body-lg text-pure-black leading-tight">Ultra-Durable Braided USB-C Cable</h3>
+<button class="text-outline hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Color: Midnight Black</p>
+</div>
+<div class="flex justify-between items-end mt-stack-sm">
+<span class="font-title-md text-body-lg text-primary">₹499.00</span>
+<div class="flex items-center border border-outline-variant rounded-lg px-2 py-1 gap-3">
+<button class="text-outline active:scale-90"><span class="material-symbols-outlined text-sm">remove</span></button>
+<span class="font-label-caps text-label-caps min-w-[12px] text-center">1</span>
+<button class="text-outline active:scale-90"><span class="material-symbols-outlined text-sm">add</span></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Promo Code Field -->
+<div class="mb-stack-lg">
+<label class="font-body-sm text-body-sm text-on-surface-variant mb-2 block">Apply Coupon Code</label>
+<div class="flex gap-2">
+<input class="flex-grow bg-surface-white border border-outline-variant px-4 py-3 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none font-body-sm" placeholder="Enter code" type="text">
+<button class="bg-pure-black text-white px-6 py-3 rounded-lg font-label-caps text-label-caps uppercase tracking-widest active:scale-95 transition-transform">Apply</button>
+</div>
+</div>
+<!-- Price Summary -->
+<div class="bg-surface-container-low/50 p-stack-md rounded-xl space-y-stack-sm mb-stack-lg border border-surface-container">
+<div class="flex justify-between font-body-sm text-body-sm text-on-surface-variant">
+<span>Subtotal</span>
+<span>₹798.00</span>
+</div>
+<div class="flex justify-between font-body-sm text-body-sm text-on-surface-variant">
+<span>Shipping</span>
+<span class="text-secondary font-bold">FREE</span>
+</div>
+<div class="flex justify-between font-body-sm text-body-sm text-on-surface-variant">
+<span>Tax (estimated)</span>
+<span>₹0.00</span>
+</div>
+<div class="pt-stack-sm mt-stack-sm border-t border-outline-variant flex justify-between items-center">
+<span class="font-title-md text-body-lg text-pure-black">Total</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-pure-black">₹798.00</span>
+</div>
+</div>
+<!-- Bottom Actions (Mobile focused) -->
+<div class="space-y-stack-sm pb-24">
+<button class="w-full bg-pure-black text-white py-4 rounded-xl font-title-md text-body-lg flex items-center justify-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_cart_checkout</span>
+        Check out
+      </button>
+<button class="w-full bg-transparent text-pure-black border border-pure-black py-4 rounded-xl font-title-md text-body-lg active:scale-95 transition-transform hover:bg-surface-container-low transition-colors">
+        Continue shopping
+      </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center py-stack-sm bg-surface-white dark:bg-pure-black border-t border-surface-container dark:border-on-surface-variant z-50 rounded-t-xl shadow-sm">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">storefront</span>
+<span class="font-label-caps text-label-caps">Shop</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-caps text-label-caps">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-bold active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_cart</span>
+<span class="font-label-caps text-label-caps">Cart</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-caps text-label-caps">Profile</span>
+</a>
+</nav>
+<script>
+    // Simple micro-interaction for active states
+    document.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        // Ripple or subtle feedback logic could go here
+      });
+    });
+  </script>
+</body></html>

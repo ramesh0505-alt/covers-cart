@@ -1,0 +1,474 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>CoverScart | Designer Mobile Covers</title>
+<!-- Tailwind CSS v3 CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary": "#924732",
+            "secondary": "#006e2f",
+            "surface-variant": "#dae2fd",
+            "surface-dim": "#d2d9f4",
+            "surface-container-low": "#f2f3ff",
+            "inverse-surface": "#283044",
+            "error-container": "#ffdad6",
+            "outline": "#6e7a76",
+            "surface-white": "#FFFFFF",
+            "secondary-fixed-dim": "#4ae176",
+            "primary-fixed": "#93f4e0",
+            "pure-black": "#0E0E0E",
+            "on-secondary": "#ffffff",
+            "on-primary-fixed": "#00201b",
+            "on-tertiary-fixed-variant": "#76321f",
+            "surface-container-highest": "#dae2fd",
+            "primary-container": "#108474",
+            "tertiary-fixed": "#ffdbd1",
+            "on-surface": "#131b2e",
+            "on-tertiary-fixed": "#3b0900",
+            "on-error": "#ffffff",
+            "secondary-container": "#6bff8f",
+            "on-background": "#131b2e",
+            "on-primary-fixed-variant": "#005046",
+            "surface-tint": "#006b5d",
+            "on-error-container": "#93000a",
+            "inverse-primary": "#77d7c5",
+            "background": "#faf8ff",
+            "on-secondary-fixed-variant": "#005321",
+            "outline-variant": "#bdc9c5",
+            "on-tertiary": "#ffffff",
+            "secondary-fixed": "#6bff8f",
+            "surface": "#faf8ff",
+            "on-secondary-container": "#007432",
+            "inverse-on-surface": "#eef0ff",
+            "on-secondary-fixed": "#002109",
+            "tertiary-fixed-dim": "#ffb5a0",
+            "primary": "#00695c",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary-container": "#fffdff",
+            "surface-container": "#eaedff",
+            "error": "#ba1a1a",
+            "primary-fixed-dim": "#77d7c5",
+            "on-surface-variant": "#3e4946",
+            "surface-container-high": "#e2e7ff",
+            "on-primary-container": "#fafffc",
+            "on-primary": "#ffffff",
+            "tertiary-container": "#b05f48",
+            "surface-bright": "#faf8ff",
+            brand: {
+              teal: '#4fd1c5',
+              dark: '#111827',
+              accent: '#059669',
+            }
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "gutter": "16px",
+            "container-margin": "20px",
+            "stack-md": "16px",
+            "unit": "4px",
+            "stack-sm": "8px",
+            "stack-lg": "32px"
+          },
+          "fontFamily": {
+            "headline-lg-mobile": ["Hanken Grotesk"],
+            "title-md": ["Hanken Grotesk"],
+            "body-sm": ["Hanken Grotesk"],
+            "label-caps": ["Hanken Grotesk"],
+            "display-lg": ["Hanken Grotesk"],
+            "headline-lg": ["Hanken Grotesk"],
+            "body-lg": ["Hanken Grotesk"]
+          },
+          "fontSize": {
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+            "title-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+            "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+          },
+          animation: {
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'shimmer': 'shimmer 2s infinite linear',
+            'float': 'float 4s ease-in-out infinite',
+          },
+          keyframes: {
+            shimmer: {
+              '0%': { transform: 'translateX(-100%)' },
+              '100%': { transform: 'translateX(100%)' }
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-8px)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-typography">
+    @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;600;700&display=swap');
+    body { font-family: 'Hanken Grotesk', sans-serif; }
+    .vertical-text { writing-mode: vertical-rl; transform: rotate(180deg); }
+    
+    @media (prefers-reduced-motion: reduce) {
+      .animate-float, .animate-pulse-slow, .animate-shimmer, .reveal-item {
+        animation: none !important;
+        transition: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+
+    .reveal-item {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-item.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .stagger-1 { transition-delay: 100ms; }
+    .stagger-2 { transition-delay: 200ms; }
+    .stagger-3 { transition-delay: 300ms; }
+    .stagger-4 { transition-delay: 400ms; }
+
+    .hover-lift {
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .hover-lift:active, .hover-lift:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    }
+
+    .shimmer-container {
+      position: relative;
+      overflow: hidden;
+    }
+    .shimmer-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transform: translateX(-100%);
+      pointer-events: none;
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    
+    html { scroll-behavior: smooth; }
+  </style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;600;700&amp;display=swap" data-snapdom="injected-import"></head>
+<body class="bg-surface text-on-background selection:bg-primary-container selection:text-white">
+<div class="bg-primary-container text-white overflow-hidden whitespace-nowrap h-8 flex items-center relative w-full">
+<style>@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }</style>
+<div class="flex animate-[marquee_20s_linear_infinite] min-w-full">
+<span class="px-4 text-[10px] font-bold tracking-widest uppercase flex-shrink-0">✨ GET FASTER DELIVERY ON PREPAID ORDERS. FREE SHIPPING. ✨</span>
+<span class="px-4 text-[10px] font-bold tracking-widest uppercase flex-shrink-0">✨ GET FASTER DELIVERY ON PREPAID ORDERS. FREE SHIPPING. ✨</span>
+<span class="px-4 text-[10px] font-bold tracking-widest uppercase flex-shrink-0">✨ GET FASTER DELIVERY ON PREPAID ORDERS. FREE SHIPPING. ✨</span>
+<span class="px-4 text-[10px] font-bold tracking-widest uppercase flex-shrink-0">✨ GET FASTER DELIVERY ON PREPAID ORDERS. FREE SHIPPING. ✨</span>
+</div>
+</div>
+<!-- BEGIN: MainHeader -->
+<header class="sticky top-0 z-50 bg-white border-b border-gray-100 px-4 py-3 flex items-center justify-between transition-all duration-300">
+<div class="flex items-center justify-between w-full max-w-screen-xl mx-auto">
+<a aria-label="Menu" class="p-2 flex-shrink-0 active:scale-95 transition-transform" href="{{DATA:SCREEN:SCREEN_59}}">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</a>
+<a class="flex items-center space-x-2 active:scale-95 transition-transform" href="{{DATA:SCREEN:SCREEN_19}}">
+<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24">
+<path d="M16 11V7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7V11" stroke="black" stroke-linecap="round" stroke-width="2"></path>
+<rect height="12" rx="2" stroke="black" stroke-width="2" width="14" x="5" y="9"></rect>
+<path d="M9 14L12 17L15 14" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="text-xl font-bold tracking-tighter uppercase">COVERSCART</span>
+</a>
+<div class="flex items-center gap-2 flex-shrink-0">
+<a aria-label="Search" class="p-2 active:scale-95 transition-transform" href="{{DATA:SCREEN:SCREEN_82}}">
+<span class="material-symbols-outlined text-2xl">search</span>
+</a>
+<a aria-label="Profile" class="p-2 hidden sm:block active:scale-95 transition-transform" href="{{DATA:SCREEN:SCREEN_73}}">
+<span class="material-symbols-outlined text-2xl">person</span>
+</a>
+<a class="relative p-2 active:scale-95 transition-transform" href="{{DATA:SCREEN:SCREEN_68}}">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="absolute top-1 right-1 bg-primary text-white text-[9px] rounded-full w-4 h-4 flex items-center justify-center font-bold">2</span>
+</a>
+</div>
+</div>
+</header>
+<!-- END: MainHeader -->
+<main class="space-y-12 pb-24">
+<!-- BEGIN: HeroSection -->
+<section class="relative bg-pure-black text-white py-20 px-8 overflow-hidden flex items-center justify-center text-center" data-purpose="hero">
+<div class="absolute inset-0 opacity-40 pointer-events-none">
+<img alt="" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBf1AAXwhgopnRl4qjxL98ShBMl4U0XtxMUid57wDpfEqyAq7qhd0Lan0693cttBqbvFdF3pERMlcH2oaOkU68zSB6OBKCiqC-cLhO7YHoBSSUm2ndkMmBlFFtqK0DQjPb4SS2ev5xhvuBfqhEEXEDBnVXTu2PMnxuEogaxh1RfahM3D4jUa4DL7X-NdyYaG210jNpIky2KgHsa41TjzVBLi7aZPKRuk5WJ36JPLSoiNv434IS3FICZ842lczh0tKl3fJrSb4ciVog">
+</div>
+<div class="relative z-10 max-w-md mx-auto">
+<h1 class="text-4xl font-bold leading-tight mb-2 reveal-item stagger-1 active">Designer Printed <br><span class="text-brand-teal">Mobile Covers</span></h1>
+<p class="text-xs text-gray-300 mb-8 leading-relaxed reveal-item stagger-2 active">
+          Premium glass cases, soft armor, and custom covers — all starting at just ₹299. Find your perfect fit, ship it fast.
+        </p>
+<div class="flex gap-3 justify-center">
+<a class="bg-brand-teal text-pure-black px-6 py-2 text-xs font-bold rounded-sm uppercase tracking-wider hover-lift flex items-center reveal-item stagger-3 active" href="{{DATA:SCREEN:SCREEN_27}}">Shop Now</a>
+<a class="border border-white text-white px-6 py-2 text-xs font-bold rounded-sm uppercase tracking-wider hover:bg-white hover:text-pure-black transition-colors reveal-item stagger-4 active flex items-center" href="{{DATA:SCREEN:SCREEN_70}}">Customize</a>
+</div>
+</div>
+</section>
+<!-- BEGIN: Infinite Featured Carousel -->
+<section class="py-6 bg-white overflow-hidden" data-purpose="infinite-carousel">
+<div class="flex items-center mb-4 px-6"><h2 class="font-bold text-lg">Featured Showcase</h2></div>
+<div class="relative flex overflow-hidden">
+<div class="flex animate-[marquee_30s_linear_infinite] gap-4 px-4 min-w-full">
+<a class="w-64 h-80 flex-shrink-0 rounded-xl overflow-hidden bg-gray-100 shadow-sm block hover:scale-[1.02] transition-transform" href="{{DATA:SCREEN:SCREEN_32}}">
+<img alt="Product Showcase" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLvR0fnbThvZpdoF15x97DXsHWv8odImRekdQNIgHeVLKdwFiAVCEIM2XGNG-H8QBgTXDlqIZHU4gx-kqT-PzNa64B4gyngNF2Gt_VNBn7sQ4Sp2p-3b9vyU7_PriaS2beM5CAFweZtr6LJ2FEQxl37A6ZYkyXT--6l2Q6Blx16YomzWtshRHJcRWbRAcctEne5nKbpTwdAl8rQsLFzezJ0sTr5VftEwNv3A5uHHflyMCLUoOyQVhqGvFn0">
+</a>
+<a class="w-64 h-80 flex-shrink-0 rounded-xl overflow-hidden bg-gray-100 shadow-sm block hover:scale-[1.02] transition-transform" href="{{DATA:SCREEN:SCREEN_32}}">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLueMVqYhKyB8dhZg-H3-r1w0HA5zd2gfsHWGFlKJPX92ZaYZw7XACoWEY0r74yfze2osejvZLrKfyTO-vPjxSo-K8tJU9-veulFXZHTysqc-1_2kaUxbf4b9mzCkQ4dwlz4xVfoMX5Srf0vXEStiQYnRff38CH2D8KzLTUwOBK8APZIZ10O3pnoo1HjrVKvs7cGwuGhmZae3hIQhq-sLKQILiXmBxi6exyYU9KNBopczTnfj3Jz7ulOlW0">
+</a>
+<a class="w-64 h-80 flex-shrink-0 rounded-xl overflow-hidden bg-gray-100 shadow-sm block hover:scale-[1.02] transition-transform" href="{{DATA:SCREEN:SCREEN_32}}">
+<img alt="Product Showcase" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLvSvO19vHDuo6uwhv_yf7CvBMjxtGhWbi7UraPef6CE5JHLcCIMtC0mojbUGUlaXY0ytEadUStykf1zvYEK_CcOprdTsFuj9MT4vrsjURhg7Lu82_oOQrmXBj4V9zW3ukhRRZ1Vdm602yvfcdFPGeJ5QenmuBIGGhMzkl6I-aYRBIjFbdr3Evpf_ofx3Hh-PfrJgXw51agQjTc4OE1Ei3dV8nGnUARuGCMPMN9Hl3eCt1dbD6xmEQnQoQ">
+</a>
+<a class="w-64 h-80 flex-shrink-0 rounded-xl overflow-hidden bg-gray-100 shadow-sm block hover:scale-[1.02] transition-transform" href="{{DATA:SCREEN:SCREEN_32}}">
+<img alt="Product Showcase" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLvuB4gtMWxNnbZyBakPpg-ctyzKYNY16EXZt_xEsTaXp0ovja2tjCAAOyMk7QvMYnQUxbmx16Dq1E5rZJtVKp9jCJSSuy8DdKmuixB1Omc_A4M0pTamcdQetcb_xDg0wyFUu8oKPUtSrFzoKprbrdkWlhnd87FA225smFwgAG9LXYuf4h5FdR8pxBmCBHs_AB6IhscvuP3EhJS2LjplzY0isiTbklK_2_J_bV0daTey9pAyIjIdhAA0UAU">
+</a>
+</div>
+</div>
+</section>
+<!-- BEGIN: BrowseByStyle -->
+<section class="py-8 px-4 relative z-20 bg-white rounded-t-[3rem]" data-purpose="categories">
+<div class="flex justify-between items-end mb-4 px-2">
+<h2 class="font-bold text-lg">Browse by Style</h2>
+<a class="text-[10px] uppercase font-bold text-outline border-b border-outline hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_27}}">View All</a>
+</div>
+<div class="flex gap-3 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-2">
+<a class="reveal-item stagger-1 relative rounded-xl overflow-hidden aspect-[4/5] w-48 flex-shrink-0 snap-center hover-lift block active" href="{{DATA:SCREEN:SCREEN_27}}">
+<img alt="Anime/Action" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA01lxw1_Qwl-hUShM3043ZfYE-kKafDJUVOvkmUQ66kd04hXWXiBptE4m8dqXQ44zq2HhDh-I9uRW24mOdFgzq5xayLzOg0A53MXefu_znCV3C2dmpqUQEsCLwhcdyQNzn3u3Qvl9aOvcltie4u4yBgV26WA9395zfmwqp9thuGviD6nv90iaH4aBRzZVo4izbYLhNKvQIA6yJlYYvvufxHFdlhRk86cYSBqqr7-__Y4ONeMW67CbSHJixcbkWnXhg4baMRPWTf5Y">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-4 flex flex-col justify-end">
+<span class="text-[8px] uppercase font-bold text-gray-300">Pop Culture</span>
+<span class="text-sm font-bold text-white">Anime/Action</span>
+</div>
+</a>
+<a class="reveal-item stagger-2 relative rounded-xl overflow-hidden aspect-[4/5] w-48 flex-shrink-0 snap-center hover-lift block active" href="{{DATA:SCREEN:SCREEN_27}}">
+<img alt="Minimalist" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTgvBBCdPHVjfyg8djlp1anCYfafCytwdBShGk_TxOUPRPzyI6Peewe1pMf_DUAaQlH_VPV9naJe_fqV07BYGjmV2otquplTvUmRHMZsIfKcGOT88DstkPCuujKrvIxF5gBAKbFcRwkQbUR6Lbvk_0tIn2XoY5vfcopGy-vdJtjjuBU_PbQ2OYlsGmG_CP-enszcZeTkab7_xVb4nd2ypP_p0eEhc6PctvqiXqDwxBZ1jyp4IH1AfAZtfFXq9KPwo9AGeHAtF3DDc">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-4 flex flex-col justify-end">
+<span class="text-[8px] uppercase font-bold text-gray-300">Minimalist</span>
+<span class="text-sm font-bold text-white">Tech Designs</span>
+</div>
+</a>
+</div>
+</section>
+<!-- BEGIN: NewArrivals -->
+<section class="py-8 px-4 bg-surface-container-low" data-purpose="new-arrivals">
+<h2 class="font-bold text-lg mb-4 px-2">New Arrival</h2>
+<div class="grid grid-cols-1 gap-4">
+<a class="relative flex bg-white rounded-xl border border-gray-100 overflow-hidden h-40 shimmer-container block active:scale-[0.98] transition-transform" href="{{DATA:SCREEN:SCREEN_27}}">
+<div class="shimmer-overlay animate-shimmer"></div>
+<div class="flex-1 p-5 flex flex-col justify-between z-10">
+<div>
+<span class="text-[10px] text-on-surface-variant font-medium">ArmorPad Cases</span>
+<span class="mt-2 inline-block bg-surface-container-highest text-[9px] font-bold px-3 py-1.5 rounded-sm border border-outline-variant uppercase hover:bg-primary-container hover:text-white transition-colors">Shop Now →</span>
+</div>
+<h3 class="text-xl font-bold">ArmorPad Cases</h3>
+</div>
+<div class="w-1/3 relative z-10">
+<img alt="ArmorPad" class="h-full w-full object-cover animate-float" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdqfTDXVlpJd3jaClrKjqMVKGKUpVRsyTRQlQbz6EAJgAd69DJp49NrjBt5A9Dtc64ZQ9cgHsjy9_x5N6n1sE81MDnWuebElBlJByzDUh_H9m8xlkzoQh-qb57tyv7yb5nJCalJNHtMqhenTNwtauQeofDgtR-1L3W4xG-u3besC_7PXEEk6seJ7H8NRTBDdlRzruapqbGyB08BWHi3loGGO4HGDD52YguiXkgX1lK3etsrjk72dybfjWARNgEmic_BuW_8lj05w4">
+</div>
+<div class="bg-primary/10 w-8 flex items-center justify-center border-l border-primary/10 z-10">
+<span class="vertical-text text-[9px] font-bold tracking-widest uppercase text-on-surface-variant">NEW ARRIVAL</span>
+</div>
+</a>
+<a class="relative flex bg-white rounded-xl border border-gray-100 overflow-hidden h-40 shimmer-container block active:scale-[0.98] transition-transform" href="{{DATA:SCREEN:SCREEN_27}}"><div class="shimmer-overlay animate-shimmer"></div><div class="flex-1 p-5 flex flex-col justify-between z-10"><div><span class="text-[10px] text-on-surface-variant font-medium">Premium Leather Cases</span><span class="mt-2 inline-block bg-surface-container-highest text-[9px] font-bold px-3 py-1.5 rounded-sm border border-outline-variant uppercase hover:bg-primary-container hover:text-white transition-colors">Shop Now →</span></div><h3 class="text-xl font-bold">Premium Leather Cases</h3></div><div class="w-1/3 relative z-10"><img alt="Premium Leather" class="h-full w-full object-cover animate-float" src="https://lh3.googleusercontent.com/aida/AP1WRLvR0fnbThvZpdoF15x97DXsHWv8odImRekdQNIgHeVLKdwFiAVCEIM2XGNG-H8QBgTXDlqIZHU4gx-kqT-PzNa64B4gyngNF2Gt_VNBn7sQ4Sp2p-3b9vyU7_PriaS2beM5CAFweZtr6LJ2FEQxl37A6ZYkyXT--6l2Q6Blx16YomzWtshRHJcRWbRAcctEne5nKbpTwdAl8rQsLFzezJ0sTr5VftEwNv3A5uHHflyMCLUoOyQVhqGvFn0"></div><div class="bg-primary/10 w-8 flex items-center justify-center border-l border-primary/10 z-10"><span class="vertical-text text-[9px] font-bold tracking-widest uppercase text-on-surface-variant">NEW ARRIVAL</span></div></a><a class="relative flex bg-white rounded-xl border border-gray-100 overflow-hidden h-40 shimmer-container block active:scale-[0.98] transition-transform" href="{{DATA:SCREEN:SCREEN_27}}"><div class="shimmer-overlay animate-shimmer"></div><div class="flex-1 p-5 flex flex-col justify-between z-10"><div><span class="text-[10px] text-on-surface-variant font-medium">MagSafe Cases</span><span class="mt-2 inline-block bg-surface-container-highest text-[9px] font-bold px-3 py-1.5 rounded-sm border border-outline-variant uppercase hover:bg-primary-container hover:text-white transition-colors">Shop Now →</span></div><h3 class="text-xl font-bold">MagSafe Cases</h3></div><div class="w-1/3 relative z-10"><img alt="MagSafe" class="h-full w-full object-cover animate-float" src="https://lh3.googleusercontent.com/aida/AP1WRLvSvO19vHDuo6uwhv_yf7CvBMjxtGhWbi7UraPef6CE5JHLcCIMtC0mojbUGUlaXY0ytEadUStykf1zvYEK_CcOprdTsFuj9MT4vrsjURhg7Lu82_oOQrmXBj4V9zW3ukhRRZ1Vdm602yvfcdFPGeJ5QenmuBIGGhMzkl6I-aYRBIjFbdr3Evpf_ofx3Hh-PfrJgXw51agQjTc4OE1Ei3dV8nGnUARuGCMPMN9Hl3eCt1dbD6xmEQnQoQ"></div><div class="bg-primary/10 w-8 flex items-center justify-center border-l border-primary/10 z-10"><span class="vertical-text text-[9px] font-bold tracking-widest uppercase text-on-surface-variant">NEW ARRIVAL</span></div></a><a class="relative flex bg-white rounded-xl border border-gray-100 overflow-hidden h-40 shimmer-container block active:scale-[0.98] transition-transform" href="{{DATA:SCREEN:SCREEN_27}}"><div class="shimmer-overlay animate-shimmer"></div><div class="flex-1 p-5 flex flex-col justify-between z-10"><div><span class="text-[10px] text-on-surface-variant font-medium">Anime/Action Covers</span><span class="mt-2 inline-block bg-surface-container-highest text-[9px] font-bold px-3 py-1.5 rounded-sm border border-outline-variant uppercase hover:bg-primary-container hover:text-white transition-colors">Shop Now →</span></div><h3 class="text-xl font-bold">Anime/Action Covers</h3></div><div class="w-1/3 relative z-10"><img alt="Anime/Action" class="h-full w-full object-cover animate-float" src="https://lh3.googleusercontent.com/aida/AP1WRLueMVqYhKyB8dhZg-H3-r1w0HA5zd2gfsHWGFlKJPX92ZaYZw7XACoWEY0r74yfze2osejvZLrKfyTO-vPjxSo-K8tJU9-veulFXZHTysqc-1_2kaUxbf4b9mzCkQ4dwlz4xVfoMX5Srf0vXEStiQYnRff38CH2D8KzLTUwOBK8APZIZ10O3pnoo1HjrVKvs7cGwuGhmZae3hIQhq-sLKQILiXmBxi6exyYU9KNBopczTnfj3Jz7ulOlW0"></div><div class="bg-primary/10 w-8 flex items-center justify-center border-l border-primary/10 z-10"><span class="vertical-text text-[9px] font-bold tracking-widest uppercase text-on-surface-variant">NEW ARRIVAL</span></div></a></div>
+</section>
+<!-- Mystery Pouch Feature Banner -->
+<section class="px-4 py-8">
+<a class="relative block rounded-2xl overflow-hidden aspect-[16/7] group" href="{{DATA:SCREEN:SCREEN_49}}">
+<img alt="Mystery Pouch" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9BB-466fZwfzCOrumMo-YoXW4XKm7bKIHV12-6XblT8odf3rU8CyWIMud-Od3fuyHwvJPCxD4S5GqTOHSyLq0tFVNGYs_ebD4UQwxXZAa09rFJyIKQGvoc2CkRYohXeQAsJtka513IkCdLWNoe1djjvwqKbcfoVUCSBgux3kAQBbKBWmjNymGzx1SFhbWbnYlpFyxHhOXpRv-iET0r1MUZ6UTuHL0XP7ZmucJ1Sog1E_itwT-n0Zto0eseQYm_gjRNM-kYKhd1GQ">
+<div class="absolute inset-0 bg-pure-black/40 flex flex-col justify-center items-center text-center p-6">
+<span class="bg-brand-teal text-pure-black px-2 py-1 rounded-sm text-[8px] font-bold uppercase mb-2">Exclusive</span>
+<h2 class="text-white text-2xl font-bold uppercase">The Mystery Pouch</h2>
+<p class="text-white/80 text-xs mt-1">Unlock a surprise designer case for just ₹299</p>
+</div>
+</a>
+</section>
+<!-- BEGIN: OurPicks -->
+<section class="py-10 px-4" data-purpose="product-grid">
+<div class="flex justify-between items-center mb-6 px-2">
+<h2 class="font-bold text-lg">Our Picks</h2>
+<div class="flex gap-2">
+<button class="w-8 h-8 rounded-full border border-outline-variant flex items-center justify-center text-outline hover:bg-surface-container transition-colors">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<button class="w-8 h-8 rounded-full border border-outline-variant flex items-center justify-center text-outline hover:bg-surface-container transition-colors">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-x-4 gap-y-8">
+<!-- Product Card 1 -->
+<div class="relative group">
+<a class="hover-lift block" data-purpose="product-card" href="{{DATA:SCREEN:SCREEN_32}}">
+<div class="relative bg-surface-container-low rounded-2xl p-4 mb-3 aspect-[4/5] flex items-center justify-center overflow-hidden">
+<img alt="Product" class="h-full object-contain animate-float" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD85iH6lWe1q45ubyAapgGMHYqqaDxKkWBd8uCj0GAEmmIPy-7FZyNf137T6XVEGn4kUpOdQASAeHC1ZrZ7-s9-H01IDN1aqYRyIpw2Uz9roJxvp_pAdiQrFtLs7qOdOIGyWbxP13Qo9MsY2kf1KX_GhrT9fEkLvJK1mD0GZ0IfQShFa5kYjtO3ipjSN5VluDbQ99sL5NtB0kIjgS1-QEk20V31CYmcRVG008J87_CC54jh3TwuEIlIQjtlmsXeg6CCRS3E4VTLPNk">
+</div>
+<h4 class="text-[11px] font-semibold text-on-surface truncate">Crimson Sun Mountain</h4>
+<p class="text-[11px] font-bold mt-1">
+<span class="text-primary">₹299.00</span>
+<span class="text-outline line-through ml-1 font-normal text-[10px]">₹799.00</span>
+</p>
+</a>
+<a class="absolute top-2 right-2 p-2 bg-white/80 rounded-full shadow-sm hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_22}}">
+<span class="material-symbols-outlined text-lg">favorite</span>
+</a>
+</div>
+<!-- Product Card 2 -->
+<div class="relative group">
+<a class="hover-lift block" data-purpose="product-card" href="{{DATA:SCREEN:SCREEN_32}}">
+<div class="relative bg-surface-container-low rounded-2xl p-4 mb-3 aspect-[4/5] flex items-center justify-center overflow-hidden">
+<img alt="Product" class="h-full object-contain animate-float" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwOLoI0ePbj5V_KMboqZhvL2PNh7W-c773jA84zZqq7Nr217tCRKBiyjKCuywitS-ZiQQhKG0qPZaXCLuIyFNDyTZ5I9lN9d_9yqbU80JihRifYKQeMZbHbdnkwl703GejXiof7rGJ6HkRh_cjC_6e5O0SE3Q0302sw6-OVp3d9vF76eAEbfOdET7vH8ydUnekSK34Ey3-i1YzajbQlD8Ecx5AaA2CAD4ITCTf3C0me6DTInMNoZcNLYL0A2XaKQny_BghE6LmkuQ">
+</div>
+<h4 class="text-[11px] font-semibold text-on-surface truncate">Cherry Blossom Ocean</h4>
+<p class="text-[11px] font-bold mt-1">
+<span class="text-primary">₹299.00</span>
+<span class="text-outline line-through ml-1 font-normal text-[10px]">₹799.00</span>
+</p>
+</a>
+<a class="absolute top-2 right-2 p-2 bg-white/80 rounded-full shadow-sm hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_22}}">
+<span class="material-symbols-outlined text-lg">favorite</span>
+</a>
+</div>
+</div>
+</section>
+<!-- BEGIN: Community Section -->
+<section class="py-12 bg-surface-container-low text-center reveal-item active" data-purpose="instagram">
+<span class="text-[9px] uppercase tracking-widest text-outline font-bold">Join the conversation</span>
+<h2 class="text-2xl font-bold mt-1 mb-8">#COVERSCART COMMUNITY</h2>
+<div class="grid grid-cols-2 gap-1 px-4 mb-6">
+<a class="aspect-square bg-white overflow-hidden block" href="{{DATA:SCREEN:SCREEN_20}}">
+<img class="w-full h-full object-cover hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2a-gOnA6BYSRiLgpkF9CRQZATy1PLg6Ovd8M5Q_TMmazIeuBgrz5zglvEqdI_cF-7lC_RQ8G3F3IKQwDGCJ8ZwrJCJyBhE_nYd0uYGcYtUhTojmh1rEuDASQaDwUZSP4EgNEcpz9__0-Div3MxdsoZEhLqMSd1n1jCMF-UUnVetMO31KdNTdSvytJGFofmigpOkcMRNQD8TNCjNs56JEWkvGFwcTUjJVRUcAiuMW-78ZQeL1L_eK5ColfyZtpmcUJuFObE2WZRAY">
+</a>
+<a class="aspect-square bg-white overflow-hidden block" href="{{DATA:SCREEN:SCREEN_20}}">
+<img class="w-full h-full object-cover hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEzaW3djKmimJQWxABTN3F_UDpurwmBGLF8pJcIB7eIEw03rHq0Ef9-8xu4wvqIeGhNuC9auHmLzTAqMxxALdceU94cvAcpvqecVz9V9HM4Lf_SUUNpGlddaQRiSdR4V8mjWs9dTkhwwLJlFz022_WFEM728xXIq2pg3WRLNlQTFeTEKVVmmJE8nre_N2foxSj186ZhLyCFhd3BHFE8vr0-LRAVmBT8WN8nPr3QEDzG-zSJJoLmYeM1pl-w50_KkwaneMIw0A34bg">
+</a>
+</div>
+<a class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-primary hover:gap-3 transition-all" href="{{DATA:SCREEN:SCREEN_20}}">View Gallery Experience <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+</section>
+</main>
+<!-- BEGIN: Footer -->
+<section class="py-12 px-6 bg-white border-t border-gray-100" data-purpose="newsletter">
+<div class="max-w-xs mx-auto text-center">
+<h2 class="text-2xl font-bold text-on-surface mb-2">Join our newsletter</h2>
+<p class="text-sm text-on-surface-variant mb-8">Get updates on new arrivals and exclusive offers.</p>
+<form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="event.preventDefault()">
+<div class="relative flex-1">
+<input class="w-full px-4 py-3 bg-surface rounded-sm text-sm border border-outline-variant focus:outline-none focus:border-primary transition-colors" placeholder="Email address" type="email">
+</div>
+<button class="w-full bg-pure-black text-white py-3 text-xs font-bold rounded-sm uppercase tracking-widest hover:bg-primary transition-colors active:scale-95" type="submit">
+          Subscribe
+        </button>
+</form>
+</div>
+</section>
+<footer class="bg-surface-container text-on-surface-variant pt-12 pb-32 px-4" data-purpose="main-footer">
+<div class="max-w-screen-xl mx-auto">
+<div class="grid grid-cols-1 gap-y-10 mb-12">
+<div class="flex flex-col items-start reveal-item active">
+<div class="flex items-center space-x-1 mb-4">
+<svg class="w-8 h-8" fill="none" viewBox="0 0 24 24">
+<path d="M16 11V7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7V11" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+<rect height="12" rx="2" stroke="currentColor" stroke-width="2" width="14" x="5" y="9"></rect>
+</svg>
+<span class="text-2xl font-bold tracking-tighter uppercase text-on-surface">COVERSCART</span>
+</div>
+<p class="text-sm leading-relaxed max-w-xs">
+            Premium covers for every device. Protected your tech with style since 2020.
+          </p>
+</div>
+<div class="space-y-4 reveal-item stagger-1 active">
+<details class="group border-b border-outline-variant pb-2" open="">
+<summary class="flex justify-between items-center list-none cursor-pointer py-4">
+<span class="text-sm font-bold uppercase tracking-wider text-on-surface">Help &amp; Support</span>
+<span class="material-symbols-outlined text-sm group-open:rotate-180 transition-transform duration-300">expand_more</span>
+</summary>
+<ul class="mt-2 space-y-1 text-sm">
+<li class=""><a class="flex items-center h-[44px] hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_19}}">Track Order</a></li>
+<li class=""><a class="flex items-center h-[44px] hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_19}}">FAQ</a></li>
+<li class=""><a class="flex items-center h-[44px] hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_19}}">Contact Us</a></li>
+<li class=""><a class="flex items-center h-[44px] hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_19}}">Returns &amp; Warranty</a></li>
+</ul>
+</details>
+</div>
+</div>
+<div class="border-t border-outline-variant pt-8 flex flex-col items-center gap-6 reveal-item active mt-12">
+<p class="text-[10px] text-outline">© 2026 CoverStall. All rights reserved.</p>
+<button class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-on-surface hover:text-primary transition-all duration-300 hover:-translate-y-1" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+          Back to Top
+          <span class="material-symbols-outlined text-sm">arrow_upward</span>
+</button>
+</div>
+</div>
+</footer>
+<!-- BEGIN: BottomNav -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-md border-t border-gray-100 flex justify-around py-3 z-[60] shadow-[0_-4px_20px_rgba(0,0,0,0.05)]" data-purpose="mobile-bottom-nav">
+<a class="flex flex-col items-center gap-1 group text-primary active:scale-95 transition-transform" href="{{DATA:SCREEN:SCREEN_19}}">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-[8px] font-bold uppercase">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 group text-outline active:scale-95 transition-transform hover:text-primary" href="{{DATA:SCREEN:SCREEN_27}}">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="text-[8px] font-bold uppercase">Shop</span>
+</a>
+<a class="flex flex-col items-center gap-1 group text-outline active:scale-95 transition-transform hover:text-primary" href="{{DATA:SCREEN:SCREEN_73}}">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[8px] font-bold uppercase">Account</span>
+</a>
+<a class="flex flex-col items-center gap-1 group text-outline active:scale-95 transition-transform hover:text-primary" href="{{DATA:SCREEN:SCREEN_68}}">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="text-[8px] font-bold uppercase">Cart</span>
+</a>
+</nav>
+<script>
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal-item').forEach(el => observer.observe(el));
+
+    window.addEventListener('load', () => {
+      document.querySelectorAll('[data-purpose="hero"] .reveal-item').forEach(el => el.classList.add('active'));
+    });
+
+    document.querySelectorAll('.hover-lift, button, a').forEach(btn => {
+      btn.addEventListener('touchstart', () => btn.classList.add('scale-95'));
+      btn.addEventListener('touchend', () => btn.classList.remove('scale-95'));
+    });
+  </script>
+
+
+
+
+</body></html>

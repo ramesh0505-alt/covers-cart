@@ -1,0 +1,293 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#77d7c5",
+                        "tertiary": "#924732",
+                        "surface-container-high": "#e2e7ff",
+                        "surface-dim": "#d2d9f4",
+                        "on-primary-fixed": "#00201b",
+                        "background": "#faf8ff",
+                        "error-container": "#ffdad6",
+                        "on-secondary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#006b5d",
+                        "surface-variant": "#dae2fd",
+                        "error": "#ba1a1a",
+                        "primary": "#00695c",
+                        "on-error": "#ffffff",
+                        "outline-variant": "#bdc9c5",
+                        "on-tertiary-fixed-variant": "#76321f",
+                        "primary-container": "#108474",
+                        "on-tertiary-fixed": "#3b0900",
+                        "surface-bright": "#faf8ff",
+                        "surface-container-low": "#f2f3ff",
+                        "secondary-container": "#6bff8f",
+                        "surface-container-lowest": "#ffffff",
+                        "pure-black": "#0E0E0E",
+                        "on-background": "#131b2e",
+                        "secondary": "#006e2f",
+                        "primary-fixed-dim": "#77d7c5",
+                        "on-primary-fixed-variant": "#005046",
+                        "secondary-fixed-dim": "#4ae176",
+                        "surface-container": "#eaedff",
+                        "on-primary-container": "#fafffc",
+                        "on-secondary-fixed": "#002109",
+                        "tertiary-fixed": "#ffdbd1",
+                        "surface": "#faf8ff",
+                        "inverse-surface": "#283044",
+                        "surface-container-highest": "#dae2fd",
+                        "primary-fixed": "#93f4e0",
+                        "secondary-fixed": "#6bff8f",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#005321",
+                        "inverse-on-surface": "#eef0ff",
+                        "on-secondary-container": "#007432",
+                        "on-surface": "#131b2e",
+                        "tertiary-fixed-dim": "#ffb5a0",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#b05f48",
+                        "outline": "#6e7a76",
+                        "on-tertiary-container": "#fffdff",
+                        "surface-white": "#FFFFFF",
+                        "on-surface-variant": "#3e4946"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "container-margin": "20px",
+                        "unit": "4px",
+                        "stack-md": "16px",
+                        "gutter": "16px",
+                        "stack-lg": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Hanken Grotesk"],
+                        "title-md": ["Hanken Grotesk"],
+                        "label-caps": ["Hanken Grotesk"],
+                        "body-sm": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface-white text-on-surface font-body-lg overflow-hidden">
+<!-- Full Screen Search Overlay -->
+<div class="fixed inset-0 z-[100] bg-surface-white flex flex-col animate-in fade-in duration-300" id="search-overlay">
+<!-- Header / Search Bar -->
+<header class="flex items-center px-container-margin py-stack-md w-full bg-surface-white border-b border-outline-variant sticky top-0">
+<button class="mr-stack-md text-on-surface hover:opacity-70 transition-opacity" onclick="window.history.back()">
+<span class="material-symbols-outlined text-[28px]" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="relative flex-1 group transition-transform">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input autofocus="" class="w-full bg-surface-container-low border-none rounded-full py-3 pl-12 pr-4 text-body-lg focus:ring-2 focus:ring-primary-container transition-all font-medium" placeholder="Search for covers..." type="text">
+</div>
+<button class="ml-stack-md text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-colors">
+                CLEAR
+            </button>
+</header>
+<!-- Search Content Canvas -->
+<main class="flex-1 overflow-y-auto hide-scrollbar px-container-margin py-stack-lg">
+<div class="max-w-screen-xl mx-auto space-y-stack-lg">
+<!-- Recent Searches Section -->
+<section style="opacity: 1; transform: translateY(0px); transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1);">
+<div class="flex justify-between items-end mb-stack-md">
+<h2 class="text-title-md font-title-md text-on-surface uppercase tracking-tight text-label-caps">Recent Searches</h2>
+<button class="text-label-caps font-label-caps text-outline hover:text-error transition-colors">CLEAR ALL</button>
+</div>
+<div class="flex flex-col border border-outline-variant rounded-xl divide-y divide-outline-variant">
+<div class="flex items-center justify-between p-stack-md hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="flex items-center gap-stack-md">
+<span class="material-symbols-outlined text-outline group-hover:text-primary" data-icon="history">history</span>
+<span class="text-body-lg font-medium">iPhone 15 Pro Max</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="north_west">north_west</span>
+</div>
+<div class="flex items-center justify-between p-stack-md hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="flex items-center gap-stack-md">
+<span class="material-symbols-outlined text-outline group-hover:text-primary" data-icon="history">history</span>
+<span class="text-body-lg font-medium">Anime Collection</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="north_west">north_west</span>
+</div>
+<div class="flex items-center justify-between p-stack-md hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="flex items-center gap-stack-md">
+<span class="material-symbols-outlined text-outline group-hover:text-primary" data-icon="history">history</span>
+<span class="text-body-lg font-medium">Handcrafted Leather</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="north_west">north_west</span>
+</div>
+</div>
+</section>
+<!-- Trending Now Section -->
+<section style="opacity: 1; transform: translateY(0px); transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1);">
+<h2 class="text-title-md font-title-md text-on-surface uppercase tracking-tight mb-stack-md text-label-caps">Trending Now</h2>
+<div class="flex flex-wrap gap-stack-sm">
+<button class="px-5 py-2.5 bg-primary text-surface-white rounded-full text-body-sm font-bold hover:bg-opacity-90 transition-all flex items-center gap-2"><span class="material-symbols-outlined text-[18px]" data-icon="trending_up">trending_up</span>Cyberpunk 2077</button>
+<button class="px-5 py-2.5 border border-outline-variant text-on-surface rounded-full text-body-sm font-medium hover:border-primary hover:text-primary transition-all">
+                            Minimalist Matte
+                        </button>
+<button class="px-5 py-2.5 border border-outline-variant text-on-surface rounded-full text-body-sm font-medium hover:border-primary hover:text-primary transition-all">
+                            MagSafe Compatible
+                        </button>
+<button class="px-5 py-2.5 border border-outline-variant text-on-surface rounded-full text-body-sm font-medium hover:border-primary hover:text-primary transition-all">
+                            OnePlus 12 Series
+                        </button>
+<button class="px-5 py-2.5 border border-outline-variant text-on-surface rounded-full text-body-sm font-medium hover:border-primary hover:text-primary transition-all">
+                            Vintage Botanicals
+                        </button>
+<button class="px-5 py-2.5 border border-outline-variant text-on-surface rounded-full text-body-sm font-medium hover:border-primary hover:text-primary transition-all">
+                            Samsung S24 Ultra
+                        </button>
+</div>
+</section>
+<!-- Visual Categories (Bento Grid Style) -->
+<section style="opacity: 1; transform: translateY(0px); transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1);">
+<h2 class="text-title-md font-title-md text-on-surface uppercase tracking-tight mb-stack-md text-label-caps">Shop By Device</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter">
+<!-- iPhone Category -->
+<div class="relative group overflow-hidden rounded-xl aspect-[4/5] bg-surface-container cursor-pointer">
+<img alt="iPhone 15 display" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A premium close-up of a titanium iPhone 15 Pro Max resting on a dark velvet surface. The lighting is dramatic and cinematic, highlighting the sleek edges and camera lens. The aesthetic is ultra-modern and high-end, focusing on the luxury craftsmanship of the tech device. Deep forest greens and blacks dominate the palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1GVzy3LdivWr7UmCGd5Id35n-ZUyM-RO-Edt_woYY-b-28tY85GTA4ehZnEcj7LM8uO0OBSTpxaaZ98Nx0Yb1b7LkBLu4g_JISsKJsZHtrAw5TogDVYg2_d2bQsPWTcBYm5hA2VZM1533d0DhfIFAxWGYfJbS3lurx9pSMTcd65yhKamUWvcSHLixehA3-pPv51ZK7GuTrk3-k6v64aToQ8DEYgF586O6gkrwRGN1ZBbS8RseDUzwn6nuOtQ2XZao9HPAA1BKvU4">
+<div class="absolute inset-0 bg-gradient-to-t from-pure-black/80 to-transparent flex flex-col justify-end p-stack-md">
+<p class="text-surface-white font-label-caps text-label-caps opacity-80 uppercase">Apple</p>
+<h3 class="text-surface-white font-title-md text-title-md">iPhone Series</h3>
+</div>
+</div>
+<!-- Samsung Category -->
+<div class="relative group overflow-hidden rounded-xl aspect-[4/5] bg-surface-container cursor-pointer">
+<img alt="Samsung phone display" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A sophisticated shot of a Samsung S24 Ultra smartphone held by a gloved hand against a minimalist industrial backdrop. The lighting is sharp and bright, emphasizing the device's geometric form and vibrant screen. The style is modern corporate, emphasizing precision and durability in a high-tech environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdow9h71F0i1a7hMJC2pDdElHCZ39U0L8KmtmarusPrfG0aRtN5IfwUo6_Skb1fzV4jkz3slISRxj8iwHRTa0DrZtyQBjpn2ZP1UYl0qn79WqSZsMYswmIKHnwE-kbSEvCO9nK5auEHyuu5cgzQSt87ZGlbuG1dJulu-ez4SKoyaDqFOjSPqRGTT1QwVFEweFWmZVCBydzhTYNEH7tDa00y8zjTb38ZKkEoyIp75gmhb5gTxrMb2GLWC1R9Nuh36pMY948-C72pPQ">
+<div class="absolute inset-0 bg-gradient-to-t from-pure-black/80 to-transparent flex flex-col justify-end p-stack-md">
+<p class="text-surface-white font-label-caps text-label-caps opacity-80 uppercase">Samsung</p>
+<h3 class="text-surface-white font-title-md text-title-md">Galaxy Series</h3>
+</div>
+</div>
+<!-- OnePlus Category -->
+<div class="relative group overflow-hidden rounded-xl aspect-[4/5] bg-surface-container cursor-pointer">
+<img alt="OnePlus phone display" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A lifestyle product shot of a OnePlus smartphone on a clean, light grey granite countertop surrounded by designer stationery. The lighting is soft and natural, suggesting a creative and professional workspace. The aesthetic is premium minimalist, using a cool-toned color palette of silvers and teals." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6OkdrE7By8LpmWyERLXyrrVOpjUvOBXqrIkk5yz26uUm1YFzOyLHYsYzy0tN6rT3SWjge4YGkwygikMat5iPZW-3WjBE5zkHhya2iG6gx_FT_D9T5ZJnqwECg4z2L9GjGO8J6RGVpSEBSdSxlImcbWUU-ONCGbdHe3lgY3Qd59Qs9Wi2DHBbrDJlA4oXxisZOo0sibiLHKixzRYXzvA-UAE42KOQep7zT7HOLFPKBcevVK7vCXpqFHjmyEVTngsrYSCeEXNYK16k">
+<div class="absolute inset-0 bg-gradient-to-t from-pure-black/80 to-transparent flex flex-col justify-end p-stack-md">
+<p class="text-surface-white font-label-caps text-label-caps opacity-80 uppercase">OnePlus</p>
+<h3 class="text-surface-white font-title-md text-title-md">Flagship Collection</h3>
+</div>
+</div>
+<!-- Tablet Category -->
+<div class="relative group overflow-hidden rounded-xl aspect-[4/5] bg-surface-container cursor-pointer">
+<img alt="Tablet display" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A sleek tablet computer displayed in a bright, airy architectural studio. The screen shows high-detail technical drawings. The lighting is high-key and professional, highlighting the ultra-thin profile of the device. The visual style is aspirational and clean, with a focus on high-end tech utility and design excellence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDz-5Dp7v_As5LdBF0-sypHvE5Ixdfq5a645ESNx_5qv8ye_Qcd-dfL8E-3P0qVqv2BsqZ37ZWZ1hMoUGZg7jIgd1ZidxNfzBfrVu03sLrPOYfjt2KCK2nZrkCQtr7H0Q0WuK15gNTATay2QWZ3e6uBVSQQ9JBGUAM--1rdDwpBOfAXdj1uhHimSonNYEAOOt0gzfF2Z65gbo7UHWAZCJzeQ6hl8lqUjYjRNKYJLWx2zlTqYvgMTrXz8o5xrhmVDBSRMbpPTxUGiR4">
+<div class="absolute inset-0 bg-gradient-to-t from-pure-black/80 to-transparent flex flex-col justify-end p-stack-md">
+<p class="text-surface-white font-label-caps text-label-caps opacity-80 uppercase">Accessories</p>
+<h3 class="text-surface-white font-title-md text-title-md">iPad &amp; Tablets</h3>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Collection Callout -->
+<section class="relative rounded-2xl overflow-hidden h-48 md:h-64 group cursor-pointer" style="opacity: 1; transform: translateY(0px); transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1);">
+<img alt="Leather collection" class="absolute inset-0 w-full h-full object-cover" data-alt="An artistic flat-lay of several premium leather phone cases in various shades of tan, obsidian, and forest green. The cases are arranged on a piece of raw, textured canvas with soft morning light streaming across the scene. The mood is warm, tactile, and luxurious, emphasizing the organic quality of the materials and precise stitching." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZ_MBvg-Og92LtI9cSEnp4Dtb80UR9NmUGJ6eyULFML7ZpKXnl-TX9Cvqn0wrB5nEu4DUQYYLaaIhKyIYvX3eMcApE8OA1ayH4sCNqHJSEwxnv2o-9rClP6oIjv6TSMQ5RlFvrAm-iluXOqIkTIaqmfKV4khXBqLebXw08ubGKpfi9vyO93aHQUNZgUtyMSNyjTjvx3yueQyqX0ut4yXT1vHe3sjN8b2o22yxonMpGK9AcuEGhYsWi027Ai3yqHW5FrrMPQzqFaDU">
+<div class="absolute inset-0 bg-pure-black/40 group-hover:bg-pure-black/30 transition-all flex flex-col items-center justify-center text-center p-stack-lg">
+<span class="px-3 py-1 bg-primary text-surface-white text-label-caps font-label-caps rounded mb-stack-sm">EXCLUSIVE</span>
+<h3 class="text-headline-lg-mobile md:text-headline-lg text-surface-white font-headline-lg">THE LUXE LEATHER SERIES</h3>
+<p class="text-surface-white/90 text-body-sm font-medium mt-2 max-w-md">Hand-selected Italian leather, precision-engineered for the modern professional.</p>
+</div>
+</section>
+</div>
+</main>
+<!-- Bottom Nav Bar (From Shared Components) -->
+<nav class="flex justify-around items-center h-16 bg-surface-white border-t border-outline-variant shadow-[0px_-4px_20px_rgba(15,23,42,0.05)] z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-label-caps font-label-caps uppercase mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+<span class="text-label-caps font-label-caps uppercase mt-1">Shop</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-label-caps font-label-caps uppercase mt-1">Account</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+<span class="text-label-caps font-label-caps uppercase mt-1">Cart</span>
+</a>
+</nav>
+</div>
+<!-- Background Decoration for Main App Context (Blurs under overlay) -->
+<div class="fixed inset-0 -z-10 opacity-20 pointer-events-none">
+
+</div>
+<script>
+        // Micro-interaction for search input focus
+        const searchInput = document.querySelector('input[type="text"]');
+        const searchContainer = searchInput.parentElement;
+
+        searchInput.addEventListener('focus', () => {
+            searchContainer.classList.add('scale-[1.01]');
+        });
+
+        searchInput.addEventListener('blur', () => {
+            searchContainer.classList.remove('scale-[1.01]');
+        });
+
+        // Simple animation for items appearing
+        document.querySelectorAll('section').forEach((section, index) => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                section.style.transition = 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+                section.style.opacity = '1';
+                section.style.transform = 'translateY(0)';
+            }, 100 + (index * 100));
+        });
+    </script>
+
+
+</body></html>

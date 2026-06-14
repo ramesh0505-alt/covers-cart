@@ -1,0 +1,407 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>CoverStall | Mystery Community</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        @keyframes scroll-x {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-scroll-x {
+            display: flex;
+            width: max-content;
+            animation: scroll-x 40s linear infinite;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#fafffc",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#3e4946",
+                        "surface-bright": "#faf8ff",
+                        "outline": "#6e7a76",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#6bff8f",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#dae2fd",
+                        "primary-fixed-dim": "#77d7c5",
+                        "on-secondary-fixed": "#002109",
+                        "surface": "#faf8ff",
+                        "surface-tint": "#006b5d",
+                        "pure-black": "#0E0E0E",
+                        "on-surface": "#131b2e",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed": "#3b0900",
+                        "tertiary-fixed-dim": "#ffb5a0",
+                        "tertiary": "#924732",
+                        "tertiary-container": "#b05f48",
+                        "outline-variant": "#bdc9c5",
+                        "on-tertiary-fixed-variant": "#76321f",
+                        "on-primary-fixed-variant": "#005046",
+                        "secondary-fixed": "#6bff8f",
+                        "on-secondary-fixed-variant": "#005321",
+                        "surface-container": "#eaedff",
+                        "surface-container-low": "#f2f3ff",
+                        "surface-dim": "#d2d9f4",
+                        "primary": "#00695c",
+                        "surface-variant": "#dae2fd",
+                        "background": "#faf8ff",
+                        "inverse-primary": "#77d7c5",
+                        "primary-container": "#108474",
+                        "on-tertiary": "#ffffff",
+                        "secondary": "#006e2f",
+                        "on-secondary-container": "#007432",
+                        "surface-white": "#FFFFFF",
+                        "tertiary-fixed": "#ffdbd1",
+                        "primary-fixed": "#93f4e0",
+                        "on-tertiary-container": "#fffdff",
+                        "inverse-on-surface": "#eef0ff",
+                        "secondary-fixed-dim": "#4ae176",
+                        "on-primary-fixed": "#00201b",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#283044",
+                        "on-background": "#131b2e",
+                        "surface-container-high": "#e2e7ff",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "stack-lg": "32px",
+                        "unit": "4px",
+                        "stack-sm": "8px",
+                        "gutter": "16px",
+                        "container-margin": "20px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "title-md": ["Hanken Grotesk"],
+                        "label-caps": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-lg min-h-screen">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 bg-surface-white dark:bg-pure-black border-b border-outline-variant dark:border-on-surface-variant flex items-center justify-between px-container-margin py-stack-sm w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-4">
+<button class="active:scale-95 transition-transform text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg font-display-lg text-title-md tracking-widest text-pure-black dark:text-surface-white uppercase">Mystery Community</h1>
+</div>
+<div class="flex items-center gap-3">
+<button class="active:scale-95 transition-transform text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="active:scale-95 transition-transform text-on-surface-variant relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+</div>
+</header>
+<main class="max-w-screen-md mx-auto pb-32">
+<!-- Hero Section: Story Previews -->
+<section class="py-stack-lg bg-surface-container/30">
+<div class="px-container-margin mb-stack-md">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-pure-black">See What Others Unlocked 👀</h2>
+<p class="font-body-lg text-on-surface-variant">Real customers. Real mystery reveals. Real reactions.</p>
+</div>
+<div class="overflow-hidden relative flex py-unit">
+<div class="animate-scroll-x space-x-4 px-container-margin gap-4">
+<!-- Repeated Story Cards for Infinite Effect -->
+<div class="flex space-x-4">
+<div class="w-24 h-40 rounded-xl overflow-hidden border-2 border-primary-container p-0.5 relative shrink-0">
+<img class="w-full h-full object-cover rounded-lg" data-alt="A portrait-oriented mobile content creator recording a reaction video to an unboxing. The lighting is warm and cinematic, featuring professional studio setup in the background of a modern bedroom. The mood is high-energy and joyful, fitting a trendy tech-fashion brand aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0_ehUfgEl7aUQbSI3dhcwpKd83KuUA9i3q0QcMSuFEtTdaPh8-0WyER50doe5dY8y3Zhma3cXVehInYMmWv2I9don1xnc0dMv-ubSKeakKZWjQxe_INqMo_1vrvRdZM7gVkiEemygm-TBUk9eE1g0Jy4mwqS28aa7sRokCEowI6WpQp1izaBfIziqrFHpAxL-KjcKTASYsq0HiprP-uvBt_9aqimt0yIIBcPzuQ9yapJN3mGa1fR5O7BNLg2bIH64fBc2mq4Mgwg">
+<div class="absolute bottom-1 left-1 flex items-center gap-1">
+<div class="w-6 h-6 rounded-full border border-white overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A close-up high-resolution avatar photo of a young woman with a stylish, modern aesthetic, looking into the camera with a friendly expression. The background is a clean, neutral studio wall, ensuring the focus remains on her professional and approachable appearance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSjmFnsGyqtI2g7Uoul9HTXGaz4TuFSraD-LBUgNAwG9ckhNiNlSp44k45SemHbrZndITZaIvC4xImir1eruW0ERArfFCynRGkDVfMvgcyDdzbYwDExB7fWYmMAwv1FHS2-oLsKmqEHzRrk3yVaJSkg_QsYX-sU3Dh4wDNu7WP1yj-PfelW9bG9KM_usupAwpK1k1q5lh99AqoNgGObXyAlUEsXyX5kOYSoh9DE42LStn4qxotSyYIH7E1UINcz9gq6URWr66-7XM">
+</div>
+<span class="text-[10px] text-white font-bold drop-shadow-md">@jules</span>
+</div>
+</div>
+<div class="w-24 h-40 rounded-xl overflow-hidden border-2 border-outline-variant p-0.5 relative shrink-0">
+<img class="w-full h-full object-cover rounded-lg" data-alt="A stylized product shot of a premium phone case held in a person's hand against a minimalist concrete background. The lighting is dramatic and focused, highlighting the intricate textures and deep forest green color of the case. The aesthetic is rugged yet sophisticated." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbHL_U7EjRcT_WOq50QFWqaVb611YV7z7edDvh8Gi6RwsMf4ik1Q9Tv-E_DoWDsSsOiUSeGTOBomffA6Ba5oHGHlMksVW4h7KBzcLEHzcnOx_-_v8M9hvmBEUXzGOe0vBlYsCjN8YPuhnJI8i9LWgahjHMGaFwBxUfNJEAKzNZm8loEtmc5tH8lEMDFZBOVuej3ZTK2IButO-cTLCjfqJmaqjEMp84lLM_YORM54AdGGsLqOgjOArh3EqSc3Yw_0CVPOQGpYfGQ0c">
+<div class="absolute bottom-1 left-1 flex items-center gap-1">
+<div class="w-6 h-6 rounded-full border border-white overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A high-quality studio portrait of a fashionable man with a minimalist aesthetic, wearing a clean black t-shirt against a grey background. The lighting is soft and even, highlighting his stylish and modern persona, consistent with a premium lifestyle brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8XZZ8LeZdgmwIuKbb-XqQXBP-wipfkTBWPAU3caL3TMe8GWpapd4P9Vit6d50vDtqxb6M0NJB8GsYhpbY4xpFQAJJEnC2u83ltlR0gCNVjDuRCqEiWYW2MGWltIaCuvtbapD8W3_6ibIrGIH0DLfFt7kje6LBncN21zdlE2NyyUAqtsMdA6JJTMhWIhgathJfrqOVVs3FdoIBPb2b2r8wDd7DucU94FYXxp6OHHRYgR4yGiwYVDfb9csb_dy87zM7Kk55hkvXJzg">
+</div>
+<span class="text-[10px] text-white font-bold drop-shadow-md">@mike_d</span>
+</div>
+</div>
+<div class="w-24 h-40 rounded-xl overflow-hidden border-2 border-outline-variant p-0.5 relative shrink-0">
+<img class="w-full h-full object-cover rounded-lg" data-alt="A detailed shot of a person unboxing a luxury mystery package. The hands are neatly manicured, and the packaging is high-quality matte black with silver foil details. The overall mood is anticipation and premium quality, set in a bright, modern living room." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmrx_p2Mrzt5krlV-EYtj8KxNnEInSW2zQj929GvWDQ7oX8kgC_x7ygTaIeFcuhKi29wJDuN_37PR28uov0Z_j1Pb6tkVaU5TLX4szVkC4OqhwxLBtoU1EwJBsmGidFNrNeOdWG_7cA-6XwcVeCeLl2VihbQ4bp1-yMyvofzZqGwWiWoBd5OqvUkDrL_Hz87NN9f5d2APE8WjwTHwJkiQG8U7mgJdUDYluheD0uUm4sQho25nC3PB8E0ERzgPC4vzVaeAzkIthKPc">
+<div class="absolute bottom-1 left-1 flex items-center gap-1">
+<div class="w-6 h-6 rounded-full border border-white overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A bright and vibrant profile picture of a cheerful woman with a modern, tech-savvy vibe. She is smiling naturally in an outdoor setting with soft sunlight illuminating her face, creating an inviting and authentic community feel for a digital platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAH1Oo1sg7GdU_loFvMpGoegjHi4afGpZIPcuUFZ4zELNVqYFLowdRcyKziwHDBClLDSGGcEZK_2CPc21eLKgWuFxTVZEYm4UjBp4lGAVedMqfknBJi2Q9c7VRifUGvZfQf1vtkcIZkh8DvDwEpX6dMHHS9CSFVFQYCfBDlrUlNSElHumfKlZhzDlPtpbOUMJ98znP1Er5WQmdgR2EKtpE3Z31amoa1meRA3U2YWyZaG4zM10klrKVPOTpfbZ3bsQIrUk7pPRbDGZ4">
+</div>
+<span class="text-[10px] text-white font-bold drop-shadow-md">@sarah.k</span>
+</div>
+</div>
+<!-- Duplicates for scroll -->
+<div class="w-24 h-40 rounded-xl overflow-hidden border-2 border-outline-variant p-0.5 relative shrink-0">
+<img class="w-full h-full object-cover rounded-lg" data-alt="A flat lay photograph of several premium mobile phone cases arranged artistically on a white marble surface. The cases feature various textures like leather, carbon fiber, and silicone, all in a cohesive dark teal and black color palette. The lighting is bright and clean." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCM5-UTuzTPYsOXQmWHsxDMAWNFbUvHHDdK6WZJ3Fc-Npj1J3gHQzv7LyugLYs3mQdvY0QHhfKxDEwV_NFnr-Iblv_Me6f2RG6dDV5h8KeJUKL5aELJdTCliE2o6xN04bJRYlI2NkIM-oRYK897XKOYjhofAIzanbeDlL8DffIEI4oP-J7kykWFGUSJ5HlgDub5tWRzOM8Q2UJsPY4ikD_VQtmeUw1LjzSFsLgs2sWk08AyRW_QF9x4OQk3rbLWsLLQhPXTL_vYn4">
+</div>
+<div class="w-24 h-40 rounded-xl overflow-hidden border-2 border-outline-variant p-0.5 relative shrink-0">
+<img class="w-full h-full object-cover rounded-lg" data-alt="Close up of a luxury mystery gift box being opened to reveal a shimmering, iridescent phone accessory. The background is a blurred high-end boutique interior. The focus is sharp on the product's premium finish and the excitement of discovery." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVKvlI4IsjJjL93mCahzc_bfIyENrwLYQebAgMMCQd0EDga7HebC3BdTPYHJd7EI-ZdKM3fQ2zidK8eUFD__zhu023Eup89Ry4a9BDSMpdLnFc1-Sdu7627QPuPKMyIWV3Epvui8_wqtq8rn4LxK4O3o_j5gTaYFlZRRIqVqelcbVsUndMqkwcioorjRhzPDEWvqCEpIihSnBCyKThtcw758G_Esm7yHiZ1NnbDLf_Lk6_t1VRe50E-Sgj6a80lHJvcRQvQGWY3T0">
+</div>
+</div>
+<!-- Set 2 -->
+<div class="flex space-x-4">
+<div class="w-24 h-40 rounded-xl overflow-hidden border-2 border-outline-variant p-0.5 relative shrink-0">
+<img class="w-full h-full object-cover rounded-lg" data-alt="A portrait-oriented mobile content creator recording a reaction video to an unboxing. The lighting is warm and cinematic, featuring professional studio setup in the background of a modern bedroom. The mood is high-energy and joyful, fitting a trendy tech-fashion brand aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpyBV9tP1nT6-P9fdRFTSUCGhS2fnjQs3p4J0nYv36O8gFIyWkJ1dwIFSKXtzoY1z4oFk_7KOspMwa1km-qZLpz-8njH-Ho-dfY3Ec-mZhLJmbHPdTxk_GyWJ1upReJzWT27QKeLbt9nIA-bYSXvdFac1AcA6DExcLkKZ84yQRjFd2ivPMjmaejMZKyaRFBaO-DRw5fmdq2pAE8CD8c0wxVWTfOHx2mfBOKTepCpSWrXmZ4X21N34NbkXCoEVCmUF4T-zPkCCF1_M">
+</div>
+<div class="w-24 h-40 rounded-xl overflow-hidden border-2 border-outline-variant p-0.5 relative shrink-0">
+<img class="w-full h-full object-cover rounded-lg" data-alt="A stylized product shot of a premium phone case held in a person's hand against a minimalist concrete background. The lighting is dramatic and focused, highlighting the intricate textures and deep forest green color of the case. The aesthetic is rugged yet sophisticated." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlwT_ya1XjHtxBeOC1q0-gq7AxBeAqlm_nU1TNs05gYYvwDWSgvOz4fhUta45WCjFMEgMS1MRjhniUmb55bc696RKp9Hr0q7UafYe_MOb0HDCDHwS4KRBa90plehQEyM2-c9OM4gq1lQXPkW4bS1ePlVlNoeEoLYU0FInb0qzQQyCzOtrnx4SzJwyzl98lqU_W5LObq9_K4NcHQSZvqcWz5rKnUh1A7EJ5ETQvnHJSSik5V7jEdY3KBkfMOJriGZWgkdiygN1AOM0">
+</div>
+<div class="w-24 h-40 rounded-xl overflow-hidden border-2 border-outline-variant p-0.5 relative shrink-0">
+<img class="w-full h-full object-cover rounded-lg" data-alt="A detailed shot of a person unboxing a luxury mystery package. The hands are neatly manicured, and the packaging is high-quality matte black with silver foil details. The overall mood is anticipation and premium quality, set in a bright, modern living room." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXGzAvVRAikvqeTZGso8Klgvj_0eyUs3aHiK-IU6H6ljtc22iNKqfyzC-ohkb91wqruy9jDTOg4p-8rHfUuNM8TgDWYMhetVKr99k8jcTjz2mpu5MFJ2SVG2pg4R4D3zs50i3-jnMarbKxqZBsxsJFgblGnwSqXcS2jnDUeP__zDyI69y8WXscnrZl04ILorPG_00dq14wGtPe8OWcg1Riv6InPT05T9Zpz2nxEQ02WCiGlUy-UNQ4WVgybxluHX88OsZCgOSYtlU">
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Share Experience Card -->
+<section class="px-container-margin mb-stack-lg">
+<div class="bg-surface-white rounded-xl border border-outline-variant p-stack-md shadow-sm">
+<h3 class="font-title-md text-title-md text-pure-black mb-unit">Show us what mystery you got...</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-stack-md">Upload and get a chance to be featured!</p>
+<div class="grid grid-cols-2 gap-stack-sm mb-stack-md"><button class="flex flex-col items-center justify-center py-stack-md border border-dashed border-outline rounded-xl hover:bg-surface-container transition-colors group"><span class="material-symbols-outlined text-primary mb-2 text-3xl group-hover:scale-110 transition-transform" data-icon="add_a_photo">add_a_photo</span><span class="font-label-caps text-label-caps text-pure-black">Upload Photo</span><span class="text-[10px] text-on-surface-variant mt-1">JPG, PNG up to 5MB</span></button><button class="flex flex-col items-center justify-center py-stack-md border border-dashed border-outline rounded-xl hover:bg-surface-container transition-colors group"><span class="material-symbols-outlined text-primary mb-2 text-3xl group-hover:scale-110 transition-transform" data-icon="videocam">videocam</span><span class="font-label-caps text-label-caps text-pure-black">Upload Video</span><span class="text-[10px] text-on-surface-variant mt-1">MP4, MOV up to 20MB</span></button></div>
+<div class="flex gap-1 mb-stack-md text-primary">
+<span class="material-symbols-outlined cursor-pointer" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined cursor-pointer" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined cursor-pointer" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined cursor-pointer" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined cursor-pointer" data-icon="star">star</span>
+</div>
+<textarea class="w-full rounded-lg border-outline-variant focus:border-primary-container focus:ring-1 focus:ring-primary-container font-body-sm text-body-sm mb-stack-md p-3 min-h-[80px]" placeholder="Write your reaction..."></textarea>
+<button class="w-full bg-primary-container text-on-primary-container font-bold py-3 rounded-lg active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-xl" data-icon="send">send</span>
+<span class="">Share Experience</span>
+</button>
+</div>
+</section>
+<!-- Social Connect -->
+<section class="px-container-margin mb-stack-lg">
+<div class="bg-pure-black text-surface-white rounded-xl p-stack-md flex items-center justify-between">
+<div>
+<h4 class="font-title-md text-title-md">Post &amp; Tag Us</h4>
+<p class="font-body-sm text-outline">Get Featured on Our Website</p>
+</div>
+<div class="flex gap-3">
+<button class="w-10 h-10 rounded-full border border-outline flex items-center justify-center hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-xl" data-icon="camera">camera</span>
+</button>
+<button class="w-10 h-10 rounded-full border border-outline flex items-center justify-center hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-xl" data-icon="movie">movie</span>
+</button>
+<button class="w-10 h-10 rounded-full border border-outline flex items-center justify-center hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-xl" data-icon="alternate_email">alternate_email</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Reward Card -->
+<section class="px-container-margin mb-stack-lg">
+<div class="bg-secondary-container/20 border border-secondary-container rounded-xl p-stack-md flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-secondary-container" data-icon="celebration">celebration</span>
+</div>
+<div>
+<p class="font-body-sm font-bold text-on-secondary-container">Win a $50 Voucher!</p>
+<p class="text-[12px] text-on-secondary-container/80">Top 3 posts every week get featured and win exclusive mystery credits.</p>
+</div>
+</div>
+</section>
+<!-- Community Feed -->
+<section class="px-container-margin space-y-stack-lg">
+<!-- Feed Post 1 -->
+<article class="bg-surface-white rounded-xl border border-outline-variant overflow-hidden shadow-sm" style="opacity: 1; transform: translateY(0px); transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);">
+<div class="p-stack-md flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A close-up portrait of a cheerful, stylish young man with a creative look. The lighting is soft and natural, emphasizing his friendly and energetic presence within a community setting. The aesthetic is clean and modern, suitable for a premium social feed." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwAFcZBAbfEnpOycGOshWysnMRFgBNkZl5K13huZ0ADD4iU9_ASRLoY5DSZCP0p_j37WI41aFfgi15CMXsWA_a55S2auFoqK2p2KoEwSa7-6UrTRhtS_1bOIjjV9p-WKtWd-pl93U4BfbTJ42clc2jsqtMdjtGzSokr1ywC9u9XekLt5bIR1uXigxH0FFR3iAFrAcppInkfAfknfYlN98Q1RYjshOmdvl0a0pmL0fJYS8Y3lM7Wga72t9ElfHXCev56rXw9EOeeh0">
+</div>
+<div>
+<p class="font-title-md text-sm text-pure-black leading-tight">Alex Rivera</p>
+<p class="font-label-caps text-[10px] text-on-surface-variant uppercase">iPhone 15 Pro Max</p>
+</div>
+</div>
+<div class="flex text-primary">
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+</div>
+</div>
+<div class="aspect-square w-full bg-surface-container relative">
+<img class="w-full h-full object-cover" data-alt="A professional unboxing photograph showing a high-end, futuristic phone case in a vibrant anime-inspired holographic color. The case is laid out on a clean white desk next to a premium mystery box. The lighting is bright and sharp, highlighting the product's unique design and high-quality construction." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB23fcI3RUbzZpmynoGQrG7-2JR8vi74ky_7SOnxTZOSuJ0RvMITE-vPFdpWGJsOS9kDCbcf14UsXv8NlfQLQjc46aEwMqRpmupm4zW_DTloWcDEKZD8SUoXG2WrrfdgIbCIe-Liw6ZH1i7HB_7NZmcFBQW0RcnljI95WY7bB53empyyaKeu7Iy8-XlolCdJkscg_8qelhUVd2OyoQON-mF4QPfFy_wcEOSxKBQOqLUlM9O-VFElMuvVJ16oDUaQEB4S7BstIS3ssI">
+<div class="absolute top-4 right-4 glass-card px-3 py-1 rounded-full border border-white/20">
+<span class="text-[10px] font-bold text-pure-black">ANIME POUCH UNLOCKED</span>
+</div>
+</div>
+<div class="p-stack-md">
+<p class="font-body-sm text-body-sm text-on-background mb-stack-md">"Actually got a crazy anime pouch! The quality is way better than I expected for a mystery drop. Definitely buying another one."</p>
+<div class="flex items-center justify-between">
+<div class="flex gap-4">
+<button class="flex items-center gap-1 text-on-surface-variant group">
+<span class="material-symbols-outlined text-xl group-hover:text-error transition-colors" data-icon="favorite">favorite</span>
+<span class="font-label-caps text-xs">1.2k</span>
+</button>
+<button class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-xl" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-label-caps text-xs">48</span>
+</button>
+</div>
+<button class="text-on-surface-variant">
+<span class="material-symbols-outlined text-xl" data-icon="share">share</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Feed Post 2 -->
+<article class="bg-surface-white rounded-xl border border-outline-variant overflow-hidden shadow-sm" style="opacity: 1; transform: translateY(0px); transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);">
+<div class="p-stack-md flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A portrait-style studio photo of a fashion-forward woman with a sophisticated aesthetic. She is wearing a modern minimalist outfit against a soft pastel backdrop. The lighting is high-key and flattering, perfectly capturing her confident and trendy look." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLjrDPDXUOPX0ZSsX8TLS-KAKjEHikNb3-W4ZVQgS8O8BlxDEji1ZAkWWiJ3shqU5Kd6pt7wFAYY6d9e5YDjaa_4Fnculb5P_w7I-7sVklNEn5U6_tbdjzw_GIo6-yj2DuM4EhlEXe6PmJFq4ihkQI1l0OhfZx0zWL6plDaw5al9w-I9CqzoKTajVDOC6ar5ueD_FCtM90Gn5j0zlJ_91NxPoPeWABCrYGMtB8UyicSxmP09A-URhMau5eYyvDqB6-bgSlQ8eq4L4">
+</div>
+<div>
+<p class="font-title-md text-sm text-pure-black leading-tight">Elena Moretti</p>
+<p class="font-label-caps text-[10px] text-on-surface-variant uppercase">Samsung S24 Ultra</p>
+</div>
+</div>
+<div class="flex text-primary">
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+</div>
+</div>
+<div class="aspect-square w-full bg-surface-container relative">
+<img class="w-full h-full object-cover" data-alt="A cinematic product photo showing a sleek, rugged phone case in deep matte forest green. The case is being handled by someone wearing high-end streetwear. The background is a blurred cityscape at dusk, creating a cool, urban vibe that highlights the product's utility and style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtY_bqbSXbtBH2BFTmbhPrdNJyj8wASGpHy24gZi9o3xf1k4bOC6RDGD-l3F1u5HOpd_NiLPtuT3lekAD8TcFiKhuitfmV23tZMEAWnra1_MgRw5pW8flAzkeM_MfdQLhb7KH45oEIp1tVmebz361JcIGvlxHuoRLLiLMnCErz5OceOIDEGeaPR-vgBHTSe6Q01PrWgse5-52lWd6BD1qVVyOykntinLBhSYhQb40fKbnfDbP0vl1dh2zOzFo0QHepTSiR76LvFpg">
+</div>
+<div class="p-stack-md">
+<p class="font-body-sm text-body-sm text-on-background mb-stack-md">"The Forest Green collection is so slick. 🌲 Mystery pouch came with a matching screen protector too. Major vibes!"</p>
+<div class="flex items-center justify-between">
+<div class="flex gap-4">
+<button class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-xl" data-icon="favorite">favorite</span>
+<span class="font-label-caps text-xs">856</span>
+</button>
+<button class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-xl" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-label-caps text-xs">22</span>
+</button>
+</div>
+<button class="text-on-surface-variant">
+<span class="material-symbols-outlined text-xl" data-icon="share">share</span>
+</button>
+</div>
+</div>
+</article>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-white dark:bg-pure-black shadow-[0px_-4px_20px_rgba(15,23,42,0.05)] shadow-md flex justify-around items-center px-gutter py-stack-sm pb-safe">
+<button class="flex flex-col items-center justify-center text-outline dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-caps text-label-caps">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+<span class="font-label-caps text-label-caps">Shop</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-bold active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="group" data-weight="fill">group</span>
+<span class="font-label-caps text-label-caps">Community</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-caps text-label-caps">Profile</span>
+</button>
+</nav>
+<!-- Floating Action Button -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-pure-black text-white rounded-full shadow-lg flex items-center justify-center active:scale-90 transition-transform z-40">
+<span class="material-symbols-outlined text-3xl" data-icon="add">add</span>
+</button>
+<script>
+        // Micro-interactions for Feed
+        document.querySelectorAll('article button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const icon = this.querySelector('.material-symbols-outlined');
+                if (icon && icon.textContent === 'favorite') {
+                    const isFilled = icon.style.fontVariationSettings.includes("'FILL' 1");
+                    icon.style.fontVariationSettings = isFilled ? "'FILL' 0" : "'FILL' 1";
+                    this.classList.toggle('text-error', !isFilled);
+                }
+            });
+        });
+
+        // Simple scroll reveal for cards
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('article').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
+            observer.observe(el);
+        });
+    </script>
+
+
+</body></html>

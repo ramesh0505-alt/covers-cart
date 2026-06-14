@@ -1,0 +1,185 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Coverscart - Item Added to Cart</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style data-purpose="typography">
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+  </style>
+<style data-purpose="custom-colors">
+    :root {
+      --brand-orange: #FF5A1F; /* Specific orange from the reference */
+    }
+    .bg-brand-orange {
+      background-color: var(--brand-orange);
+    }
+  </style>
+<link data-snapdom="injected-import" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"></head>
+<body class="bg-gray-50 min-h-screen flex flex-col items-center" data-mode="connect">
+<!-- BEGIN: MainContainer -->
+<div class="w-full max-w-[430px] bg-white min-h-screen shadow-lg flex flex-col relative overflow-hidden">
+<!-- BEGIN: SiteHeader -->
+<header class="border-b border-gray-100 px-4 py-3 flex items-center justify-between sticky top-0 bg-white z-20">
+<!-- Hamburger Menu -->
+<button aria-label="Menu" class="p-2">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+</svg>
+</button>
+<!-- Logo Section -->
+<div class="flex flex-col items-center">
+<div class="flex flex-col items-center scale-90">
+<svg class="mb-0" height="40" viewBox="0 0 100 100" width="40">
+<path d="M20 30 L20 80 Q20 90 30 90 L70 90 Q80 90 80 80 L80 30" fill="none" stroke="black" stroke-width="4"></path>
+<path d="M35 30 Q35 15 50 15 Q65 15 65 30" fill="none" stroke="black" stroke-width="4"></path>
+<text font-family="Arial" font-size="28" font-weight="bold" text-anchor="middle" x="50" y="65">C</text>
+</svg>
+<span class="text-[14px] font-bold tracking-widest uppercase -mt-1">COVERSCART</span>
+<span class="text-[6px] tracking-widest text-gray-400 -mt-1">— STYLE YOUR DEVICE —</span>
+</div>
+</div>
+<!-- Action Icons -->
+<div class="flex items-center space-x-2">
+<button aria-label="Search" class="p-2">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+</svg>
+</button>
+<button aria-label="Cart" class="p-2 relative">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+</svg>
+<span class="absolute top-1 right-1 bg-primary text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">2</span>
+</button>
+</div>
+</header>
+<!-- END: SiteHeader -->
+<!-- BEGIN: CartConfirmationOverlay -->
+<main class="flex-grow flex flex-col p-6 space-y-6">
+<!-- Success Notification Header -->
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<h2 class="text-lg font-medium text-gray-800">Item added to your cart</h2>
+</div>
+<button class="text-gray-400 hover:text-black">
+<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
+</svg>
+</button>
+</div>
+<!-- Product Details Block -->
+<div class="flex space-x-4">
+<!-- Product Image Placeholder -->
+<div class="w-24 h-32 flex-shrink-0 bg-gray-100 border border-gray-200">
+<img alt="Kakashi Hatake Phone Case" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALiuJM9JodHoXDN5kbK4I5cCHFbB82ux6i6b_sCVJelrzRb40UORTZseqetfpGdbiF7KafjfE-0bDz30tNPbntkiBQ2XGGBUfnTS7Ddrd7IUDGYRqEczkVmoQIxqzzskcaSQYBB7kKzvvo8atS5B9O-VNzh08EyxLNDie5POD-Z7lWaTr0WjsUcTVehSM6FMv-ZY1zrr8OuS8v4hl9k6rUwsGEveRFRjzXLXlLAzRBixn2WE-Mdtc_3oiksF62D68GZIQ85uZtC44">
+</div>
+<!-- Text Info -->
+<div class="flex-grow pt-1">
+<h1 class="text-xl font-medium leading-tight text-gray-900 mb-2">
+            Kakashi Hatake<br>Sharingan Anime Glass<br>case
+          </h1>
+<div class="space-y-1 text-gray-500">
+<p class="text-sm">Brand : Vivo</p>
+<p class="text-sm">Vivo : Vivo X90</p>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col space-y-3 pt-4">
+<!-- View Cart Button -->
+<button class="w-full py-4 border-2 border-primary rounded-full font-semibold text-lg text-primary hover:bg-primary hover:text-white transition-colors">View cart (2)</button>
+<!-- Checkout Button -->
+<button class="w-full py-4 bg-primary text-white rounded-full font-semibold text-lg hover:opacity-90 transition-opacity">Check out</button>
+<!-- Continue Shopping Link -->
+<div class="text-center pt-2">
+<a class="text-gray-800 underline underline-offset-4 font-medium" href="#">Continue shopping</a>
+</div><section class="pt-8 space-y-4">
+<h3 class="text-lg font-bold text-gray-900 px-0">Similar Products</h3>
+<div class="flex overflow-x-auto space-x-4 pb-4 -mx-2 px-2 scrollbar-hide">
+<!-- Product Card 1 -->
+<div class="flex-shrink-0 w-32 space-y-2">
+<div class="aspect-[3/4] bg-gray-100 border border-gray-200 overflow-hidden">
+<img alt="Crimson Sun Mountain" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLueMVqYhKyB8dhZg-H3-r1w0HA5zd2gfsHWGFlKJPX92ZaYZw7XACoWEY0r74yfze2osejvZLrKfyTO-vPjxSo-K8tJU9-veulFXZHTysqc-1_2kaUxbf4b9mzCkQ4dwlz4xVfoMX5Srf0vXEStiQYnRff38CH2D8KzLTUwOBK8APZIZ10O3pnoo1HjrVKvs7cGwuGhmZae3hIQhq-sLKQILiXmBxi6exyYU9KNBopczTnfj3Jz7ulOlW0">
+</div>
+<div class="space-y-1">
+<p class="text-[12px] font-medium text-gray-900 truncate">Crimson Sun Mountain</p>
+<div class="flex items-center justify-between">
+<span class="text-[12px] font-bold text-gray-900">Rs. 299.00</span>
+<button class="text-white rounded-full p-1 flex items-center justify-center bg-primary">
+<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="flex-shrink-0 w-32 space-y-2">
+<div class="aspect-[3/4] bg-gray-100 border border-gray-200 overflow-hidden">
+<img alt="Cherry Blossom" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLvSvO19vHDuo6uwhv_yf7CvBMjxtGhWbi7UraPef6CE5JHLcCIMtC0mojbUGUlaXY0ytEadUStykf1zvYEK_CcOprdTsFuj9MT4vrsjURhg7Lu82_oOQrmXBj4V9zW3ukhRRZ1Vdm602yvfcdFPGeJ5QenmuBIGGhMzkl6I-aYRBIjFbdr3Evpf_ofx3Hh-PfrJgXw51agQjTc4OE1Ei3dV8nGnUARuGCMPMN9Hl3eCt1dbD6xmEQnQoQ">
+</div>
+<div class="space-y-1">
+<p class="text-[12px] font-medium text-gray-900 truncate">Cherry Blossom</p>
+<div class="flex items-center justify-between">
+<span class="text-[12px] font-bold text-gray-900">Rs. 299.00</span>
+<button class="text-white rounded-full p-1 flex items-center justify-center bg-primary">
+<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="flex-shrink-0 w-32 space-y-2">
+<div class="aspect-[3/4] bg-gray-100 border border-gray-200 overflow-hidden">
+<img alt="Autumn Moon" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLvuB4gtMWxNnbZyBakPpg-ctyzKYNY16EXZt_xEsTaXp0ovja2tjCAAOyMk7QvMYnQUxbmx16Dq1E5rZJtVKp9jCJSSuy8DdKmuixB1Omc_A4M0pTamcdQetcb_xDg0wyFUu8oKPUtSrFzoKprbrdkWlhnd87FA225smFwgAG9LXYuf4h5FdR8pxBmCBHs_AB6IhscvuP3EhJS2LjplzY0isiTbklK_2_J_bV0daTey9pAyIjIdhAA0UAU">
+</div>
+<div class="space-y-1">
+<p class="text-[12px] font-medium text-gray-900 truncate">Autumn Moon</p>
+<div class="flex items-center justify-between">
+<span class="text-[12px] font-bold text-gray-900">Rs. 299.00</span>
+<button class="text-white rounded-full p-1 flex items-center justify-center bg-primary">
+<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="flex-shrink-0 w-32 space-y-2">
+<div class="aspect-[3/4] bg-gray-100 border border-gray-200 overflow-hidden">
+<img alt="Elegant Lace" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLty-R6v8Otnq_bFvSw_z9zsIXaqNJFcUeFn1w5HrKL0O7pGEmoqhq6WXWf6tSxXPIviIkw2JbbierSgAk_V8NFW6NDqBiz7iZO3yz7_XJxCV-SEyEgGio6SLxdEMyWUyyVvj_d_PN4q_s8eIJT_cBO0DsQTKZioxmt15g4x4LH79DK6MEh4yZCuMVHOjq_76rs_JFrQebpWpvZwVptkQ4D3nig9dsKhA1B4__C_BIVtMqBSPJBxEaa-2kg">
+</div>
+<div class="space-y-1">
+<p class="text-[12px] font-medium text-gray-900 truncate">Elegant Lace</p>
+<div class="flex items-center justify-between">
+<span class="text-[12px] font-bold text-gray-900">Rs. 299.00</span>
+<button class="text-white rounded-full p-1 flex items-center justify-center bg-primary">
+<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- END: CartConfirmationOverlay -->
+<!-- BEGIN: FooterBranding -->
+<footer class="border-t border-gray-100 p-8 flex flex-col items-start bg-white">
+<div class="mb-4">
+<span class="text-[12px] text-gray-400 tracking-widest uppercase"><br><br></span>
+</div>
+<!-- Page Indicator / Navigation -->
+</footer>
+<!-- END: FooterBranding -->
+</div>
+<!-- END: MainContainer -->
+
+
+
+
+</body></html>

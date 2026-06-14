@@ -1,0 +1,329 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Wishlist | CoverScart</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-tertiary-fixed-variant": "#76321f",
+                "on-secondary-fixed": "#002109",
+                "on-tertiary": "#ffffff",
+                "on-primary": "#ffffff",
+                "on-tertiary-container": "#fffdff",
+                "on-primary-fixed-variant": "#005046",
+                "secondary-fixed-dim": "#4ae176",
+                "on-secondary": "#ffffff",
+                "surface-white": "#FFFFFF",
+                "surface-container-lowest": "#ffffff",
+                "tertiary-fixed": "#ffdbd1",
+                "surface-dim": "#d2d9f4",
+                "tertiary-container": "#b05f48",
+                "on-secondary-fixed-variant": "#005321",
+                "on-tertiary-fixed": "#3b0900",
+                "primary-container": "#108474",
+                "surface-tint": "#006b5d",
+                "on-surface": "#131b2e",
+                "on-primary-fixed": "#00201b",
+                "on-error": "#ffffff",
+                "on-secondary-container": "#007432",
+                "tertiary-fixed-dim": "#ffb5a0",
+                "surface-container-low": "#f2f3ff",
+                "primary-fixed-dim": "#77d7c5",
+                "error-container": "#ffdad6",
+                "primary": "#00695c",
+                "background": "#faf8ff",
+                "surface-container": "#eaedff",
+                "surface-container-highest": "#dae2fd",
+                "on-primary-container": "#fafffc",
+                "surface-bright": "#faf8ff",
+                "surface-variant": "#dae2fd",
+                "surface-container-high": "#e2e7ff",
+                "primary-fixed": "#93f4e0",
+                "secondary-fixed": "#6bff8f",
+                "error": "#ba1a1a",
+                "outline-variant": "#bdc9c5",
+                "tertiary": "#924732",
+                "inverse-primary": "#77d7c5",
+                "surface": "#faf8ff",
+                "secondary": "#006e2f",
+                "pure-black": "#0E0E0E",
+                "inverse-surface": "#283044",
+                "secondary-container": "#6bff8f",
+                "on-background": "#131b2e",
+                "outline": "#6e7a76",
+                "on-error-container": "#93000a",
+                "on-surface-variant": "#3e4946",
+                "inverse-on-surface": "#eef0ff"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+            },
+            "spacing": {
+                "unit": "4px",
+                "stack-lg": "32px",
+                "container-margin": "20px",
+                "stack-md": "16px",
+                "stack-sm": "8px",
+                "gutter": "16px"
+            },
+            "fontFamily": {
+                "headline-lg-mobile": ["Hanken Grotesk"],
+                "headline-lg": ["Hanken Grotesk"],
+                "label-caps": ["Hanken Grotesk"],
+                "title-md": ["Hanken Grotesk"],
+                "display-lg": ["Hanken Grotesk"],
+                "body-sm": ["Hanken Grotesk"],
+                "body-lg": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      body { -webkit-tap-highlight-color: transparent; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-lg text-body-lg">
+<!-- Top AppBar -->
+<header class="sticky top-0 w-full z-50 bg-surface-white border-b border-surface-variant shadow-sm flex items-center justify-between px-container-margin h-16">
+<div class="flex items-center gap-4">
+<button class="active:scale-95 transition-transform hover:opacity-80">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<h1 class="font-title-md text-title-md text-on-surface">Wishlist</h1>
+<span class="font-label-caps text-label-caps text-on-surface-variant">3 ITEMS</span>
+</div>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="active:scale-95 transition-transform hover:opacity-80">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+</button>
+<button class="relative active:scale-95 transition-transform hover:opacity-80">
+<span class="material-symbols-outlined text-on-surface-variant">shopping_bag</span>
+<span class="absolute -top-1 -right-1 bg-primary text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">2</span>
+</button>
+</div>
+</header>
+<main class="pb-32">
+<!-- Main Wishlist Grid -->
+<section class="px-container-margin pt-stack-md">
+<div class="grid grid-cols-2 gap-gutter items-stretch">
+<!-- Product Card 1 -->
+<div class="flex flex-col bg-surface-white border border-[#F1F5F9] rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(15,23,42,0.02)] transition-transform hover:scale-[1.02]">
+<div class="relative aspect-[4/5] bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="A premium smartphone case featuring a stunning artistic 'Crimson Sun Mountain' landscape design with deep reds and silhouettes. The case is shown in high-key, soft lighting on a minimalist white surface, emphasizing its sleek 4px rounded corners and premium matte finish. The overall aesthetic is modern, high-end, and sophisticated." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_h-Ay-9QIO-lWdzJBcu3BkGOIG_1JGeoOg2yyaJMEu8N7GV0l8z7nhehCNfTpxOjrn-T63libWa09i2rEVR2SZJANEL34cyggGoCgxb5QvrjE4EzS2pRwA36bkk41CubnF_IYmKM8vWutxkMGiyDtoqHzVrNq7c2s8nhUyP7xGEjIDHqFzMrXpNRcraa2xwHwzJGNs50-OjyNdmDqdVhQIB_JMoaZLzfQgP0HNaZaCHkVLOnD5i6mhSsL_URO1STOlwQcLhGcY8M">
+<button class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/90 shadow-sm flex items-center justify-center text-error active:scale-90 transition-transform">
+<span class="material-symbols-outlined !text-[20px]">close</span>
+</button>
+<div class="absolute bottom-2 left-2 bg-secondary text-on-secondary px-2 py-0.5 rounded-full font-label-caps text-[10px] shadow-sm">
+                            SALE 60% OFF
+                        </div>
+</div>
+<div class="p-stack-sm flex flex-col flex-grow">
+<p class="font-label-caps text-label-caps text-on-surface-variant truncate">IPHONE 15 PRO</p>
+<h3 class="font-body-lg text-body-lg font-bold text-on-surface leading-tight mt-1 line-clamp-1">Crimson Sun Mountain</h3>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined !text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">4.8 (120)</span>
+</div>
+<div class="mt-stack-sm flex items-baseline gap-2">
+<span class="font-title-md text-title-md text-primary">Rs. 299</span>
+<span class="font-body-sm text-body-sm text-outline line-through">Rs. 799</span>
+</div>
+<button class="mt-stack-md w-full bg-pure-black text-on-primary py-2.5 rounded-lg font-label-caps text-label-caps active:scale-95 transition-transform font-bold">
+                            MOVE TO CART
+                        </button>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="flex flex-col bg-surface-white border border-[#F1F5F9] rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(15,23,42,0.02)] transition-transform hover:scale-[1.02]">
+<div class="relative aspect-[4/5] bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="A high-quality designer phone cover with a serene 'Cherry Blossom Ocean' pattern, blending soft pinks and deep sea blues. The photography style is minimalist e-commerce, with soft diffused light against a neutral grey background. The case looks rugged yet stylish, showcasing a perfect balance of protection and modern high-end fashion." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAftTJv_RA0M7Tvk4hDqHSwk3TP1Za3G-nE_4B-KZ_P_EsVHGtuVzues5SWVbgxNhTAk2eJZhz8TlQNvarB_LbcHN1zkJuGVagUJJaqIyqwVaaoeYj314fVMi_ogcNMfLk7KtWsbknBCkeNH8AM6u-JDBvZBSOCcl5tIh3pRfigqBxCTSxNiy7JJhYsZy8_-NXaNCYaw9zKplRBlEi6cQAQ0dU2F3W-bbC9mAg0OMQX67SzSYTD3VW9briTRyt_vxY4jIfb4E9s5VI">
+<button class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/90 shadow-sm flex items-center justify-center text-error active:scale-90 transition-transform">
+<span class="material-symbols-outlined !text-[20px]">close</span>
+</button>
+</div>
+<div class="p-stack-sm flex flex-col flex-grow">
+<p class="font-label-caps text-label-caps text-on-surface-variant truncate">IPHONE 15 PRO</p>
+<h3 class="font-body-lg text-body-lg font-bold text-on-surface leading-tight mt-1 line-clamp-1">Cherry Blossom Ocean</h3>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined !text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">4.9 (86)</span>
+</div>
+<div class="mt-stack-sm flex items-baseline gap-2">
+<span class="font-title-md text-title-md text-primary">Rs. 349</span>
+<span class="font-body-sm text-body-sm text-outline line-through">Rs. 899</span>
+</div>
+<button class="mt-stack-md w-full bg-pure-black text-on-primary py-2.5 rounded-lg font-label-caps text-label-caps active:scale-95 transition-transform font-bold">
+                            MOVE TO CART
+                        </button>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="flex flex-col bg-surface-white border border-[#F1F5F9] rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(15,23,42,0.02)] transition-transform hover:scale-[1.02]">
+<div class="relative aspect-[4/5] bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="A premium mobile phone case with 'Autumn Moon Valley' graphic art featuring warm oranges, deep ochre, and celestial motifs. Captured in a clean, professional studio setting with sharp focus on the texture and detail of the case. The background is a sophisticated off-white, maintaining a minimal and spacious visual language consistent with luxury tech accessories." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdBJnMbirIb6E177eAqc3QA5zD1uGduQQszK8ZTaw5DxiUTiKo_zQZ4ruuMO8WjoMb1-HwZr9EirtDdc2uzbTS2cFLjq5mHd9s_U7n5S4qtH2TLc6KMg8g-OCO4qcVf1r7iQ5X0lkJdgso-g6Df3njSRYM_SzZ7T-18p6TF4rg7L3uIAqG1oHg5KAivJZDYx674b1mDpoCsEZdDMwAqi_l6a7CPbKEWFMOPv58ZCLyrGv9XEAvpNdxyWumlUQKuKs_cs4Vdff4uns">
+<button class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/90 shadow-sm flex items-center justify-center text-error active:scale-90 transition-transform">
+<span class="material-symbols-outlined !text-[20px]">close</span>
+</button>
+<div class="absolute bottom-2 left-2 bg-primary text-on-primary px-2 py-0.5 rounded-full font-label-caps text-[10px] shadow-sm">
+                            NEW ARRIVAL
+                        </div>
+</div>
+<div class="p-stack-sm flex flex-col flex-grow">
+<p class="font-label-caps text-label-caps text-on-surface-variant truncate">IPHONE 15 PRO</p>
+<h3 class="font-body-lg text-body-lg font-bold text-on-surface leading-tight mt-1 line-clamp-1">Autumn Moon Valley</h3>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined !text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">4.7 (42)</span>
+</div>
+<div class="mt-stack-sm flex items-baseline gap-2">
+<span class="font-title-md text-title-md text-primary">Rs. 299</span>
+<span class="font-body-sm text-body-sm text-outline line-through">Rs. 799</span>
+</div>
+<button class="mt-stack-md w-full bg-pure-black text-on-primary py-2.5 rounded-lg font-label-caps text-label-caps active:scale-95 transition-transform font-bold">
+                            MOVE TO CART
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Recommended Carousel -->
+<section class="mt-stack-lg">
+<div class="flex items-center justify-between px-container-margin mb-stack-sm snap-x">
+<h2 class="font-title-md text-title-md text-on-surface">Recommended for You</h2>
+<button class="font-label-caps text-label-caps text-primary hover:opacity-80 transition-opacity">SEE ALL</button>
+</div>
+<div class="flex overflow-x-auto no-scrollbar gap-gutter px-container-margin snap-x">
+<!-- Recommended Item 1 -->
+<div class="flex-shrink-0 w-40 flex flex-col group snap-center">
+<div class="relative aspect-square bg-surface-container rounded-xl overflow-hidden mb-2">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A close-up shot of a modern, rugged smartphone case with deep forest green accents and carbon fiber textures. The lighting is dramatic yet clean, highlighting the structural integrity and premium materials. Set against a minimalist dark grey backdrop to emphasize the product's quality and contemporary luxury design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBshAgv7wy7PV_NxSt8OeKWwPI0L5biadqvhPH30UoZEJmzNRDqy1HMBfibgeRz1AYPeCegj8ci2LSFRkjjWNvNuUcJtgvL82Eist4Oae5Fz1gpKsz_27-XnjHjkPuTMfrRQEwWpTid44mCwjadd2oRx2krwxfTULI90pit-mnjofKY3tC6PQLvSlY-oOYES5SxSCqcZKJKhPcgxt_A5lMXJbwtyMIz7Zj5enV5SoVcpNHn-Xji9RKWdLBCRtEFFkaTFqKi2pEUEGo">
+</div>
+<h4 class="font-body-sm text-body-sm font-semibold truncate">Midnight Carbon</h4>
+<p class="font-label-caps text-[10px] text-primary">Rs. 499</p>
+</div>
+<!-- Recommended Item 2 -->
+<div class="flex-shrink-0 w-40 flex flex-col group snap-center">
+<div class="relative aspect-square bg-surface-container rounded-xl overflow-hidden mb-2">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A sleek, transparent phone case for the latest flagship model, featuring a minimalistic floral line-art pattern in gold. The product is photographed in a bright, airy setting with natural daylight casting soft shadows on a polished white surface. The visual mood is elegant and highly desirable." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_c45bbt1LGjFjpLTmGnl86TtJPcFuI1QfEooBZP37WrrCN4QfE5ep75_1sEsxE5Hij_VPoDA0jNxDRwDk8z9Vp9oMBWD3_5ka8V5HV19mkjuBEu0IUJEiakvUVhlj2CsqQIoGAlOfVVoAl0iLrQU0h6S4y8DA2svvEr9OzxL2I6s-dBvNATRfk5ywsmxOa2INqwZn19d8sRV_AlzbUoEACN0-AZ1pTSqpRZEQYuLuQuDE8gwy2VWPOjIihr5h900-T5nBse_Bk7g">
+</div>
+<h4 class="font-body-sm text-body-sm font-semibold truncate">Golden Floral</h4>
+<p class="font-label-caps text-[10px] text-primary">Rs. 399</p>
+</div>
+<!-- Recommended Item 3 -->
+<div class="flex-shrink-0 w-40 flex flex-col group snap-center">
+<div class="relative aspect-square bg-surface-container rounded-xl overflow-hidden mb-2">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="An ultra-minimalist solid-color phone case in a deep slate blue hue. The surface has a soft-touch matte texture that reflects light subtly. The image is a clean top-down view on a light wood surface, embodying a modern corporate yet lifestyle-oriented aesthetic. Pure, high-end, and functional design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-WxyIquHNvEYXDi-CobdNAQt7ZLVBwrNeR_UmiB9tQP80oCIVDHKFLmHiuqtlFi4PRUhpqwJsDlGp-KUMBQnVE6YUjRHcr6U6Cwo5jn5vItqhmb1I6I_KmU5KZypAXZne9zo6xz988ZqrF375h2gOYOqWXAsqu7_LieRNafOY5jufoLaWso5MBK5hSfVuWuUFFXsc6UhxR3NONrYDD7zMwvswHwEC69pSYxpGZ1IbE-egu9XmYRAJi4GfxC8tDRyERlv4UoEKGAg">
+</div>
+<h4 class="font-body-sm text-body-sm font-semibold truncate">Slate Minimal</h4>
+<p class="font-label-caps text-[10px] text-primary">Rs. 249</p>
+</div>
+</div>
+</section>
+<!-- Recently Viewed -->
+<section class="mt-stack-lg px-container-margin">
+<h2 class="font-title-md text-title-md text-on-surface mb-stack-md">Recently Viewed</h2>
+<div class="space-y-stack-sm">
+<div class="flex items-center gap-4 bg-surface-white p-2 border border-[#F1F5F9] rounded-xl">
+<div class="w-16 h-16 bg-surface-container-low rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A high-contrast macro shot of a textured silicone phone case in vibrant emerald green. The lighting highlights the tactile grip patterns on the sides. Set against a clean white background to emphasize the bold color and premium build quality of the CoverStall product range." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_1BFsDDCB5S_qATNlilhUSzSa6IxtgaKPmE8oTZTZHVh1o2ZwlYB3hfegcogwif5Lfs4k4vLcR7NnDK5iE_Mg2lVBbIWdGr-3iXZySXFmkgWxPEAdT8yQAI1mEO2TCZ5Bwp-g3yOtJQpEHQcu0gARKugnkSU5KXyB8DXKbA51A9wJDCpoxdedB8HrS9-4cgju8o3YEZsXIHUAJfGmzZi_WDCIEBTGnZ37vcNEgkG3Bp9dmBAYtriG7zm27pGymPqBAp_hr6rdbww">
+</div>
+<div class="flex flex-col">
+<h4 class="font-body-sm text-body-sm font-bold">Deep Forest Grip</h4>
+<p class="font-label-caps text-label-caps text-on-surface-variant">iPhone 14 Pro • Rs. 299</p>
+</div>
+<button class="ml-auto p-2">
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</button>
+</div>
+<div class="flex items-center gap-4 bg-surface-white p-2 border border-[#F1F5F9] rounded-xl">
+<div class="w-16 h-16 bg-surface-container-low rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A luxury leather phone wallet case in rich cognac brown. The stitching is precise and high-contrast, showing exquisite craftsmanship. The image is lit with warm, professional studio lights to evoke a sense of premium quality and heritage utility." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8rOIGzLvg7WwvFwFaGO_fGrP7CJgHNam8aMXkk2nKn_qOMF3oRBW2IOTEtLGXae-cfjFVJePSFJZjBUqS2qU-A7t5rIsiZSyDSdmmNH3wBfVKarTclzFTJkYGa1SWQlYKhpTpIFeRG1AlFUNO48GbAirgDe5wfxxPGoY5ejjFfybdtCOG1rgzFFFaMKsA0W43Hmpr3oyw_AM1WBzZT7hoN-7sSMDyHc7USShaOEYc1r12eJzxh0Q8mzQmlHiZ37q0htjdAqs4Saw">
+</div>
+<div class="flex flex-col">
+<h4 class="font-body-sm text-body-sm font-bold">Heritage Leather</h4>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Universal XL • Rs. 599</p>
+</div>
+<button class="ml-auto p-2">
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full flex justify-around items-center h-20 px-gutter pb-safe bg-surface-white shadow-[0px_-4px_20px_rgba(15,23,42,0.05)] z-50 rounded-t-full">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="font-label-caps text-label-caps mt-1">Shop</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-caps text-label-caps mt-1">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="font-label-caps text-label-caps mt-1">Cart</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-caps text-label-caps mt-1">Profile</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions and effects
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('touchstart', function() {
+                this.style.opacity = '0.7';
+            });
+            btn.addEventListener('touchend', function() {
+                this.style.opacity = '1';
+            });
+        });
+
+        // Add a subtle scroll effect to the header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 10) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+    </script>
+
+
+
+
+</body></html>

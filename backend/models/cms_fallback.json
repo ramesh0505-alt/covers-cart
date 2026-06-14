@@ -1,0 +1,115 @@
+{
+  "announcement": {
+    "text": "🎉 FREE DELIVERY PAN-INDIA FOR ALL PRE-PAID ORDERS | GET 10% OFF CODE: COVERS10",
+    "bgColor": "#000000",
+    "textColor": "#ffffff",
+    "enabled": true
+  },
+  "navbar": {
+    "logo": "/assets/anime.png",
+    "menus": [
+      { "label": "Home", "link": "/" },
+      { "label": "Catalog", "link": "#shop" },
+      { "label": "Customizer", "link": "#customizer" },
+      { "label": "Reviews", "link": "#reviews" }
+    ]
+  },
+  "hero": {
+    "slides": [
+      {
+        "id": "slide-1",
+        "title": "Cyberpunk Circuits Pro",
+        "subtitle": "Sleek metallic accents, high-tensile glass backplanes, and shock-absorbent TPU bumpers tailored for future-proof protection.",
+        "btnText": "Explore Collection",
+        "btnLink": "#shop",
+        "image": "/assets/tech.png",
+        "enabled": true
+      },
+      {
+        "id": "slide-2",
+        "title": "Anime Shinobi Armor",
+        "subtitle": "Unleash your inner warrior with high-definition anime print covers.",
+        "btnText": "View Anime Designs",
+        "btnLink": "#shop",
+        "image": "/assets/anime.png",
+        "enabled": true
+      },
+      {
+        "id": "slide-3",
+        "title": "Aesthetic Marble Flow",
+        "subtitle": "Elegant gold-seamed acrylic marble flows reflecting premium class.",
+        "btnText": "Browse Marble",
+        "btnLink": "#shop",
+        "image": "/assets/abstract.png",
+        "enabled": true
+      }
+    ]
+  },
+  "categories": {
+    "title": "Browse by Category",
+    "subtitle": "Select a vibe to view matching printed cases",
+    "list": [
+      { "id": "cat-anime", "name": "Anime / Manga", "slug": "anime", "image": "/assets/anime.png" },
+      { "id": "cat-tech", "name": "Tech & Circuits", "slug": "tech", "image": "/assets/tech.png" },
+      { "id": "cat-marvel", "name": "Marvel Universe", "slug": "marvel", "image": "/assets/animal.png" },
+      { "id": "cat-dc", "name": "DC Multiverse", "slug": "dc", "image": "/assets/abstract.png" },
+      { "id": "cat-minimal", "name": "Minimal Solid", "slug": "minimal", "image": "/assets/floral.png" }
+    ]
+  },
+  "sections": {
+    "order": ["announcement", "navbar", "hero", "categories", "customizer", "catalog", "promos", "reviews", "badges", "community", "footer"]
+  },
+  "promos": {
+    "list": [
+      {
+        "title": "Glass Armor Series",
+        "description": "Unrivaled depth and clarity with premium scratch-resistant double-tempered outer protection.",
+        "btnText": "Explore Collection",
+        "btnLink": "#shop",
+        "image": "/assets/abstract.png"
+      },
+      {
+        "title": "Silicone Cushions",
+        "description": "Soft matte liquid silicone exterior shielding against grease, drops, and fingerprint oil build-ups.",
+        "btnText": "Explore Matte",
+        "btnLink": "#shop",
+        "image": "/assets/floral.png"
+      }
+    ]
+  },
+  "custom_sections": [],
+  "badges": {
+    "list": [
+      { "title": "📦 Free Delivery", "subtitle": "On all prepaid orders pan-India" },
+      { "title": "🛡️ Lifetime Print Warranty", "subtitle": "Will never peel, fade or scratch off" },
+      { "title": "💬 WhatsApp Helpdesk", "subtitle": "Active query resolution within 1 hour" },
+      { "title": "⭐ 4.9 Star Rating", "subtitle": "From over 10,000+ verified cover buyers" }
+    ]
+  },
+  "seo": {
+    "title": "CoversCartOnline - Premium Phone Covers",
+    "description": "Premium glass and matte silicone cases designed visually without code. Fully dynamic e-commerce system.",
+    "keywords": "phone covers, custom cases, glass cases, anime covers",
+    "ogImage": "/assets/tech.png"
+  },
+  "footer": {
+    "copyright": "© 2026 CoversCartOnline. All rights reserved.",
+    "columns": [
+      {
+        "title": "Shop Collections",
+        "links": [
+          { "label": "Anime Art", "link": "#shop" },
+          { "label": "Tech Circuits", "link": "#shop" },
+          { "label": "Abstract Flow", "link": "#shop" }
+        ]
+      },
+      {
+        "title": "Quick Help",
+        "links": [
+          { "label": "Contact support", "link": "#" },
+          { "label": "WhatsApp Desk", "link": "#" }
+        ]
+      }
+    ]
+  }
+}
