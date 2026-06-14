@@ -7,24 +7,51 @@ const Sentry = require('@sentry/node');
 const { nodeProfilingIntegration } = require('@sentry/profiling-node');
 require('dotenv').config();
 
-// ── Environment Validation ──────────────────────────────────────────────────
-const requiredEnvVars = ['SUPABASE_URL', 'SUPABASE_ANON_KEY', 'JWT_SECRET', 'RAZORPAY_KEY_ID', 'RAZORPAY_SECRET', 'CLOUDINARY_URL'];
+const { connectDatabase } = require('./models/db');
+
+const isProduction = process.env.NODE_ENV === 'production';
+const PORT = process.env.PORT || 5000;
+
+const requiredEnvVars = [
+  'SUPABASE_URL',
+  'SUPABASE_ANON_KEY',
+  'JWT_SECRET',
+  'DATABASE_URL',
+  'RAZORPAY_KEY_ID',
+  'RAZORPAY_SECRET',
+  'CLOUDINARY_URL',
+];
+
 const missingEnvVars = requiredEnvVars.filter(key => !process.env[key]);
 if (missingEnvVars.length > 0) {
   console.error('❌ CRITICAL ERROR: Missing required environment variables:');
   missingEnvVars.forEach(key => console.error(`   - ${key}`));
-  console.error('The server cannot start until these are configured in the .env file.');
-  process.exit(1);
+  console.error('The server cannot start until these are configured in the deployment environment or .env file.');
+  if (isProduction) process.exit(1);
 }
 
-const app = express();
+const recommendedEnvVars = ['SUPABASE_SERVICE_ROLE_KEY', 'SUPABASE_JWT_SECRET', 'FRONTEND_URL', 'ADMIN_URL'];
+const missingRecommended = recommendedEnvVars.filter(key => !process.env[key]);
+if (missingRecommended.length > 0) {
+  console.warn('⚠️ Recommended environment variables are missing:');
+  missingRecommended.forEach(key => console.warn(`   - ${key}`));
+}
 
-// ── Sentry Initialization ──────────────────────────────────────────────────
+process.on('uncaughtException', (error) => {
+  console.error('Uncaught Exception:', error);
+  process.exit(1);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection:', { reason, promise });
+});
+
+const app = express();
+app.set('trust proxy', true);
+
 Sentry.init({
-  dsn: process.env.SENTRY_DSN_BACKEND || "https://placeholder@o0.ingest.sentry.io/0",
-  integrations: [
-    nodeProfilingIntegration(),
-  ],
+  dsn: process.env.SENTRY_DSN_BACKEND || 'https://placeholder@o0.ingest.sentry.io/0',
+  integrations: [nodeProfilingIntegration()],
   tracesSampleRate: 1.0,
   profilesSampleRate: 1.0,
 });
@@ -34,14 +61,10 @@ if (Sentry.Handlers) {
   app.use(Sentry.Handlers.tracingHandler());
 }
 
-const PORT = process.env.PORT || 5000;
-
-// ── Security Headers ────────────────────────────────────────────────────────
 app.use(helmet({
   crossOriginResourcePolicy: { policy: 'cross-origin' },
 }));
 
-// ── CORS — restrict to frontend origin ─────────────────────────────────────
 const allowedOrigins = [
   'http://localhost:3000',
   'http://localhost:3001',
@@ -55,7 +78,6 @@ const allowedOrigins = [
 
 app.use(cors({
   origin: (origin, callback) => {
-    // Allow requests with no origin (mobile apps, curl, server-to-server)
     if (!origin) return callback(null, true);
     if (allowedOrigins.includes(origin)) return callback(null, true);
     callback(new Error(`CORS: origin '${origin}' not allowed`));
@@ -65,10 +87,9 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
-// ── Global Rate Limiting ────────────────────────────────────────────────────
 const globalLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 300,                   // 300 requests per window per IP
+  windowMs: 15 * 60 * 1000,
+  max: 300,
   standardHeaders: true,
   legacyHeaders: false,
   message: { error: 'Too many requests — please try again later.' },
@@ -76,28 +97,24 @@ const globalLimiter = rateLimit({
 
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 20,                    // Stricter for auth endpoints
+  max: 20,
   message: { error: 'Too many auth attempts — please try again later.' },
 });
 
 app.use('/api', globalLimiter);
 app.use('/api/auth', authLimiter);
-
 app.use(express.json({ limit: '20mb' }));
 app.use(express.urlencoded({ limit: '20mb', extended: true }));
-
-// Data Sanitization against XSS
 app.use(xss());
 
-// Health Check
-app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', service: 'CoverScart API', timestamp: new Date().toISOString() });
+app.get('/health', (req, res) => {
+  res.json({ status: 'healthy', uptime: process.uptime(), timestamp: new Date() });
 });
 
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'healthy', uptime: process.uptime(), timestamp: new Date() });
+});
 
-
-
-// Mount Modular Routes
 const authRoutes = require('./routes/auth');
 const productRoutes = require('./routes/products');
 const categoryRoutes = require('./routes/categories');
@@ -133,15 +150,34 @@ app.use('/api/payments', require('./routes/payments'));
 
 const { routeNotFound, errorHandler } = require('./middlewares/errorMiddleware');
 
-// Mount Sentry Error Handler (must be before other error handlers)
 if (Sentry.Handlers) {
   app.use(Sentry.Handlers.errorHandler());
 }
 
-// Mount Error Handling Middlewares
 app.use(routeNotFound);
 app.use(errorHandler);
 
-app.listen(PORT, () => {
-  console.log(`CoversCartOnline Backend server running on port ${PORT}`);
-});
+const startServer = async () => {
+  console.info(`Starting CoversCart backend on port ${PORT}`);
+  await connectDatabase();
+  return new Promise((resolve, reject) => {
+    const server = app.listen(PORT, () => {
+      console.log(`CoversCartOnline Backend server running on port ${PORT}`);
+      resolve(server);
+    });
+
+    server.on('error', (error) => {
+      console.error('Server startup error:', error);
+      reject(error);
+    });
+  });
+};
+
+if (require.main === module) {
+  startServer().catch((error) => {
+    console.error('Failed to start server:', error);
+    process.exit(1);
+  });
+}
+
+module.exports = app;
