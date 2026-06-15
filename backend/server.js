@@ -7,35 +7,19 @@ const Sentry = require('@sentry/node');
 const { nodeProfilingIntegration } = require('@sentry/profiling-node');
 require('dotenv').config();
 
+if (!process.env.CLOUDINARY_URL) {
+  const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
+  const apiKey = process.env.CLOUDINARY_API_KEY;
+  const apiSecret = process.env.CLOUDINARY_API_SECRET;
+  if (cloudName && apiKey && apiSecret) {
+    process.env.CLOUDINARY_URL = `cloudinary://${apiKey}:${apiSecret}@${cloudName}`;
+  }
+}
+
 const { connectDatabase } = require('./models/db');
 
 const isProduction = process.env.NODE_ENV === 'production';
 const PORT = process.env.PORT || 5000;
-
-const requiredEnvVars = [
-  'SUPABASE_URL',
-  'SUPABASE_ANON_KEY',
-  'JWT_SECRET',
-  'DATABASE_URL',
-  'RAZORPAY_KEY_ID',
-  'RAZORPAY_SECRET',
-  'CLOUDINARY_URL',
-];
-
-const missingEnvVars = requiredEnvVars.filter(key => !process.env[key]);
-if (missingEnvVars.length > 0) {
-  console.error('❌ CRITICAL ERROR: Missing required environment variables:');
-  missingEnvVars.forEach(key => console.error(`   - ${key}`));
-  console.error('The server cannot start until these are configured in the deployment environment or .env file.');
-  if (isProduction) process.exit(1);
-}
-
-const recommendedEnvVars = ['SUPABASE_SERVICE_ROLE_KEY', 'SUPABASE_JWT_SECRET', 'FRONTEND_URL', 'ADMIN_URL'];
-const missingRecommended = recommendedEnvVars.filter(key => !process.env[key]);
-if (missingRecommended.length > 0) {
-  console.warn('⚠️ Recommended environment variables are missing:');
-  missingRecommended.forEach(key => console.warn(`   - ${key}`));
-}
 
 process.on('uncaughtException', (error) => {
   console.error('Uncaught Exception:', error);
@@ -45,6 +29,32 @@ process.on('uncaughtException', (error) => {
 process.on('unhandledRejection', (reason, promise) => {
   console.error('Unhandled Rejection:', { reason, promise });
 });
+
+const validateEnv = () => {
+  const requiredEnvVars = [
+    'SUPABASE_URL',
+    'SUPABASE_ANON_KEY',
+    'JWT_SECRET',
+    'DATABASE_URL',
+    'RAZORPAY_KEY_ID',
+    'RAZORPAY_KEY_SECRET',
+    'CLOUDINARY_URL',
+  ];
+
+  const missingEnvVars = requiredEnvVars.filter(key => !process.env[key]);
+  if (missingEnvVars.length > 0) {
+    console.error('❌ CRITICAL ERROR: Missing required environment variables:');
+    missingEnvVars.forEach(key => console.error(`   - ${key}`));
+    throw new Error('Missing required environment variables.');
+  }
+
+  const recommendedEnvVars = ['SUPABASE_SERVICE_ROLE_KEY', 'SUPABASE_JWT_SECRET', 'FRONTEND_URL', 'ADMIN_URL'];
+  const missingRecommended = recommendedEnvVars.filter(key => !process.env[key]);
+  if (missingRecommended.length > 0) {
+    console.warn('⚠️ Recommended environment variables are missing:');
+    missingRecommended.forEach(key => console.warn(`   - ${key}`));
+  }
+};
 
 const app = express();
 app.set('trust proxy', true);
@@ -159,7 +169,10 @@ app.use(errorHandler);
 
 const startServer = async () => {
   console.info(`Starting CoversCart backend on port ${PORT}`);
+
+  validateEnv();
   await connectDatabase();
+
   return new Promise((resolve, reject) => {
     const server = app.listen(PORT, () => {
       console.log(`CoversCartOnline Backend server running on port ${PORT}`);
@@ -174,10 +187,41 @@ const startServer = async () => {
 };
 
 if (require.main === module) {
-  startServer().catch((error) => {
-    console.error('Failed to start server:', error);
-    process.exit(1);
-  });
+  startServer()
+    .then((server) => {
+      const gracefulShutdown = (signal) => {
+        console.info(`Received ${signal}. Starting graceful shutdown...`);
+        
+        server.close(async () => {
+          console.info('HTTP server closed.');
+          try {
+            const { prisma } = require('./models/db');
+            if (prisma) {
+              await prisma.$disconnect();
+              console.info('Database connection closed.');
+            }
+            console.info('Graceful shutdown completed successfully.');
+            process.exit(0);
+          } catch (err) {
+            console.error('Error during database disconnect:', err);
+            process.exit(1);
+          }
+        });
+
+        // Force shutdown after 10s
+        setTimeout(() => {
+          console.error('Forceful shutdown triggered after timeout.');
+          process.exit(1);
+        }, 10000);
+      };
+
+      process.on('SIGTERM', () => gracefulShutdown('SIGTERM'));
+      process.on('SIGINT', () => gracefulShutdown('SIGINT'));
+    })
+    .catch((error) => {
+      console.error('Failed to start server:', error);
+      process.exit(1);
+    });
 }
 
 module.exports = app;

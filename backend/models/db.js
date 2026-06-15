@@ -2,23 +2,42 @@ const { PrismaClient } = require('@prisma/client');
 require('dotenv').config();
 
 let prisma;
-try {
-  if (process.env.DATABASE_URL) {
-    prisma = new PrismaClient();
-  }
-} catch (e) {
-  console.log("Prisma Client failed to initialize. Using Fallback In-Memory Storage.");
-}
+let databaseConnected = false;
 
 const JWT_SECRET = process.env.JWT_SECRET;
-if (!JWT_SECRET) {
-  if (process.env.NODE_ENV === 'production') {
-    throw new Error('FATAL: JWT_SECRET environment variable is not set. Server will not start.');
-  } else {
-    console.warn('[SECURITY WARNING] JWT_SECRET is not set. Using weak dev default — NEVER use in production.');
-  }
+if (!JWT_SECRET && process.env.NODE_ENV !== 'production') {
+  console.warn('[SECURITY WARNING] JWT_SECRET is not set. Using weak dev default — NEVER use in production.');
 }
 const _JWT_SECRET = JWT_SECRET || 'dev_only_weak_secret_do_not_use_in_prod';
+
+const getPrismaClient = () => {
+  if (!process.env.DATABASE_URL) {
+    return null;
+  }
+
+  if (!prisma) {
+    prisma = new PrismaClient();
+  }
+
+  return prisma;
+};
+
+const connectDatabase = async () => {
+  const client = getPrismaClient();
+  if (!client) {
+    const error = new Error('Prisma client is unavailable because DATABASE_URL is not configured.');
+    console.error(error.message);
+    throw error;
+  }
+
+  if (!databaseConnected) {
+    await client.$connect();
+    databaseConnected = true;
+    console.info('Database connection established successfully.');
+  }
+
+  return client;
+};
 
 const BASE_TEMPLATES = {
   "cat-anime": [
@@ -198,6 +217,7 @@ let fallbackReviews = [
 
 module.exports = {
   prisma,
+  connectDatabase,
   JWT_SECRET: _JWT_SECRET,
   fallbackProducts,
   fallbackCategories,
