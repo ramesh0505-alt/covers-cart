@@ -4,7 +4,6 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const xss = require('xss-clean');
 const Sentry = require('@sentry/node');
-const { nodeProfilingIntegration } = require('@sentry/profiling-node');
 require('dotenv').config();
 
 if (!process.env.CLOUDINARY_URL) {
@@ -61,9 +60,7 @@ app.set('trust proxy', true);
 
 Sentry.init({
   dsn: process.env.SENTRY_DSN_BACKEND || 'https://placeholder@o0.ingest.sentry.io/0',
-  integrations: [nodeProfilingIntegration()],
   tracesSampleRate: 1.0,
-  profilesSampleRate: 1.0,
 });
 
 if (Sentry.Handlers) {

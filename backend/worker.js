@@ -1,7 +1,7 @@
-const serverless = require('serverless-http');
-const app = require('./server.js');
+import serverless from 'serverless-http';
+import app from './server.js';
 
-module.exports = {
+export default {
   async fetch(request, env, ctx) {
     // Populate process.env with Cloudflare env vars
     if (typeof process === 'undefined') {
