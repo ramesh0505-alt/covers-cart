@@ -118,11 +118,11 @@ app.use(express.urlencoded({ limit: '20mb', extended: true }));
 app.use(xss());
 
 app.get('/health', (req, res) => {
-  res.json({ status: 'healthy', uptime: process.uptime(), timestamp: new Date() });
+  res.json({ status: 'healthy', platform: 'cloudflare', uptime: true });
 });
 
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'healthy', uptime: process.uptime(), timestamp: new Date() });
+  res.json({ status: 'healthy', platform: 'cloudflare', uptime: true });
 });
 
 const authRoutes = require('./routes/auth');
@@ -166,62 +166,5 @@ if (Sentry.Handlers) {
 
 app.use(routeNotFound);
 app.use(errorHandler);
-
-const startServer = async () => {
-  console.info(`Starting CoversCart backend on port ${PORT}`);
-
-  validateEnv();
-  await connectDatabase();
-
-  return new Promise((resolve, reject) => {
-    const server = app.listen(PORT, () => {
-      console.log(`CoversCartOnline Backend server running on port ${PORT}`);
-      resolve(server);
-    });
-
-    server.on('error', (error) => {
-      console.error('Server startup error:', error);
-      reject(error);
-    });
-  });
-};
-
-if (require.main === module) {
-  startServer()
-    .then((server) => {
-      const gracefulShutdown = (signal) => {
-        console.info(`Received ${signal}. Starting graceful shutdown...`);
-        
-        server.close(async () => {
-          console.info('HTTP server closed.');
-          try {
-            const { prisma } = require('./models/db');
-            if (prisma) {
-              await prisma.$disconnect();
-              console.info('Database connection closed.');
-            }
-            console.info('Graceful shutdown completed successfully.');
-            process.exit(0);
-          } catch (err) {
-            console.error('Error during database disconnect:', err);
-            process.exit(1);
-          }
-        });
-
-        // Force shutdown after 10s
-        setTimeout(() => {
-          console.error('Forceful shutdown triggered after timeout.');
-          process.exit(1);
-        }, 10000);
-      };
-
-      process.on('SIGTERM', () => gracefulShutdown('SIGTERM'));
-      process.on('SIGINT', () => gracefulShutdown('SIGINT'));
-    })
-    .catch((error) => {
-      console.error('Failed to start server:', error);
-      process.exit(1);
-    });
-}
 
 module.exports = app;
