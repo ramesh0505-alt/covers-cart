@@ -164,4 +164,22 @@ if (Sentry.Handlers) {
 app.use(routeNotFound);
 app.use(errorHandler);
 
+const startServer = async () => {
+  try {
+    await connectDatabase();
+    const PORT = process.env.PORT || 5000;
+    const server = app.listen(PORT, () => {
+      console.info(`CoversCartOnline Backend server running on port ${PORT}`);
+    });
+    return server;
+  } catch (error) {
+    console.error('Failed to start server:', error);
+    process.exit(1);
+  }
+};
+
+if (require.main === module) {
+  startServer();
+}
+
 module.exports = app;
